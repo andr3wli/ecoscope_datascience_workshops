@@ -286,3 +286,8 @@ test-your-package
 test-your-package-again
 further-resources
 survey-4
+suite-of-packages-for-data-manipulation-and-visualization
+subheading-1a
+subheading-2a
+subheading-2b
+suite-of-packages-for-data-manipulation-and-visualization-1

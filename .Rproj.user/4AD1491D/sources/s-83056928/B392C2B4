@@ -3,7 +3,7 @@
     "path": "/Volumes/Samsung_T5/ecoscope_datascience_workshops/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "3700582934",
     "contents": "",
     "dirty": false,
     "created": 1629774932875.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "163,0",
-        "scrollLine": "131"
+        "cursorPosition": "67,96",
+        "scrollLine": "43"
     },
     "folds": "",
-    "lastKnownWriteTime": 1629775872,
+    "lastKnownWriteTime": 1629829811,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1629775872108,
+    "last_content_update": 1629829811493,
     "read_only": false,
     "read_only_alternatives": []
 }

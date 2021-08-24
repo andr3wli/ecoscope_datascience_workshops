@@ -65,11 +65,13 @@ In it, we cover:
 * Basic data visualization
 * The help function
 
+*Click [here](https://educe-ubc.github.io/r_and_rstudio_ws_setup.html) for set up instructions.*
+
 ### Introduction to the tidyverse
 
 Author(s): [Kim Dill-McFarland](https://kdillmcfarland.github.io), [Andrew Li](https://www.andrewcli.com) & [Kris Hong](https://uk.linkedin.com/in/krisyhong)
 
-In this workshop, we provide a brief introduction to RStudio, then delve into data manipulation and graphics in the tidyverse including the packages dplyr, tidyr, and ggplot2. We teach different ways to manipulate data in tabular and text forms as well as the critical concepts underlying the grammar of graphics and how they are implemented in ggplot. We will use RStudio, a powerful but user-friendly R environment, and teach you how to use it effectively.
+In this workshop, we provide a brief introduction to RStudio, then delve into data manipulation and graphics in the tidyverse including the packages dplyr, tidyr, and ggplot2. We teach different ways to manipulate data in tabular and text forms as well as the critical concepts underlying the grammar of graphics and how they are implemented in ggplot. We will use RStudio, a powerful but user-friendly R environment, and teach you how to use it effectively. 
 
 You will learn how to:
 
@@ -81,11 +83,13 @@ You will learn how to:
 * modify the various features of a graphic, and
 * save your graphic in various formats
 
+*Click [here](https://educe-ubc.github.io/tidyverse_ws_setup.html) for setup instructions.*
+
 ### Reproducible research
 
 Author(s): [Kim Dill-McFarland](https://kdillmcfarland.github.io) & [Kris Hong]()
 
-In this workshop, we introduce computational reproducibility and its importance to modern research. We will teach the general principles for reproducible computer-based analyses, along with specific methods and tools for reproducibility and version control with [RStudio](https://www.rstudio.com) and [GitHub](https://github.com).
+In this workshop, we introduce computational reproducibility and its importance to modern research. We will teach the general principles for reproducible computer-based analyses, along with specific methods and tools for reproducibility and version control with [RStudio](https://www.rstudio.com) and [GitHub](https://github.com). 
 
 You will learn how to:
 
@@ -94,11 +98,14 @@ You will learn how to:
 * Use Git version control
 * Integrate version control with GitHub for both personal and group projects
 
+*Click [here](https://educe-ubc.github.io/reproducibility_ws_setup.html) for setup instructions.*
+
+
 ### Statistical models in R
 
 Author(s): [Yue Liu](), [Kim Dill-McFarland](https://kdillmcfarland.github.io) & [Andrew Li](https://www.andrewcli.com)
 
-In this workshop, we introduce various types of regression models and how they are implemented in R. We cover linear regression, ANOVA, ANCOVA and mixed effects models for continuous response data, logistic regression binary response data, and Poisson and Negative Binomial regression for count response data.
+In this workshop, we introduce various types of regression models and how they are implemented in R. We cover linear regression, ANOVA, ANCOVA and mixed effects models for continuous response data, logistic regression binary response data, and Poisson and Negative Binomial regression for count response data. 
 
 You will learn:
 
@@ -111,6 +118,8 @@ In R, you will learn how to;
 * build a statistical model
 * define and manipulate model terms
 * use the lsmeans package to answer specific research questions
+
+*Click [here](https://educe-ubc.github.io/reproducibility_ws_setup.html) for the setup instructions.*
 
 ### Intermediate R programming
 
@@ -125,6 +134,9 @@ You will learn how to:
 * output large result tables to your hard drive
 * write and publish an R package
 * write formal automated tests (aka unit testing)
+
+*Click [here](https://educe-ubc.github.io/stats_ws_setup.html) for the setup instructions.*
+
 
 <!--### Phylogenetics and microbiomes in R
 

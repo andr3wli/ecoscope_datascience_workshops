@@ -25,7 +25,7 @@
 <meta name="author" content="Stephan Koenig" />
 
 
-<meta name="date" content="2021-08-23" />
+<meta name="date" content="2021-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,70 +54,6 @@
 
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -271,56 +207,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-reproducibility"><i class="fa fa-check"></i><b>4.3</b> Why reproducibility?</a></li>
 <li class="chapter" data-level="4.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-projects"><i class="fa fa-check"></i><b>4.4</b> R projects</a></li>
 <li class="chapter" data-level="4.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-scripts"><i class="fa fa-check"></i><b>4.5</b> R scripts</a></li>
-<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.6</b> Modularize by task</a></li>
-<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.7</b> Use <em>Make</em></a></li>
-<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.8</b> Reproducible R environment with <code>packrat</code></a></li>
-<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.9</b> Documents made reproducible</a>
+<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#suite-of-packages-for-data-manipulation-and-visualization"><i class="fa fa-check"></i><b>4.6</b> Suite of packages for data manipulation and visualization</a></li>
+<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.7</b> Modularize by task</a></li>
+<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.8</b> Use <em>Make</em></a></li>
+<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.9</b> Reproducible R environment with <code>packrat</code></a></li>
+<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.10</b> Documents made reproducible</a>
 <ul>
-<li class="chapter" data-level="4.9.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.9.1</b> What is a document really?</a></li>
-<li class="chapter" data-level="4.9.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.9.2</b> Rmarkdown</a></li>
-<li class="chapter" data-level="4.9.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.9.3</b> Knitting</a></li>
-<li class="chapter" data-level="4.9.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.9.4</b> Markdown body</a></li>
-<li class="chapter" data-level="4.9.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.9.5</b> Static documents</a></li>
-<li class="chapter" data-level="4.9.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.9.6</b> Dynamic documents</a></li>
-<li class="chapter" data-level="4.9.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.9.7</b> Slides made reproducible</a></li>
-<li class="chapter" data-level="4.9.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.9.8</b> Rmd in your workflow</a></li>
-<li class="chapter" data-level="4.9.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.9.9</b> Publish with Rpubs.com</a></li>
+<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.10.1</b> What is a document really?</a></li>
+<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.10.2</b> Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.10</b> Git</a>
+<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#subheading-1a"><i class="fa fa-check"></i><b>4.11</b> Subheading 1A</a></li>
+<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#subheading-2a"><i class="fa fa-check"></i><b>4.12</b> Subheading 2A</a></li>
+<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#subheading-2b"><i class="fa fa-check"></i><b>4.13</b> Subheading 2B</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.10.1</b> What is version control?</a></li>
-<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.10.2</b> Why Git?</a></li>
+<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.13.1</b> Knitting</a></li>
+<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.13.2</b> Markdown body</a></li>
+<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.13.3</b> Static documents</a></li>
+<li class="chapter" data-level="4.13.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.13.4</b> Dynamic documents</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.11</b> Git on your computer</a>
+<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#suite-of-packages-for-data-manipulation-and-visualization-1"><i class="fa fa-check"></i><b>4.14</b> Suite of packages for data manipulation and visualization</a>
 <ul>
-<li class="chapter" data-level="4.11.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.11.1</b> Initialize a repo (<code>git init</code>)</a></li>
-<li class="chapter" data-level="4.11.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.11.2</b> Add files (<code>git add</code>)</a></li>
-<li class="chapter" data-level="4.11.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.11.3</b> Git staging area (index)</a></li>
-<li class="chapter" data-level="4.11.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.11.4</b> Commit changes (<code>git commit</code>)</a></li>
-<li class="chapter" data-level="4.11.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.11.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
-<li class="chapter" data-level="4.11.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.11.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
-<li class="chapter" data-level="4.11.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.11.7</b> Branches (<code>git checkout -b</code>)</a></li>
-<li class="chapter" data-level="4.11.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.11.8</b> Merge conflicts (<code>git merge</code>)</a></li>
-<li class="chapter" data-level="4.11.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.11.9</b> Summary of Git</a></li>
+<li class="chapter" data-level="4.14.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.14.1</b> Slides made reproducible</a></li>
+<li class="chapter" data-level="4.14.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.14.2</b> Rmd in your workflow</a></li>
+<li class="chapter" data-level="4.14.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.14.3</b> Publish with Rpubs.com</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.12</b> Collaborate with GitHub</a>
+<li class="chapter" data-level="4.15" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.15</b> Git</a>
 <ul>
-<li class="chapter" data-level="4.12.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.12.1</b> Configure your computer (<code>git config</code>)</a></li>
-<li class="chapter" data-level="4.12.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.12.2</b> Make an online repo</a></li>
-<li class="chapter" data-level="4.12.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.12.3</b> Link local and online repo (<code>git remote</code>)</a></li>
-<li class="chapter" data-level="4.12.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.12.4</b> Update an online repo (<code>git push</code>)</a></li>
-<li class="chapter" data-level="4.12.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.12.5</b> Copy an online repo (<code>git clone</code>)</a></li>
-<li class="chapter" data-level="4.12.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.12.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
-<li class="chapter" data-level="4.12.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.12.7</b> GitHub GUI</a></li>
-<li class="chapter" data-level="4.12.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.12.8</b> Git in RStudio</a></li>
+<li class="chapter" data-level="4.15.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.15.1</b> What is version control?</a></li>
+<li class="chapter" data-level="4.15.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.15.2</b> Why Git?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.13</b> Additional resources</a>
+<li class="chapter" data-level="4.16" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.16</b> Git on your computer</a>
 <ul>
-<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.13.1</b> Reproducible research</a></li>
-<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.13.2</b> R/RStudio</a></li>
-<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.13.3</b> Git/GitHub</a></li>
+<li class="chapter" data-level="4.16.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.16.1</b> Initialize a repo (<code>git init</code>)</a></li>
+<li class="chapter" data-level="4.16.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.16.2</b> Add files (<code>git add</code>)</a></li>
+<li class="chapter" data-level="4.16.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.16.3</b> Git staging area (index)</a></li>
+<li class="chapter" data-level="4.16.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.16.4</b> Commit changes (<code>git commit</code>)</a></li>
+<li class="chapter" data-level="4.16.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.16.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
+<li class="chapter" data-level="4.16.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.16.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
+<li class="chapter" data-level="4.16.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.16.7</b> Branches (<code>git checkout -b</code>)</a></li>
+<li class="chapter" data-level="4.16.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.16.8</b> Merge conflicts (<code>git merge</code>)</a></li>
+<li class="chapter" data-level="4.16.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.16.9</b> Summary of Git</a></li>
 </ul></li>
-<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.14</b> Survey</a></li>
+<li class="chapter" data-level="4.17" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.17</b> Collaborate with GitHub</a>
+<ul>
+<li class="chapter" data-level="4.17.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.17.1</b> Configure your computer (<code>git config</code>)</a></li>
+<li class="chapter" data-level="4.17.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.17.2</b> Make an online repo</a></li>
+<li class="chapter" data-level="4.17.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.17.3</b> Link local and online repo (<code>git remote</code>)</a></li>
+<li class="chapter" data-level="4.17.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.17.4</b> Update an online repo (<code>git push</code>)</a></li>
+<li class="chapter" data-level="4.17.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.17.5</b> Copy an online repo (<code>git clone</code>)</a></li>
+<li class="chapter" data-level="4.17.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.17.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
+<li class="chapter" data-level="4.17.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.17.7</b> GitHub GUI</a></li>
+<li class="chapter" data-level="4.17.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.17.8</b> Git in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.18" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.18</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="4.18.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.18.1</b> Reproducible research</a></li>
+<li class="chapter" data-level="4.18.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.18.2</b> R/RStudio</a></li>
+<li class="chapter" data-level="4.18.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.18.3</b> Git/GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.19" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.19</b> Survey</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html"><i class="fa fa-check"></i><b>5</b> Statistical models in R</a>
 <ul>
@@ -459,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">ECOSCOPE: Data Science Workshops</h1>
 <p class="author"><em>Andrew Li</em></p>
 <p class="author"><em>Stephan Koenig</em></p>
-<p class="date"><em>2021-08-23</em></p>
+<p class="date"><em>2021-08-24</em></p>
 </div>
 <div id="ecoscope" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> ECOSCOPE</h1>
@@ -598,6 +543,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Basic data visualization</li>
 <li>The help function</li>
 </ul>
+<p><em>Click <a href="https://educe-ubc.github.io/r_and_rstudio_ws_setup.html">here</a> for set up instructions.</em></p>
 </div>
 <div id="introduction-to-the-tidyverse" class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Introduction to the tidyverse</h3>
@@ -613,6 +559,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>modify the various features of a graphic, and</li>
 <li>save your graphic in various formats</li>
 </ul>
+<p><em>Click <a href="https://educe-ubc.github.io/tidyverse_ws_setup.html">here</a> for setup instructions.</em></p>
 </div>
 <div id="reproducible-research" class="section level3" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> Reproducible research</h3>
@@ -625,6 +572,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Use Git version control</li>
 <li>Integrate version control with GitHub for both personal and group projects</li>
 </ul>
+<p><em>Click <a href="https://educe-ubc.github.io/reproducibility_ws_setup.html">here</a> for setup instructions.</em></p>
 </div>
 <div id="statistical-models-in-r" class="section level3" number="1.2.4">
 <h3><span class="header-section-number">1.2.4</span> Statistical models in R</h3>
@@ -642,6 +590,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>define and manipulate model terms</li>
 <li>use the lsmeans package to answer specific research questions</li>
 </ul>
+<p><em>Click <a href="https://educe-ubc.github.io/reproducibility_ws_setup.html">here</a> for the setup instructions.</em></p>
 </div>
 <div id="intermediate-r-programming" class="section level3" number="1.2.5">
 <h3><span class="header-section-number">1.2.5</span> Intermediate R programming</h3>
@@ -655,6 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>write and publish an R package</li>
 <li>write formal automated tests (aka unit testing)</li>
 </ul>
+<p><em>Click <a href="https://educe-ubc.github.io/stats_ws_setup.html">here</a> for the setup instructions.</em></p>
 <!--### Phylogenetics and microbiomes in R
 
 Author(s): [Florent Mazel](https://florentmazel.weebly.com) & [Jon Saunders](https://scholar.google.com/citations?user=VEsdTjwAAAAJ&hl=en)
@@ -749,20 +699,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
