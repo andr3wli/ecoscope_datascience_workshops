@@ -3,7 +3,7 @@
 
 # ECOSCOPE at the University of British Columbia
 
-This is the source the "ECOSCOPE: Data Science Workshop" book (still under development). 
+This is the source for the "ECOSCOPE: Data Science Workshop" book (still under development). 
 
 ## How to setup and build
 
