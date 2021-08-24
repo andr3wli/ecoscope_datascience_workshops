@@ -1,0 +1,46 @@
+h1:introduction-to-r-and-rstudio Introduction to R and RStudio
+h2:introduction Introduction
+h3:what-is-r What is R?
+h4:what-is-a-programming-language what is a programming language?
+h4:why-is-this-important-why-not-use-excel Why is this important? Why not use excel?
+h2:using-r-in-your-own-computer Using R in your own computer
+h3:what-is-rstudio What is RStudio?
+h3:the-r-console The R console
+h3:the-r-environment The R Environment
+h3:scripts Scripts
+h4:advantages-of-working-with-scripts Advantages of working with scripts
+h4:when-to-use-a-script-when-to-use-the-console When to use a script? When to use the console?
+h4:how-to-create-a-script How to create a script?
+h3:installing-and-loading-packages Installing and loading packages
+h3:paths-and-working-directory Paths and working directory
+h3:rstudio-projects RStudio projects
+h4:creating-an-rstudio-project Creating an RStudio project
+h2:r-as-a-calculator R as a calculator
+h2:assigning-variables Assigning variables
+h3:comments Comments
+h2:functions Functions
+h3:the-most-helpful-function-of-all-the-help-function The most helpful function of all: the  function
+h2:data-types Data types
+h3:exercises Exercises
+h2:structures Structures
+h3:vectors Vectors
+h3:apply-functions-over-vectors Apply functions over vectors
+h3:arithmetic-operations-on-vectors Arithmetic operations on vectors
+h2:data-frames Data frames
+h3:example-data-frame Example data frame
+h3:importing-the-data-frame Importing the data frame
+h2:quick-plots Quick plots
+h2:accessing-and-subsetting-data Accessing and subsetting data
+h3:acessing-vector-elements Acessing vector elements
+h3:accessing-data-frame-elements Accessing data frame elements
+h3:subsetting-rows-according-to-condition Subsetting rows according to condition
+h2:additional-exercises Additional exercises
+h3:exercise-1-install-packages Exercise 1: Install packages
+h3:exercise-2-calculating-a-probability-density Exercise 2: Calculating a probability density
+h3:exercise-3-use-the-help-function-to-learn-how-to-flip-coins Exercise 3: Use the help function to learn how to flip coins
+h3:exercise-4-working-with-data Exercise 4: Working with data
+h4:solution-to-exercise-2 Solution to exercise 2
+h4:solution-to-exercise-3 Solution to exercise 3
+h4:solution-to-exercise-4 Solution to exercise 4
+h2:survey Survey
+

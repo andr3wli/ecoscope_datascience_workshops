@@ -1,0 +1,51 @@
+h1:introduction-to-the-tidyverse Introduction to the tidyverse
+h2:introduction Introduction
+h3:setup-intructions Setup intructions
+h3:background Background
+h2:data-description Data description
+h2:getting-started Getting Started
+h3:making-an-rstudio-project Making an RStudio project
+h3:installing-and-loading-packages Installing and loading packages
+h3:downloading-the-data Downloading the data
+h3:loading-data-with-readr Loading data with 
+h2:data-in-r Data in R
+h3:basic-data-types-in-r Basic data types in R
+h3:basic-data-structures-in-r Basic data structures in R
+h3:conditional-statements-and-logical-operators Conditional statements and logical operators
+h3:exercises Exercises
+h2:data-wrangling-with-dplyr Data wrangling with 
+h3:select Select
+h3:filter Filter
+h4:exercise-select-and-filter Exercise: select and filter
+h3:rename Rename
+h3:arrange Arrange
+h3:mutate Mutate
+h4:exercise-rename-and-mutate Exercise: rename and mutate
+h3:piping-with Piping with 
+h4:exercise-pipes Exercise: pipes
+h3:group-by-and-summarise Group by and Summarise
+h4:exercise-group-by-and-summarise Exercise: group by and summarise
+h3:wide-and-long-data---gather-and-spread Wide and long data - gather and spread
+h2:graphics-with-ggplot2 Graphics with ggplot2
+h3:why-ggolot Why ggolot?
+h3:ggplot-building-blocks ggplot building blocks
+h3:geom_point geom_point
+h4:exercise-geom_point Exercise: geom_point
+h4:exercise-color-and-aesthetics Exercise: color and aesthetics
+h3:geom_line geom_line
+h3:geom_histogram geom_histogram
+h4:exercise-geom_histogram Exercise: geom_histogram
+h3:geom_boxplot geom_boxplot
+h3:facet_wrap facet_wrap
+h3:labels labels
+h4:exercise-facets Exercise: facets
+h2:fine-tuning-your-ggplots Fine-tuning your ggplots
+h3:themes Themes
+h3:panel-1 Panel 1
+h3:panel-2 Panel 2
+h3:multi-panel-figues Multi-panel figues
+h4:patchwork Patchwork
+h2:saving-ggplots Saving ggplots
+h2:additional-resources Additional resources
+h2:survey Survey
+

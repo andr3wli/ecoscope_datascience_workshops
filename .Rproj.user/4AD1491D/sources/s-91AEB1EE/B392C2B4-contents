@@ -1,34 +1,164 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "ECOSCOPE: Data Science Workshops"
+author: 
+  - Andrew Li
+  - Stephan Koenig
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "UBC ECOSCOPE workshop materials in the form of a bookdown book."
 ---
 
-# Prerequisites
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+# ECOSCOPE
 
-The **bookdown** package can be installed from CRAN or Github:
+This is an open source textbook aimed at introducing data science and R programming to undergraduate and graduate students. It was originally written as a learning tool for the ECOSCOPE workshops hosted at the University of British Columbia. 
 
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
+The book is structured so that each chapter is a different workshop. 
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+**Note: This book is in its preliminary stages.** Content will be continuously updated and added.
 
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+## Schedule
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+**2021 Term 1 (Sept - Dec)**
+
+| Date                        | Time   | Workshop                | Register                   |
+|-----------------------------|--------|-------------------------|----------------------------|
+| Sept 21 (Tues)              | 2-4 PM | Intro to R              | [Click here to register]() |
+| Sept 28 & 30 (Tues & Thurs) | 1-4 PM | Intro to the tidyverse  | [Click here to register]() |
+| Oct 19 (Tues)               | 2-4 PM | Intro to R              | [Click here to register]() |
+| Oct 26 & 28 (Tues & Thurs)  | 1-4 PM | Reproducible research   | [Click here to register]() |
+| Nov 16 (Tues)               | 2-4 PM | Intro to R              | [Click here to register]() |
+| Nov 23 & 25 (Tues & Thurs)  | 1-4 PM | Statistical models in R | [Click here to register]() |
+<br>
+**2021 Term 2 (Jan - Apr)**
+<br>
+
+| Date                        | Time   | Workshop                   | Register                   |
+|-----------------------------|--------|----------------------------|----------------------------|
+| Sept 21 (Tues)              | 2-4 PM | Intro to R                 | [Click here to register]() |
+| Sept 28 & 30 (Tues & Thurs) | 1-4 PM | Intro to the tidyverse     | [Click here to register]() |
+| Oct 19 (Tues)               | 2-4 PM | Intro to R                 | [Click here to register]() |
+| Oct 26 & 28 (Tues & Thurs)  | 1-4 PM | Beyond ggplot2             | [Click here to register]() |
+| Nov 16 (Tues)               | 2-4 PM | Intro to R                 | [Click here to register]() |
+| Nov 23 & 25 (Tues & Thurs)  | 1-4 PM | Intermediate R programming | [Click here to register]() |
+
+## Workshops
+
+### Introduction to R and R Studio
+
+Author(s): [Gil B. Henriques](https://gilhenriques.github.io), [Florent Mazel](https://florentmazel.weebly.com), [Yue Liu]() & [Kim Dill-McFarland](https://kdillmcfarland.github.io)
+
+This is a truly introductory workshop for beginners with no experience in R. In this workshop, we introduce you to R and RStudio at the beginner level. This condensed 2-hour workshop is meant to get you started in R and acts as a pre-requisite for our more advanced workshops.
+
+In it, we cover:
+
+* R and RStudio
+* RStudio projects
+* R scripts
+* Installing packages
+* Reading in data as a data frame
+* Vectors, single values, and data types
+* Basic data visualization
+* The help function
+
+### Introduction to the tidyverse
+
+Author(s): [Kim Dill-McFarland](https://kdillmcfarland.github.io), [Andrew Li](https://www.andrewcli.com) & [Kris Hong](https://uk.linkedin.com/in/krisyhong)
+
+In this workshop, we provide a brief introduction to RStudio, then delve into data manipulation and graphics in the tidyverse including the packages dplyr, tidyr, and ggplot2. We teach different ways to manipulate data in tabular and text forms as well as the critical concepts underlying the grammar of graphics and how they are implemented in ggplot. We will use RStudio, a powerful but user-friendly R environment, and teach you how to use it effectively.
+
+You will learn how to:
+
+* create an R project and import data from a file into R,
+* create subsets of rows or columns from data frames using dplyr,
+* select pieces of an object by indexing using element names or position,
+* change your data frames between wide and narrow formats,
+* create various types of graphics,
+* modify the various features of a graphic, and
+* save your graphic in various formats
+
+### Reproducible research
+
+Author(s): [Kim Dill-McFarland](https://kdillmcfarland.github.io) & [Kris Hong]()
+
+In this workshop, we introduce computational reproducibility and its importance to modern research. We will teach the general principles for reproducible computer-based analyses, along with specific methods and tools for reproducibility and version control with [RStudio](https://www.rstudio.com) and [GitHub](https://github.com).
+
+You will learn how to:
+
+* Construct reproducible, automatable workflows in R with scripts and Make
+* Create reproducible documents using Rmarkdown to include underlying code / computations with relevant graphical and statistical results in several different formats (reports, presentation slides, handouts, notes)
+* Use Git version control
+* Integrate version control with GitHub for both personal and group projects
+
+### Statistical models in R
+
+Author(s): [Yue Liu](), [Kim Dill-McFarland](https://kdillmcfarland.github.io) & [Andrew Li](https://www.andrewcli.com)
+
+In this workshop, we introduce various types of regression models and how they are implemented in R. We cover linear regression, ANOVA, ANCOVA and mixed effects models for continuous response data, logistic regression binary response data, and Poisson and Negative Binomial regression for count response data.
+
+You will learn:
+
+* the assumptions behind the different models 
+* how to interpret the main effects and interaction terms in a model
+* various experimental design concepts that help maximize the power
+
+In R, you will learn how to;
+
+* build a statistical model
+* define and manipulate model terms
+* use the lsmeans package to answer specific research questions
+
+### Intermediate R programming
+
+Author(s): [Kim Dill-McFarland](https://kdillmcfarland.github.io) & [Andrew Li](https://www.andrewcli.com)
+
+In this workshop, we teach you to use R as a programming environment, allowing you to write more complex, yet clearer data analysis code. We will teach you three fundamental concepts of R programming: functions, classes, and packages. 
+
+You will learn how to:
+
+* define objects, classes, and attributes in data and built-in functions
+* write functions for loops
+* output large result tables to your hard drive
+* write and publish an R package
+* write formal automated tests (aka unit testing)
+
+<!--### Phylogenetics and microbiomes in R
+
+Author(s): [Florent Mazel](https://florentmazel.weebly.com) & [Jon Saunders](https://scholar.google.com/citations?user=VEsdTjwAAAAJ&hl=en)
+
+In this workshop series, we tackle some of the reigning questions in the field of microbial ecology through phylogenetic analyses. We will provide theoretical background and practical examples of such analysis using R.
+
+You will learn how to:
+
+* build a phylogenetic tree with FastTree
+* compare microbial community compositions using phylogenetics and beta-diversity
+* statistically test beta-diversity for associations with metadata
+* visualize phylogenetic trees and beta-diversity of microbial communities
+
+### Visualization of Metagenomic and Metatranscriptomic Data in R
+
+Author(s): [David Levy-Booth](https://github.com/davidlevybooth/Metagenomics_Workshop)
+
+This workshop is designed around the application of whole-genome phylogenetic analysis to organize and visualize the diverse data types that we can generate from metagenomics and metatranscriptomics analysis.
+
+You will learn how to:
+
+* manipulate and visualize whole-genome phylogenies with ggtree
+* map genome assembly statistics to phylogenetic trees with ggplot2
+* process count data from Meiji and mapping to phylogenetic trees
+* perform Genomic functional annotation and pathway analysis with pathview
+* map metatranscriptomic count data and coverage to circular genome maps with circlize
+* map metatranscriptomic count data and coverage to linear contig maps -->
+
+### Beyond ggplot2
+
+Author(s): [Andrew Li](https://www.andrewcli.com)
+
+Coming soon! 
+
+<br>
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)

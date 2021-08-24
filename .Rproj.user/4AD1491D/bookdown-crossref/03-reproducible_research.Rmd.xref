@@ -1,0 +1,69 @@
+h1:reproducible-research Reproducible research
+h2:introduction Introduction
+h2:prior-to-the-workshop Prior to the workshop
+h3:setup-instructions Setup instructions
+h3:background Background
+h3:terminology Terminology
+h2:why-reproducibility Why reproducibility?
+h2:r-projects R projects
+h2:r-scripts R scripts
+h2:modularize-by-task Modularize by task
+h2:use-make Use 
+h4:exercise Exercise
+h2:reproducible-r-environment-with-packrat Reproducible R environment with 
+h2:documents-made-reproducible Documents made reproducible
+h3:what-is-a-document-really What is a document really?
+h3:rmarkdown Rmarkdown
+h4:yaml-header YAML header
+h4:exercise-yaml Exercise: YAML
+h3:knitting Knitting
+h3:markdown-body Markdown body
+h4:headings-and-subheadings Headings and Subheadings
+h4:vertical-spacing Vertical spacing
+h4:textfont Text/font
+h4:links Links
+h4:lists Lists
+h4:formulae Formulae
+h3:static-documents Static documents
+h4:at-home-exercise-rmarkdown At home exercise: Rmarkdown
+h3:dynamic-documents Dynamic documents
+h4:code-chunks Code chunks
+h4:inline-code Inline code
+h4:exercise-dynamic-rmd Exercise: dynamic Rmd
+h3:slides-made-reproducible Slides made reproducible
+h4:at-home-exercise-slides At home exercise: Slides
+h3:rmd-in-your-workflow Rmd in your workflow
+h3:publish-with-rpubs.com Publish with Rpubs.com
+h2:git Git
+h3:what-is-version-control What is version control?
+h3:why-git Why Git?
+h2:git-on-your-computer Git on your computer
+h3:initialize-a-repo-git-init Initialize a repo ()
+h3:add-files-git-add Add files ()
+h3:git-staging-area-index Git staging area (index)
+h3:commit-changes-git-commit Commit changes ()
+h4:exercise-git-add-and-commit Exercise: Git add and commit
+h3:comapre-versions-git-status-and-diff Comapre versions ( and )
+h3:past-commits-git-log-and-show Past commits ( and )
+h3:branches-git-checkout--b Branches ()
+h3:merge-conflicts-git-merge Merge conflicts ()
+h4:exercise-branches-and-conflicts Exercise: branches and conflicts
+h3:summary-of-git Summary of Git
+h4:terms Terms
+h4:commands Commands
+h2:collaborate-with-github Collaborate with GitHub
+h3:configure-your-computer-git-config Configure your computer ()
+h3:make-an-online-repo Make an online repo
+h3:link-local-and-online-repo-git-remote Link local and online repo ()
+h3:update-an-online-repo-git-push Update an online repo ()
+h3:copy-an-online-repo-git-clone Copy an online repo ()
+h3:update-from-online-repo-git-fetch-and-pull Update from online repo ( and )
+h4:exercise-multiple-repo-users exercise: multiple repo users
+h3:github-gui GitHub GUI
+h3:git-in-rstudio Git in RStudio
+h2:additional-resources Additional resources
+h3:reproducible-research-1 Reproducible research
+h3:rrstudio R/RStudio
+h3:gitgithub Git/GitHub
+h2:survey Survey
+

@@ -1,0 +1,63 @@
+h1:intermediate-r-programming Intermediate R programming
+h2:introduction Introduction
+h3:setup-instructions Setup instructions
+h3:background Background
+h3:data-description Data description
+h3:making-an-rstudio-project Making an RStudio project
+h3:installing-and-loading-packages Installing and loading packages
+h3:downloading-data Downloading data
+h3:load-data Load data
+h2:objects-classes-and-attributes Objects, classes, and attributes
+h2:s3-objects S3 objects
+h3:vectors Vectors
+h4:numeric Numeric
+h4:integer Integer
+h4:character Character
+h4:logical Logical
+h4:matrix-complex Matrix (complex)
+h4:exercise-working-with-vectors Exercise: Working with vectors
+h3:complex-objects Complex objects
+h4:built-in-functions Built in functions
+h4:graphics Graphics
+h4:statistical-models Statistical models
+h4:summaries Summaries
+h3:data-objects Data objects
+h4:table-matrix-data-frame-tibble-or-array Table, matrix, data frame, tibble, or array?
+h4:matrix-data-frame-or-tibble Matrix, data frame, or tibble?
+h4:data-frame-or-matrix Data frame or matrix?
+h4:exercise-class-and-attributes Exercise: Class and attributes
+h3:the-r-list-object The R list object
+h4:exercise-r-lists Exercise: R lists
+h2:s4-objects S4 objects
+h4:exercise-s4-objects Exercise: S4 objects
+h2:functions Functions
+h3:basics Basics
+h4:exercise-writing-a-function Exercise: Writing a function
+h3:arguments Arguments
+h3:triple-dot-argument Triple-dot argument
+h3:scoping Scoping
+h4:exercise-scoping Exercise: Scoping
+h2:building-a-function Building a function
+h3:step-1.-define-and-test-your-task Step 1. Define and test your task
+h3:step-3-add-packages Step 3: Add packages
+h3:step-4-start-you-r-documentation Step 4: Start you r documentation
+h3:step-5-loop-through-multiple-y-variables Step 5: Loop through multiple y-variables
+h4:exercise-using-a-custom-function Exercise: Using a custom function
+h3:step-6-save-results-to-a-table Step 6: Save results to a table
+h3:step-6.1-save-all-iterations-of-the-loop Step 6.1: Save all iterations of the loop
+h3:step-6.2-beautify-the-output Step 6.2 Beautify the output
+h3:step-7-complete-documentation Step 7: Complete documentation
+h4:exercise-using-a-dynamic-custom-function Exercise: Using a dynamic custom function
+h4:challenge-exercise Challenge exercise:
+h2:packages Packages
+h2:creating-a-package-project Creating a package project
+h3:description Description
+h3:r R/
+h3:man man/
+h3:namespace Namespace
+h3:adding-imports-and-exports Adding imports and exports
+h3:test-your-package Test your package
+h3:test-your-package-again Test your package again
+h2:further-resources Further resources
+h2:survey Survey
+

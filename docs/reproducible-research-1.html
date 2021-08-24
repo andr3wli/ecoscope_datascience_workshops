@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Reproducible research | ECOSCOPE: Data Science Workshops</title>
+  <meta name="description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Reproducible research | ECOSCOPE: Data Science Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Reproducible research | ECOSCOPE: Data Science Workshops" />
+  
+  <meta name="twitter:description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  
+
+<meta name="author" content="Andrew Li" />
+<meta name="author" content="Stephan Koenig" />
+
+
+<meta name="date" content="2021-08-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-the-tidyverse-1.html"/>
+<link rel="next" href="statistical-models-in-r-1.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ECOSCOPE: Data Science Workshops</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ECOSCOPE</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.1</b> Schedule</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workshops"><i class="fa fa-check"></i><b>1.2</b> Workshops</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#introduction-to-r-and-r-studio"><i class="fa fa-check"></i><b>1.2.1</b> Introduction to R and R Studio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#introduction-to-the-tidyverse"><i class="fa fa-check"></i><b>1.2.2</b> Introduction to the tidyverse</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#reproducible-research"><i class="fa fa-check"></i><b>1.2.3</b> Reproducible research</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#statistical-models-in-r"><i class="fa fa-check"></i><b>1.2.4</b> Statistical models in R</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#intermediate-r-programming"><i class="fa fa-check"></i><b>1.2.5</b> Intermediate R programming</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#beyond-ggplot2"><i class="fa fa-check"></i><b>1.2.6</b> Beyond ggplot2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-in-your-own-computer"><i class="fa fa-check"></i><b>2.2</b> Using R in your own computer</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-r-console"><i class="fa fa-check"></i><b>2.2.2</b> The R console</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-r-environment"><i class="fa fa-check"></i><b>2.2.3</b> The R Environment</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#scripts"><i class="fa fa-check"></i><b>2.2.4</b> Scripts</a></li>
+<li class="chapter" data-level="2.2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-and-loading-packages"><i class="fa fa-check"></i><b>2.2.5</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="2.2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#paths-and-working-directory"><i class="fa fa-check"></i><b>2.2.6</b> Paths and working directory</a></li>
+<li class="chapter" data-level="2.2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#rstudio-projects"><i class="fa fa-check"></i><b>2.2.7</b> RStudio projects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-as-a-calculator"><i class="fa fa-check"></i><b>2.3</b> R as a calculator</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#assigning-variables"><i class="fa fa-check"></i><b>2.4</b> Assigning variables</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comments"><i class="fa fa-check"></i><b>2.4.1</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#functions"><i class="fa fa-check"></i><b>2.5</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-most-helpful-function-of-all-the-help-function"><i class="fa fa-check"></i><b>2.5.1</b> The most helpful function of all: the ‘help’ function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-types"><i class="fa fa-check"></i><b>2.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>2.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#structures"><i class="fa fa-check"></i><b>2.7</b> Structures</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectors"><i class="fa fa-check"></i><b>2.7.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#apply-functions-over-vectors"><i class="fa fa-check"></i><b>2.7.2</b> Apply functions over vectors</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>2.7.3</b> Arithmetic operations on vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-frames"><i class="fa fa-check"></i><b>2.8</b> Data frames</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#example-data-frame"><i class="fa fa-check"></i><b>2.8.1</b> Example data frame</a></li>
+<li class="chapter" data-level="2.8.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#importing-the-data-frame"><i class="fa fa-check"></i><b>2.8.2</b> Importing the data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#quick-plots"><i class="fa fa-check"></i><b>2.9</b> Quick plots</a></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#accessing-and-subsetting-data"><i class="fa fa-check"></i><b>2.10</b> Accessing and subsetting data</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#acessing-vector-elements"><i class="fa fa-check"></i><b>2.10.1</b> Acessing vector elements</a></li>
+<li class="chapter" data-level="2.10.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#accessing-data-frame-elements"><i class="fa fa-check"></i><b>2.10.2</b> Accessing data frame elements</a></li>
+<li class="chapter" data-level="2.10.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#subsetting-rows-according-to-condition"><i class="fa fa-check"></i><b>2.10.3</b> Subsetting rows according to condition</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#additional-exercises"><i class="fa fa-check"></i><b>2.11</b> Additional exercises</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-1-install-packages"><i class="fa fa-check"></i><b>2.11.1</b> Exercise 1: Install packages</a></li>
+<li class="chapter" data-level="2.11.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-2-calculating-a-probability-density"><i class="fa fa-check"></i><b>2.11.2</b> Exercise 2: Calculating a probability density</a></li>
+<li class="chapter" data-level="2.11.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-3-use-the-help-function-to-learn-how-to-flip-coins"><i class="fa fa-check"></i><b>2.11.3</b> Exercise 3: Use the help function to learn how to flip coins</a></li>
+<li class="chapter" data-level="2.11.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-4-working-with-data"><i class="fa fa-check"></i><b>2.11.4</b> Exercise 4: Working with data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#survey"><i class="fa fa-check"></i><b>2.12</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html"><i class="fa fa-check"></i><b>3</b> Introduction to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#setup-intructions"><i class="fa fa-check"></i><b>3.1.1</b> Setup intructions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#background"><i class="fa fa-check"></i><b>3.1.2</b> Background</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-description"><i class="fa fa-check"></i><b>3.2</b> Data description</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#getting-started"><i class="fa fa-check"></i><b>3.3</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#making-an-rstudio-project"><i class="fa fa-check"></i><b>3.3.1</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="3.3.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#installing-and-loading-packages-1"><i class="fa fa-check"></i><b>3.3.2</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="3.3.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#downloading-the-data"><i class="fa fa-check"></i><b>3.3.3</b> Downloading the data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#loading-data-with-readr"><i class="fa fa-check"></i><b>3.3.4</b> Loading data with <code>readr</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-in-r"><i class="fa fa-check"></i><b>3.4</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#basic-data-types-in-r"><i class="fa fa-check"></i><b>3.4.1</b> Basic data types in R</a></li>
+<li class="chapter" data-level="3.4.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#basic-data-structures-in-r"><i class="fa fa-check"></i><b>3.4.2</b> Basic data structures in R</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#conditional-statements-and-logical-operators"><i class="fa fa-check"></i><b>3.4.3</b> Conditional statements and logical operators</a></li>
+<li class="chapter" data-level="3.4.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#exercises-1"><i class="fa fa-check"></i><b>3.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>3.5</b> Data wrangling with <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#select"><i class="fa fa-check"></i><b>3.5.1</b> Select</a></li>
+<li class="chapter" data-level="3.5.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#filter"><i class="fa fa-check"></i><b>3.5.2</b> Filter</a></li>
+<li class="chapter" data-level="3.5.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#rename"><i class="fa fa-check"></i><b>3.5.3</b> Rename</a></li>
+<li class="chapter" data-level="3.5.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#arrange"><i class="fa fa-check"></i><b>3.5.4</b> Arrange</a></li>
+<li class="chapter" data-level="3.5.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#mutate"><i class="fa fa-check"></i><b>3.5.5</b> Mutate</a></li>
+<li class="chapter" data-level="3.5.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#piping-with"><i class="fa fa-check"></i><b>3.5.6</b> Piping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="3.5.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#group-by-and-summarise"><i class="fa fa-check"></i><b>3.5.7</b> Group by and Summarise</a></li>
+<li class="chapter" data-level="3.5.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#wide-and-long-data---gather-and-spread"><i class="fa fa-check"></i><b>3.5.8</b> Wide and long data - gather and spread</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>3.6</b> Graphics with ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#why-ggolot"><i class="fa fa-check"></i><b>3.6.1</b> Why ggolot?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#ggplot-building-blocks"><i class="fa fa-check"></i><b>3.6.2</b> ggplot building blocks</a></li>
+<li class="chapter" data-level="3.6.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_point"><i class="fa fa-check"></i><b>3.6.3</b> geom_point</a></li>
+<li class="chapter" data-level="3.6.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_line"><i class="fa fa-check"></i><b>3.6.4</b> geom_line</a></li>
+<li class="chapter" data-level="3.6.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_histogram"><i class="fa fa-check"></i><b>3.6.5</b> geom_histogram</a></li>
+<li class="chapter" data-level="3.6.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_boxplot"><i class="fa fa-check"></i><b>3.6.6</b> geom_boxplot</a></li>
+<li class="chapter" data-level="3.6.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#facet_wrap"><i class="fa fa-check"></i><b>3.6.7</b> facet_wrap</a></li>
+<li class="chapter" data-level="3.6.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#labels"><i class="fa fa-check"></i><b>3.6.8</b> labels</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#fine-tuning-your-ggplots"><i class="fa fa-check"></i><b>3.7</b> Fine-tuning your ggplots</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#themes"><i class="fa fa-check"></i><b>3.7.1</b> Themes</a></li>
+<li class="chapter" data-level="3.7.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#panel-1"><i class="fa fa-check"></i><b>3.7.2</b> Panel 1</a></li>
+<li class="chapter" data-level="3.7.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#panel-2"><i class="fa fa-check"></i><b>3.7.3</b> Panel 2</a></li>
+<li class="chapter" data-level="3.7.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#multi-panel-figues"><i class="fa fa-check"></i><b>3.7.4</b> Multi-panel figues</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#saving-ggplots"><i class="fa fa-check"></i><b>3.8</b> Saving ggplots</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#additional-resources"><i class="fa fa-check"></i><b>3.9</b> Additional resources</a></li>
+<li class="chapter" data-level="3.10" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#survey-1"><i class="fa fa-check"></i><b>3.10</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html"><i class="fa fa-check"></i><b>4</b> Reproducible research</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#prior-to-the-workshop"><i class="fa fa-check"></i><b>4.2</b> Prior to the workshop</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#setup-instructions"><i class="fa fa-check"></i><b>4.2.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#background-1"><i class="fa fa-check"></i><b>4.2.2</b> Background</a></li>
+<li class="chapter" data-level="4.2.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#terminology"><i class="fa fa-check"></i><b>4.2.3</b> Terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-reproducibility"><i class="fa fa-check"></i><b>4.3</b> Why reproducibility?</a></li>
+<li class="chapter" data-level="4.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-projects"><i class="fa fa-check"></i><b>4.4</b> R projects</a></li>
+<li class="chapter" data-level="4.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-scripts"><i class="fa fa-check"></i><b>4.5</b> R scripts</a></li>
+<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.6</b> Modularize by task</a></li>
+<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.7</b> Use <em>Make</em></a></li>
+<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.8</b> Reproducible R environment with <code>packrat</code></a></li>
+<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.9</b> Documents made reproducible</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.9.1</b> What is a document really?</a></li>
+<li class="chapter" data-level="4.9.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.9.2</b> Rmarkdown</a></li>
+<li class="chapter" data-level="4.9.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.9.3</b> Knitting</a></li>
+<li class="chapter" data-level="4.9.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.9.4</b> Markdown body</a></li>
+<li class="chapter" data-level="4.9.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.9.5</b> Static documents</a></li>
+<li class="chapter" data-level="4.9.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.9.6</b> Dynamic documents</a></li>
+<li class="chapter" data-level="4.9.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.9.7</b> Slides made reproducible</a></li>
+<li class="chapter" data-level="4.9.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.9.8</b> Rmd in your workflow</a></li>
+<li class="chapter" data-level="4.9.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.9.9</b> Publish with Rpubs.com</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.10</b> Git</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.10.1</b> What is version control?</a></li>
+<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.10.2</b> Why Git?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.11</b> Git on your computer</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.11.1</b> Initialize a repo (<code>git init</code>)</a></li>
+<li class="chapter" data-level="4.11.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.11.2</b> Add files (<code>git add</code>)</a></li>
+<li class="chapter" data-level="4.11.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.11.3</b> Git staging area (index)</a></li>
+<li class="chapter" data-level="4.11.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.11.4</b> Commit changes (<code>git commit</code>)</a></li>
+<li class="chapter" data-level="4.11.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.11.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
+<li class="chapter" data-level="4.11.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.11.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
+<li class="chapter" data-level="4.11.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.11.7</b> Branches (<code>git checkout -b</code>)</a></li>
+<li class="chapter" data-level="4.11.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.11.8</b> Merge conflicts (<code>git merge</code>)</a></li>
+<li class="chapter" data-level="4.11.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.11.9</b> Summary of Git</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.12</b> Collaborate with GitHub</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.12.1</b> Configure your computer (<code>git config</code>)</a></li>
+<li class="chapter" data-level="4.12.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.12.2</b> Make an online repo</a></li>
+<li class="chapter" data-level="4.12.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.12.3</b> Link local and online repo (<code>git remote</code>)</a></li>
+<li class="chapter" data-level="4.12.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.12.4</b> Update an online repo (<code>git push</code>)</a></li>
+<li class="chapter" data-level="4.12.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.12.5</b> Copy an online repo (<code>git clone</code>)</a></li>
+<li class="chapter" data-level="4.12.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.12.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
+<li class="chapter" data-level="4.12.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.12.7</b> GitHub GUI</a></li>
+<li class="chapter" data-level="4.12.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.12.8</b> Git in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.13</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.13.1</b> Reproducible research</a></li>
+<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.13.2</b> R/RStudio</a></li>
+<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.13.3</b> Git/GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.14</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html"><i class="fa fa-check"></i><b>5</b> Statistical models in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#introduction-3"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#setup-instructions-1"><i class="fa fa-check"></i><b>5.1.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="5.1.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#data-description-1"><i class="fa fa-check"></i><b>5.1.2</b> Data description</a></li>
+<li class="chapter" data-level="5.1.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#making-an-rstudio-project-1"><i class="fa fa-check"></i><b>5.1.3</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="5.1.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#installing-and-loading-packages-2"><i class="fa fa-check"></i><b>5.1.4</b> Installing and loading packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#experimental-design"><i class="fa fa-check"></i><b>5.2</b> Experimental design</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#balanced-designs"><i class="fa fa-check"></i><b>5.2.1</b> Balanced designs</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#blocking-factors-and-random-effects"><i class="fa fa-check"></i><b>5.2.2</b> Blocking factors and random effects</a></li>
+<li class="chapter" data-level="5.2.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#randomization"><i class="fa fa-check"></i><b>5.2.3</b> Randomization</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>5.3</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#key-assumptions"><i class="fa fa-check"></i><b>5.3.1</b> Key assumptions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#the-gist-of-the-math"><i class="fa fa-check"></i><b>5.3.2</b> The gist of the math</a></li>
+<li class="chapter" data-level="5.3.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups"><i class="fa fa-check"></i><b>5.3.3</b> 1-way ANOVA with 2 groups</a></li>
+<li class="chapter" data-level="5.3.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#formula-notation-in-r"><i class="fa fa-check"></i><b>5.3.4</b> Formula notation in R</a></li>
+<li class="chapter" data-level="5.3.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#anova-in-r"><i class="fa fa-check"></i><b>5.3.5</b> ANOVA in R</a></li>
+<li class="chapter" data-level="5.3.6" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-1"><i class="fa fa-check"></i><b>5.3.6</b> 1-way ANOVA with &gt; 2 groups</a></li>
+<li class="chapter" data-level="5.3.7" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#reload-and-explore-the-data"><i class="fa fa-check"></i><b>5.3.7</b> Reload and explore the data</a></li>
+<li class="chapter" data-level="5.3.8" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#assess-which-groups-differ"><i class="fa fa-check"></i><b>5.3.8</b> Assess which groups differ</a></li>
+<li class="chapter" data-level="5.3.9" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-2"><i class="fa fa-check"></i><b>5.3.9</b> 2-way ANOVA with 2 groups</a></li>
+<li class="chapter" data-level="5.3.10" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-including-an-interaction-term"><i class="fa fa-check"></i><b>5.3.10</b> 2-way ANOVA with 2 groups including an interaction term</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-regression"><i class="fa fa-check"></i><b>5.4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#load-and-explore-the-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Load and explore the data</a></li>
+<li class="chapter" data-level="5.4.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-models"><i class="fa fa-check"></i><b>5.4.2</b> Linear models</a></li>
+<li class="chapter" data-level="5.4.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#key-assumptions-1"><i class="fa fa-check"></i><b>5.4.3</b> Key assumptions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#simple-linear-regression"><i class="fa fa-check"></i><b>5.4.4</b> Simple linear regression</a></li>
+<li class="chapter" data-level="5.4.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#residuals"><i class="fa fa-check"></i><b>5.4.5</b> Residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#cautions-when-using-linear-models"><i class="fa fa-check"></i><b>5.5</b> Cautions when using linear models</a></li>
+<li class="chapter" data-level="5.6" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#multiple-linear-regression"><i class="fa fa-check"></i><b>5.6</b> Multiple linear regression</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#multiple-is-the-formula-not-the-predictor"><i class="fa fa-check"></i><b>5.6.1</b> Multiple is the formula, not the predictor</a></li>
+<li class="chapter" data-level="5.6.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#transforming-predictors-log"><i class="fa fa-check"></i><b>5.6.2</b> Transforming predictors: log</a></li>
+<li class="chapter" data-level="5.6.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#transforming-predictors-polynomial"><i class="fa fa-check"></i><b>5.6.3</b> Transforming predictors: polynomial</a></li>
+<li class="chapter" data-level="5.6.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#interactions-and-analysis-of-covarianvce-ancova"><i class="fa fa-check"></i><b>5.6.4</b> Interactions and ANalysis of COVArianvce (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-mixed-effects-models"><i class="fa fa-check"></i><b>5.7</b> Linear Mixed Effects models</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#motivations-for-lme"><i class="fa fa-check"></i><b>5.7.1</b> Motivations for LME</a></li>
+<li class="chapter" data-level="5.7.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#definitions"><i class="fa fa-check"></i><b>5.7.2</b> Definitions</a></li>
+<li class="chapter" data-level="5.7.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#fitting-lme"><i class="fa fa-check"></i><b>5.7.3</b> Fitting LME</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#generalized-linear-models"><i class="fa fa-check"></i><b>5.8</b> Generalized Linear models</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#definition"><i class="fa fa-check"></i><b>5.8.1</b> Definition</a></li>
+<li class="chapter" data-level="5.8.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#fitting-glms"><i class="fa fa-check"></i><b>5.8.2</b> Fitting GLMs</a></li>
+<li class="chapter" data-level="5.8.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#logistic-regression-family-binomial"><i class="fa fa-check"></i><b>5.8.3</b> Logistic regression (<code>family = binomial</code>)</a></li>
+<li class="chapter" data-level="5.8.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#count-data-family-poisson"><i class="fa fa-check"></i><b>5.8.4</b> Count data (<code>family = poisson</code>)</a></li>
+<li class="chapter" data-level="5.8.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#negative-binomial-model-for-count-data"><i class="fa fa-check"></i><b>5.8.5</b> Negative binomial model for count data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#survey-3"><i class="fa fa-check"></i><b>5.9</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html"><i class="fa fa-check"></i><b>6</b> Intermediate R programming</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#introduction-4"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#setup-instructions-2"><i class="fa fa-check"></i><b>6.1.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#background-2"><i class="fa fa-check"></i><b>6.1.2</b> Background</a></li>
+<li class="chapter" data-level="6.1.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#data-description-2"><i class="fa fa-check"></i><b>6.1.3</b> Data description</a></li>
+<li class="chapter" data-level="6.1.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#making-an-rstudio-project-2"><i class="fa fa-check"></i><b>6.1.4</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="6.1.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#installing-and-loading-packages-3"><i class="fa fa-check"></i><b>6.1.5</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="6.1.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#downloading-data"><i class="fa fa-check"></i><b>6.1.6</b> Downloading data</a></li>
+<li class="chapter" data-level="6.1.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#load-data"><i class="fa fa-check"></i><b>6.1.7</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#objects-classes-and-attributes"><i class="fa fa-check"></i><b>6.2</b> Objects, classes, and attributes</a></li>
+<li class="chapter" data-level="6.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#s3-objects"><i class="fa fa-check"></i><b>6.3</b> S3 objects</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#vectors-1"><i class="fa fa-check"></i><b>6.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.3.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#complex-objects"><i class="fa fa-check"></i><b>6.3.2</b> Complex objects</a></li>
+<li class="chapter" data-level="6.3.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#data-objects"><i class="fa fa-check"></i><b>6.3.3</b> Data objects</a></li>
+<li class="chapter" data-level="6.3.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#the-r-list-object"><i class="fa fa-check"></i><b>6.3.4</b> The R list object</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#s4-objects"><i class="fa fa-check"></i><b>6.4</b> S4 objects</a></li>
+<li class="chapter" data-level="6.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#functions-1"><i class="fa fa-check"></i><b>6.5</b> Functions</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#basics"><i class="fa fa-check"></i><b>6.5.1</b> Basics</a></li>
+<li class="chapter" data-level="6.5.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#arguments"><i class="fa fa-check"></i><b>6.5.2</b> Arguments</a></li>
+<li class="chapter" data-level="6.5.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#triple-dot-argument"><i class="fa fa-check"></i><b>6.5.3</b> Triple-dot argument</a></li>
+<li class="chapter" data-level="6.5.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#scoping"><i class="fa fa-check"></i><b>6.5.4</b> Scoping</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#building-a-function"><i class="fa fa-check"></i><b>6.6</b> Building a function</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-1.-define-and-test-your-task"><i class="fa fa-check"></i><b>6.6.1</b> Step 1. Define and test your task</a></li>
+<li class="chapter" data-level="6.6.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-3-add-packages"><i class="fa fa-check"></i><b>6.6.2</b> Step 3: Add packages</a></li>
+<li class="chapter" data-level="6.6.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-4-start-you-r-documentation"><i class="fa fa-check"></i><b>6.6.3</b> Step 4: Start you r documentation</a></li>
+<li class="chapter" data-level="6.6.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-5-loop-through-multiple-y-variables"><i class="fa fa-check"></i><b>6.6.4</b> Step 5: Loop through multiple y-variables</a></li>
+<li class="chapter" data-level="6.6.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6-save-results-to-a-table"><i class="fa fa-check"></i><b>6.6.5</b> Step 6: Save results to a table</a></li>
+<li class="chapter" data-level="6.6.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6.1-save-all-iterations-of-the-loop"><i class="fa fa-check"></i><b>6.6.6</b> Step 6.1: Save all iterations of the loop</a></li>
+<li class="chapter" data-level="6.6.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6.2-beautify-the-output"><i class="fa fa-check"></i><b>6.6.7</b> Step 6.2 Beautify the output</a></li>
+<li class="chapter" data-level="6.6.8" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-7-complete-documentation"><i class="fa fa-check"></i><b>6.6.8</b> Step 7: Complete documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#packages"><i class="fa fa-check"></i><b>6.7</b> Packages</a></li>
+<li class="chapter" data-level="6.8" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#creating-a-package-project"><i class="fa fa-check"></i><b>6.8</b> Creating a package project</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#description"><i class="fa fa-check"></i><b>6.8.1</b> Description</a></li>
+<li class="chapter" data-level="6.8.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#r"><i class="fa fa-check"></i><b>6.8.2</b> R/</a></li>
+<li class="chapter" data-level="6.8.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#man"><i class="fa fa-check"></i><b>6.8.3</b> man/</a></li>
+<li class="chapter" data-level="6.8.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#namespace"><i class="fa fa-check"></i><b>6.8.4</b> Namespace</a></li>
+<li class="chapter" data-level="6.8.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#adding-imports-and-exports"><i class="fa fa-check"></i><b>6.8.5</b> Adding imports and exports</a></li>
+<li class="chapter" data-level="6.8.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#test-your-package"><i class="fa fa-check"></i><b>6.8.6</b> Test your package</a></li>
+<li class="chapter" data-level="6.8.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#test-your-package-again"><i class="fa fa-check"></i><b>6.8.7</b> Test your package again</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#further-resources"><i class="fa fa-check"></i><b>6.9</b> Further resources</a></li>
+<li class="chapter" data-level="6.10" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#survey-4"><i class="fa fa-check"></i><b>6.10</b> Survey</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ECOSCOPE: Data Science Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reproducible-research-1" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Reproducible research</h1>
+<div id="introduction-2" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>In this series, we introduce computational reproducibility and its importance to modern research. We will teach the general principles for reproducible computer-based analyses, along with specific methods and tools for reproducibility with <a href="https://www.rstudio.com/">RStudio</a>. We will also introduce version control with <a href="https://github.com/">GitHub</a>, which is an essential tool in a team environment.</p>
+<p>You will learn how to:</p>
+<ul>
+<li>Construct reproducible, automatable workflows in R</li>
+<li>Create reproducible documents using Rmarkdown to include underlying code / computations with relevant graphical and statistical results in several different formats (reports, presentation slides, handouts, notes)</li>
+<li>Use Git version control</li>
+<li>Integrate version control with GitHub for both personal and group projects</li>
+</ul>
+<p>This is an intermediate workshop series that assumes prior experience with R (such as that in our <a href="https://github.com/EDUCE-UBC/workshops_R/tree/main/intro_R_2hr">Introduction to R workshop</a>).</p>
+</div>
+<div id="prior-to-the-workshop" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Prior to the workshop</h2>
+<div id="setup-instructions" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Setup instructions</h3>
+<p>Please come to the workshop with your laptop setup with the required software and data files as described in our <a href="setup/reproducible_research_setup.html">setup instructions</a>.</p>
+</div>
+<div id="background-1" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Background</h3>
+<p>Please read <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663219/">Hallam SJ <em>et al</em>. 2017. Sci Data 4: 170158</a> “Monitoring microbial responses to ocean deoxygenation in a model oxygen minimum zone” to learn more about the data used in this workshop. You can also check out this <a href="https://youtu.be/XYQSm2Me86I">short video</a> showing how the sampling was done!</p>
+</div>
+<div id="terminology" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Terminology</h3>
+<p>Reproducibility is purported to be at the heart of science. But what do we mean when we say “reproducible research?” In general, researchers think of replicating an experiment and obtaining the same result (<em>direct replicability</em>). However, what we should actually strive for is <em>true reproduciblity</em>, reaching the same conclusions through different methods. Moreover, we usually think of the reproducibility of wet lab experiments. It is a somewhat newer movement for researchers to try to make analysis and computational methods reproducible.</p>
+<p>In this workshop, what we are really working toward is <em>repeatability</em>, the ability to exactly repeat a computational analysis. These methods can then be build upon by other researchers or yourself to find true reproducibility.</p>
+</div>
+</div>
+<div id="why-reproducibility" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Why reproducibility?</h2>
+<p><strong>It helps you remember what you did.</strong></p>
+<p>Your closest collaborator is you 6 months ago. And past you doesn’t answer email. ~ Karl Broman, UW-Madison</p>
+<p>Even if no other human ever reads your code, it is worth making it reproducible for your future self. It is like a classical lab notebook. You wouldn’t expect yourself to remember how many ng of DNA you used in a PCR reaction 2 weeks ago, right? So, you shouldn’t expect yourself to remember exact computational workflows.</p>
+<p><strong>It prevents human error.</strong></p>
+<p>If you do anything by hand once, you’ll likely do it a hundred times… and five of those times, you’ll make a mistake. The easiest way around this is to let a computer complete the repetitive tasks. So, this means you should NOT do anything analysis-related with a mouse (cough Excel cough).</p>
+<p><strong>It helps you communicate with others.</strong></p>
+<p>Past you may be your closest collaborator, but you likely have other people you work with and you probably want to communicate your science to the larger scientific community at some point (#PublishOrPerish). Making your code reproducible makes it accessible to others for their understanding of your research as well as potentially for their use in their own work.</p>
+<p><strong>It is faster.</strong></p>
+<p>This almost goes without saying because a computer can do pretty much anything computational faster than a human. But also, speed comes with repetition. If your code, report, slides, etc. are reproducible, then when you need to make a small change or produce a similar document in the future, that can be done quickly and with minimal effort on your part.</p>
+</div>
+<div id="r-projects" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> R projects</h2>
+<p>One of the most common hurdles to code reproducibility is file paths. If you have all your code and data in <code>~/Documents</code> and someone copies it all to their <code>~/Desktop</code>, then any links to files in your code will be broken. For example, <code>read.table(file="~/Documents/mydata.csv")</code> will not work for the the other person because they do not have that file in that place.</p>
+<p>The level 1 solution to this is to start your code by setting the working directory like</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="reproducible-research-1.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/Documents&quot;</span>)</span></code></pre></div>
+<p>Thus, others need only change this one line of code to be able to use your script.</p>
+<p>But we can do one better in R by eliminating the need for any file paths at all with R projects. When you create a project, RStudio creates an <code>.Rproj</code> file that links all of your files and outputs to the project directory. When you import data, R automatically looks for the file in the project directory instead of you having to specify a full file path on your computer like <code>~/Documents</code>. R also automatically saves any output to the project directory. Finally, projects allow you to save your R environment in <code>.RData</code> so that when you close RStudio and then re-open it, you can start right where you left off without re-importing any data or re-calculating any intermediate steps.</p>
+<p>RStudio has a simple interface to create and switch between projects, accessed from the button in the top-right corner of the RStudio window. (Labelled “Project: (None),” initially.)</p>
+<p>Let’s create a project to work in for this workshop. Start by click the “Project” button in the upper right or going to the “File” menu. Select “New Project” and the following will appear.</p>
+<p><img src="images/new.project1.png" style="width:50.0%" />
+ </p>
+<p>You can either create a project in an existing directory or make a new directory on your computer - just be sure <em>you</em> know where it is.</p>
+<p>After your project is created, navigate to its directory using your Finder/File explorer. You will see the <code>.RProj</code> file has been created.</p>
+<p>To access this project in the future, simply double-click the <code>.RProj</code> file and RStudio will open the project or choose File &gt; Open Project from within an already open RStudio window.</p>
+</div>
+<div id="r-scripts" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> R scripts</h2>
+<p>The next level of reproducibility in R is to use R scripts. You should never* input commands into the R console because they are not saved there. Instead, input them into an R script and run them from the script. Then, you have a record of all the steps you performed in an analysis.</p>
+<p>*Well… not actually never. If you’re using R as a fancy calculator, you’re probably fine to perform some math in the console. And you likely don’t want to save the time you use the help function <code>?</code>. But pretty much everything else should go in a script.</p>
+<p>Let’s practice this.</p>
+<p>Create a new R script under File &gt; New File &gt; R script and input the following code</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="reproducible-research-1.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb174-2"><a href="reproducible-research-1.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Suite of packages for data manipulation and visualization</span></span>
+<span id="cb174-3"><a href="reproducible-research-1.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb174-4"><a href="reproducible-research-1.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load data from our GitHub</span></span>
+<span id="cb174-5"><a href="reproducible-research-1.html#cb174-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span>)</span>
+<span id="cb174-6"><a href="reproducible-research-1.html#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot of oxygen by depth</span></span>
+<span id="cb174-7"><a href="reproducible-research-1.html#cb174-7" aria-hidden="true" tabindex="-1"></a>O2_plot <span class="ot">&lt;-</span> <span class="fu">quickplot</span>(<span class="at">data=</span>dat,</span>
+<span id="cb174-8"><a href="reproducible-research-1.html#cb174-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">x=</span>O2_uM, </span>
+<span id="cb174-9"><a href="reproducible-research-1.html#cb174-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">y=</span>Depth_m, </span>
+<span id="cb174-10"><a href="reproducible-research-1.html#cb174-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">colour=</span>Season, </span>
+<span id="cb174-11"><a href="reproducible-research-1.html#cb174-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Saanich Inlet: Seasonal oxygen depth profile&quot;</span>)</span>
+<span id="cb174-12"><a href="reproducible-research-1.html#cb174-12" aria-hidden="true" tabindex="-1"></a><span class="co"># save the plot</span></span>
+<span id="cb174-13"><a href="reproducible-research-1.html#cb174-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;O2_plot.png&quot;</span>)</span></code></pre></div>
+<p>Save the file under the name “O2_plot.R.”</p>
+<p>Now we can execute our workflow a couple of different ways. We can:</p>
+<ol style="list-style-type: decimal">
+<li>open it in RStudio and run it</li>
+<li>source it from the R console with <code>source("O2_plot.R")</code></li>
+<li>run it from the terminal
+<ul>
+<li>open the terminal (GitBash for Windows users)</li>
+<li>navigate to your project directory</li>
+<li>type <code>Rscript O2_plot.R</code> and press Enter</li>
+</ul></li>
+</ol>
+<p>If we scripted our workflow right, running the script will produce the <code>O2_plot.png</code> file in our project directory. We can re-run it multiple times, (try it after deleting the plot), and it will always recreate the output. Congratulations, you’ve automated your workflow!</p>
+</div>
+<div id="modularize-by-task" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Modularize by task</h2>
+<p>Keeping all of our analysis in one file is okay for a small example like this one. However, large analyses should be broken up into multiple scripts, each completing one step (like data cleaning, statistical analysis, plotting, etc.) and <strong>saving the output</strong> to a file on your computer.</p>
+<p>Then, you can create a <em>driver script</em> that is just a list of <code>source</code> commands calling all your individual scripts.</p>
+<p>Why go through this extra effort? Modular scripts allow you to:</p>
+<ul>
+<li>run individual steps manually if you need to</li>
+<li>get intermediate results in files that you can look at, save, and share</li>
+<li>execute another tool outside of R for a particular step in your workflow (<em>e.g.</em> python, Git, etc.)</li>
+<li>easily replace the driver with a full-blown workflow engine like <em>Make</em> (more on this later).</li>
+</ul>
+<p>What would this look like for our example? The overall driver script would be</p>
+<p><code>RootScript.R</code></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="reproducible-research-1.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in data and packages</span></span>
+<span id="cb175-2"><a href="reproducible-research-1.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;load.R&quot;</span>)</span>
+<span id="cb175-3"><a href="reproducible-research-1.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot</span></span>
+<span id="cb175-4"><a href="reproducible-research-1.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;plot.R&quot;</span>)</span></code></pre></div>
+<p>And the individual step scripts could be</p>
+<ol style="list-style-type: decimal">
+<li><p><code>load.R</code></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="reproducible-research-1.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb176-2"><a href="reproducible-research-1.html#cb176-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span>)</span>
+<span id="cb176-3"><a href="reproducible-research-1.html#cb176-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-4"><a href="reproducible-research-1.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat, <span class="st">&quot;data.csv&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Note that we now need to save the data object to our computer with <code>write.csv</code> since it needs to be saved somewhere for use in the next script in the workflow.</li>
+</ul></li>
+<li><p><code>plot.R</code></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="reproducible-research-1.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb177-2"><a href="reproducible-research-1.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Suite of packages for data manipulation and visualization</span></span>
+<span id="cb177-3"><a href="reproducible-research-1.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb177-4"><a href="reproducible-research-1.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb177-5"><a href="reproducible-research-1.html#cb177-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>)</span>
+<span id="cb177-6"><a href="reproducible-research-1.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot of oxygen by depth</span></span>
+<span id="cb177-7"><a href="reproducible-research-1.html#cb177-7" aria-hidden="true" tabindex="-1"></a>O2_plot <span class="ot">&lt;-</span> <span class="fu">quickplot</span>(<span class="at">data=</span>dat,</span>
+<span id="cb177-8"><a href="reproducible-research-1.html#cb177-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">x=</span>O2_uM, </span>
+<span id="cb177-9"><a href="reproducible-research-1.html#cb177-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y=</span>Depth_m, </span>
+<span id="cb177-10"><a href="reproducible-research-1.html#cb177-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour=</span>Season, </span>
+<span id="cb177-11"><a href="reproducible-research-1.html#cb177-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">main=</span><span class="st">&quot;Saanich Inlet: Seasonal oxygen depth profile&quot;</span>)</span>
+<span id="cb177-12"><a href="reproducible-research-1.html#cb177-12" aria-hidden="true" tabindex="-1"></a><span class="co"># save the plot</span></span>
+<span id="cb177-13"><a href="reproducible-research-1.html#cb177-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;O2_plot.png&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Note that loading of the <code>tidyverse</code> package has been moved from the start of our single script to the start of the <code>plot.R</code> script. Packages need to be loaded in the script(s) that use them, not all at once in the first script in your workflow.</li>
+</ul></li>
+</ol>
+<p>Now we can run our driver script in the terminal with <code>Rscript RootScript.R</code>. This will run first <code>load.R</code> then <code>plot.R</code>, thus outputting the desired plot. You can easily see how this might scale up when you have dozens of scripts for a project!</p>
+</div>
+<div id="use-make" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Use <em>Make</em></h2>
+<p><a href="https://www.gnu.org/software/make/"><em>Make</em></a> is an automation tool used to build executable programs and workflows. While it was originally designed to build software (link Linux), it now is widely used to manage projects where you have a number of input files and scripts that create a number of output files.</p>
+<p><em>Make</em> is language independent; so, it can work with scripts for any program.</p>
+<p><em>Make</em> is basically just one level more advanced than driver scripts in that is not only runs a list of scripts, it also manages versions of all the associated files and keeps track of dependencies.</p>
+<ol style="list-style-type: decimal">
+<li><strong><em>Make</em> builds dependencies efficiently.</strong> If an input file hasn’t changed since its dependents were built, steps needed to build them don’t need to be executed. In contrast, a driver script will run all steps no matter what.</li>
+<li><strong><em>Make</em>’s syntax provides a documentation of your project’s workflow.</strong> Because you must list dependencies up-front in a Makefile, it’s easy to see what depends on what. This may not seem like a big deal in a straight pipeline as the one in our example, but once you have a web or network of dependencies, it’s a lot easier to visualize what’s going on by representing it this way.</li>
+<li><strong><em>Make</em> is succinct.</strong> <em>Make</em> allows expressing dependency patterns (<em>e.g.</em> each .PNG file is produced from the data in file X.csv by running <code>Rscript</code> on the .R file of the same name), so that you don’t have to write out the recipe for building every single plot.</li>
+<li><strong><em>Make</em> easily scales up.</strong> If down the line, you add another plot to the outputs produced by your workflow, and use the same naming scheme, it will get picked up and automatically built the exact same way.</li>
+</ol>
+<p>So how do we use Make?</p>
+<p>We specify our workflow in a <code>Makefile</code> (note the capitalization). Please note that <em>Make</em> syntax is not the same as R. Tabs and spaces have very different and particular uses as you will see below. The general <code>Makefile</code> formula is below where the <strong>horizontal space before “command” must be a tab</strong>.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb178-1"><a href="reproducible-research-1.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="dv">target1:</span><span class="dt"> dependency1 dependency2 dependencyN</span></span>
+<span id="cb178-2"><a href="reproducible-research-1.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  command --option argument(s)</span>
+<span id="cb178-3"><a href="reproducible-research-1.html#cb178-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb178-4"><a href="reproducible-research-1.html#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="dv">target2:</span><span class="dt"> dependency1 dependency2 dependencyN</span></span>
+<span id="cb178-5"><a href="reproducible-research-1.html#cb178-5" aria-hidden="true" tabindex="-1"></a>  command --option argument(s)</span></code></pre></div>
+<p>For our example workflow, the Makefile will look like this. You can make this file in any text editor, though working in the terminal with something like nano, Vmacs, etc. is best to avoid accidental formatting put in place by programs like Word.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb179-1"><a href="reproducible-research-1.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> O2_plot.png</span></span>
+<span id="cb179-2"><a href="reproducible-research-1.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="reproducible-research-1.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="dv">data.csv:</span><span class="dt"> load.R</span></span>
+<span id="cb179-4"><a href="reproducible-research-1.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  Rscript load.R</span>
+<span id="cb179-5"><a href="reproducible-research-1.html#cb179-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-6"><a href="reproducible-research-1.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="dv">O2_plot.png:</span><span class="dt"> data.csv plot.R</span></span>
+<span id="cb179-7"><a href="reproducible-research-1.html#cb179-7" aria-hidden="true" tabindex="-1"></a>  Rscript plot.R</span></code></pre></div>
+<p>Note that if you copy-paste the above, you will need to manually edit the Makefile such that the horizontal spaces before “Rscript” are produced by a tab rather than spaces.</p>
+<p>As with scripts, there are several way to execute your Makefile. You can:</p>
+<ol style="list-style-type: decimal">
+<li>run it directly in the terminal
+<ul>
+<li>open the terminal (GitBash for Windows users)</li>
+<li>navigate to your project directory</li>
+<li>type <code>make -f Makefile</code> and press Enter
+<ul>
+<li>This runs the make program on your Makefile</li>
+</ul></li>
+</ul></li>
+<li>use a driver script containing the command <code>system("make -f Makefile")</code>
+<ul>
+<li>In this case, you need to use the <code>system()</code> function to tell R to run the function in the terminal instead of in R</li>
+</ul></li>
+</ol>
+<p>For the sake of best practices, the later is better since you then have a record of how you executed the Makefile. So update <code>RootScript.R</code> with</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="reproducible-research-1.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(<span class="st">&quot;make -f Makefile&quot;</span>)</span></code></pre></div>
+<p>And then execute your updated driver script in the terminal with <code>Rscript RootScript.R</code>. This should output the following as it runs through each R script in your Makefile. Voila! The plot appears in your directory.</p>
+<pre><code>Rscript load.R
+Rscript plot.R
+── Attaching packages ─────────────────────────────────────── tidyverse 1.2.1 ──
+✔ ggplot2 2.2.1     ✔ purrr   0.2.5
+✔ tibble  1.4.2     ✔ dplyr   0.7.5
+✔ tidyr   0.8.1     ✔ stringr 1.3.1
+✔ readr   1.1.1     ✔ forcats 0.3.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+Saving 7 x 7 in image</code></pre>
+<div id="exercise" class="section level4" number="4.7.0.1">
+<h4><span class="header-section-number">4.7.0.1</span> Exercise</h4>
+<ol style="list-style-type: decimal">
+<li>Alter a script and rerun <code>make</code>.
+<ul>
+<li>Change the plotting script slightly by adding <code>xlab</code> and <code>ylab</code> to rename the axes. Then, rerun <code>make</code> from the terminal.</li>
+<li>What step(s) get executed?</li>
+</ul></li>
+<li>Add to the current workflow with <code>make</code>.
+<ul>
+<li>Create a new script with the same plot now colored by whether or not microbial data exists for each sample (Add_data).</li>
+<li>Add this script to your Makefile.</li>
+<li>Rerun <code>make</code> to produce both plots at once.</li>
+</ul></li>
+</ol>
+<p><em>To make sure your code is executing successfully each time, it is best to delete the <code>.png</code> files each time so you can easily see the new output.</em></p>
+</div>
+</div>
+<div id="reproducible-r-environment-with-packrat" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Reproducible R environment with <code>packrat</code></h2>
+<p>You could be the most detailed and reproducible coder out there but unfortunately, there are often aspects of your workflow that are out of your hands. The most common of these in R is packages. New versions can change functions or even remove them. Parameters change and are added. As a result, your beautiful, reproducible code is bust if someone (including you) tries to use it with the the wrong version of a package.</p>
+<p><em>In theory</em>, version numbers should help you keep an eye on this with the general setup of MAJOR.MINOR.PATCH:</p>
+<ul>
+<li>MAJOR version when you make incompatible API changes</li>
+<li>MINOR version when you add functionality in a backwards-compatible manner</li>
+<li>PATCH version when you make backwards-compatible bug fixes</li>
+</ul>
+<p>However, not all authors follow this setup religiously and while old R package versions are available on CRAN in the <a href="http://cran.stat.sfu.ca/src/contrib/Archive">archive area</a>, it is tedious to get them.</p>
+<p>Fear not! R users realized this issue and developed the <code>packrat</code> package to deal with it. In conjunction with an R project, <code>packrat</code> records all the packages and versions used in that project. It also creates a private package library for the project, in which it will install a copy of all the required packages so that your projects are completely isolated from each other, even if they use mutually incompatible versions of other packages. As you continue to work on a project and perhaps use additional packages, update packages you are already using, or remove the need for a given package, <code>packrat</code> keeps track of all this to keep the project’s private library up-to-date and as small as possible.</p>
+<p>In general, it is not necessary to initiate <code>packrat</code> while you are actively working on a project on your own (since you know whether or not your code works on your machine with your versions of everything). However, it can be useful to use it right from the start if you are actively collaborating with others. Once you’ve installed the <code>packrat</code> package, you have the option to initiate it when you make a New Project.</p>
+<p><img src="images/new.project2.png" style="width:50.0%" /></p>
+<p>Otherwise, you an initiate <code>packrat</code> in an existing project like so.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="reproducible-research-1.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Package version control</span></span>
+<span id="cb182-2"><a href="reproducible-research-1.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(packrat)</span>
+<span id="cb182-3"><a href="reproducible-research-1.html#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="reproducible-research-1.html#cb182-4" aria-hidden="true" tabindex="-1"></a>packrat<span class="sc">::</span><span class="fu">init</span>()</span></code></pre></div>
+<p>For those who are unfamiliar with R’s <code>::</code> syntax, this allows you to call functions from a specific package. It is required when more than one package uses the exact same name for a function. In this case, we use it to specify that we want R to use the <code>init</code> function from <code>packrat</code> as opposed to <code>init</code> from Git.</p>
+<p><em>Your console may print out a bunch of errors about fontspec and typesetting engine if you initiate packrat from a project with Rmarkdown. This is a current issue with latex in R and can be ignored at this time.</em></p>
+<p>As you work on your project, you can check whether your current project matches all the versions in your saved <code>packrat</code> library,</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="reproducible-research-1.html#cb183-1" aria-hidden="true" tabindex="-1"></a>packrat<span class="sc">::</span><span class="fu">status</span>()</span></code></pre></div>
+<p>Update the library with new packages or versions as needed,</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="reproducible-research-1.html#cb184-1" aria-hidden="true" tabindex="-1"></a>packrat<span class="sc">::</span><span class="fu">snapshot</span>()</span></code></pre></div>
+<p>Or remove unneeded packages from the library.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="reproducible-research-1.html#cb185-1" aria-hidden="true" tabindex="-1"></a>packrat<span class="sc">::</span><span class="fu">clean</span>()</span></code></pre></div>
+<p><code>packrat</code> also provides functions for “bundling” up your project and all its dependencies into a single file, which can be copied to another computer and “unbundled,” instantly reproducing your environment on a new machine.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="reproducible-research-1.html#cb186-1" aria-hidden="true" tabindex="-1"></a>packrat<span class="sc">::</span><span class="fu">bundle</span>()</span>
+<span id="cb186-2"><a href="reproducible-research-1.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb186-3"><a href="reproducible-research-1.html#cb186-3" aria-hidden="true" tabindex="-1"></a>packrat<span class="sc">::</span><span class="fu">unbundle</span>()</span></code></pre></div>
+<p>Of note, most of these functions can also be done from the <code>packrat</code> menu that appears in the Packages tab in the lower right quadrant of RStudio.</p>
+<p>While we’re on the topic of versions, you also need to record the version of R as well as your current computing platform (operating system and hardware architecture) to ensure reproducibility. You can easily print all this information in R with <code>sessionInfo()</code>.</p>
+</div>
+<div id="documents-made-reproducible" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Documents made reproducible</h2>
+<div id="what-is-a-document-really" class="section level3" number="4.9.1">
+<h3><span class="header-section-number">4.9.1</span> What is a document really?</h3>
+<p>There are two main aspects of creating a document: <strong>content and appearance</strong>. These two features are bundled together in a markup language, so-called because authors used to “mark up” physical documents with instructions on how to display the various parts <em>e.g.</em> title size, indentations, justification, etc.</p>
+<p>We don’t often think about these as two separate things as it is customary to simultaneously create both with programs like MS Word and PowerPoint where the markup language is hidden behind GUI features and buttons. However, in the background, what you always have is a <strong>source file</strong> with content and instructions for appearance that can be rendered into a <strong>viewable document</strong>. Think of the source file as a pie recipe with ingredients list while the viewable document is the pie that results from following that recipe.</p>
+<p>To be reproducible, you should setup your files such that you only need to modify the source file and re-render to change the viewable document. This is not possible with programs like Word because you never truly see the source file. Moreover, if you have inserted static content like figures, you’d need to go into another program to edit those and re-paste them into the source file. Not very reproducible at all!</p>
+<p>So, we will explore tools for creating this source file! Some powerful markup languages for developing source files are:</p>
+<ul>
+<li>LaTeX (through beamer) for PDF or slides</li>
+<li>Mark<em>down</em> (not <em>up</em>) for PDF, HTML, or slides</li>
+</ul>
+<p>We will focus on markdown (<code>.md</code>) as it pertains to reproducible workflows in R.</p>
+</div>
+<div id="rmarkdown" class="section level3" number="4.9.2">
+<h3><span class="header-section-number">4.9.2</span> Rmarkdown</h3>
+<p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> itself (outside of R) is a flexible language for creating source documents. It is simple to learn, easy to read, and very widely used. <a href="https://rmarkdown.rstudio.com/">Rmarkdown</a> (<code>.Rmd</code>) is merely markdown with a few added features used in RStudio.</p>
+<p>Rmarkdown can be rendered to the following viewable document types. This is done using the <code>knitr</code> package with the Knit button in the upper left quadrant menu bar.</p>
+<ul>
+<li><code>html_document</code></li>
+<li><code>word_document</code></li>
+<li><code>pdf_document</code> (requires LaTeX)</li>
+<li><code>ioslides_presentation</code>: slides using HTML</li>
+<li><code>beamer_presentation</code>: PDF slides (requires LaTeX)</li>
+</ul>
+<p>In Rmd, you have the <strong>header</strong> and the <strong>body</strong>.</p>
+<ul>
+<li>header: overall document settings in a language called YAML (one of the added features of <code>.Rmd</code> as compared to <code>.md</code>)</li>
+<li>body: content and appearance instructions in markdown</li>
+</ul>
+<hr />
+<p>If you are attending a 3 x 2-hour workshop, this is the end of day 1</p>
+<hr />
+<div id="yaml-header" class="section level4" number="4.9.2.1">
+<h4><span class="header-section-number">4.9.2.1</span> YAML header</h4>
+<p>Let’s create a new Rmarkdown document (File &gt; New File &gt; R Markdown…). Leaving the defaults (document, html output), our <code>.Rmd</code> file is already populated with a minimal YAML header like below.</p>
+<pre><code>---
+title: &quot;Untitled&quot;
+author: &quot;Your Name&quot;
+date: &#39;2018-06-22&#39;
+output: html_document
+---</code></pre>
+<p>The header must be at the start of the document and be encased by <code>---</code>. As you can see, the basic YAML syntax is <code>appearanceInfo: content</code>.</p>
+<p>You can expand the header to customize your rendered document’s appearance. For example, here is the header for this notes document.</p>
+<pre><code>---
+title: &quot;Reproducible research&quot;
+author: &quot;Kim Dill-McFarland&quot;
+date: &quot;version August 23, 2021&quot;
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: no
+  pdf_document:
+    toc: yes
+    latex_engine: xelatex
+---</code></pre>
+<p>There are a few things here that you may find useful in your future reports.</p>
+<ol style="list-style-type: decimal">
+<li>The <code>date</code> section is filed in with dynamic code that will automatically access your computer and input the current date in the format “version month day, year.”</li>
+<li>There is information for rendering in either html or pdf formats, though only the one on top will be rendered each time.</li>
+<li>Under the html format, we have specified that we want a table of contents (<code>toc</code>) that floats as you scroll through the rendered html document and does not collapse into only high level headings.</li>
+<li>Under the pdf format, we have also specified to use a table of contents, though floating and collapsing are not options in this format. In addition, we’ve changed the rendering language to be <code>xelatex</code> as opposed to the default <code>pdflatex</code>. In this case, we did this to make <code>packrat</code> work with Rmd.</li>
+</ol>
+</div>
+<div id="exercise-yaml" class="section level4" number="4.9.2.2">
+<h4><span class="header-section-number">4.9.2.2</span> Exercise: YAML</h4>
+<p>In your new <code>.Rmd</code>, replace the automatically populated header and contents with the following. Don’t worry about the contents of the body yet; we’ll go over that next.</p>
+<pre><code>---
+title: &quot;Learning Rmarkdown&quot;
+author: &quot;Your Name&quot;
+date: &quot;version August 23, 2021&quot;
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: no
+  pdf_document:
+    toc: yes
+    latex_engine: xelatex
+---
+
+# Header 1
+
+## Subheading 1A
+
+# Header 2
+
+## Subheading 2A
+
+## Subheading 2B</code></pre>
+<ol style="list-style-type: decimal">
+<li>In the <code>date</code> section, play around with capital versus lowercase letters in the <code>'%B %d, %Y'</code> portion. Try to get the date in the format MO/DY/YR when you render (knit) the document.</li>
+<li>Change <code>toc_float: collapsed: no</code> to <code>toc_float: yes</code>. What happens to the table of contents?</li>
+<li>Remove <code>toc_float: collapsed: no</code>. What happens to the table of contents?</li>
+<li>Change <code>toc: yes</code> to <code>toc: no</code>. What happens to the table of contents?</li>
+</ol>
+</div>
+</div>
+<div id="knitting" class="section level3" number="4.9.3">
+<h3><span class="header-section-number">4.9.3</span> Knitting</h3>
+<p>To render your <code>.Rmd</code>, that is to take all the appearance and content information in the <em>source</em> file (<code>.Rmd</code>) and make the <em>viewable</em> document (<code>html</code>, <code>PDF</code>, etc.), you use <code>knitr</code> in R. This is most commonly done by clicking the “Knit” button with the blue ball of yarn in the menu above your file window (upper right quadrant).</p>
+<p>Note: The first time you knit a document, RStudio will prompt you to install several packages.</p>
+</div>
+<div id="markdown-body" class="section level3" number="4.9.4">
+<h3><span class="header-section-number">4.9.4</span> Markdown body</h3>
+<div id="headings-and-subheadings" class="section level4" number="4.9.4.1">
+<h4><span class="header-section-number">4.9.4.1</span> Headings and Subheadings</h4>
+<p>The body of Rmd is organized by headings with <code>#</code>. The more <code>#</code> in a row there are, the farther in and smaller a heading will be. By default, only down to <code>###</code> are shown in the table of contents.</p>
+</div>
+<div id="vertical-spacing" class="section level4" number="4.9.4.2">
+<h4><span class="header-section-number">4.9.4.2</span> Vertical spacing</h4>
+<p>Headings automatically get vertical spaces around them. In your other content, you can separate 2 paragraphs with a <em>half</em> pt space with <strong>double spaces</strong> at the end of the first paragraph. Or you can separate with with a <em>full</em> pt space with <strong>2 hard returns</strong> at the end of the first paragraph.</p>
+<p>This is separated<br />
+by double spaces while this is separated</p>
+<p>by 2 hard returns.</p>
+<p>Note that a <strong>single hard return</strong> is simply treated as a space and the two paragraphs will run together.</p>
+</div>
+<div id="textfont" class="section level4" number="4.9.4.3">
+<h4><span class="header-section-number">4.9.4.3</span> Text/font</h4>
+<p><code>*italics*</code> or <code>_italics_</code><br />
+<code>**bold**</code> or <code>__bold__</code></p>
+<p><code>superscript^2^</code><br />
+<code>subscript~2~</code></p>
+<p><code>~~strikethrough~~</code></p>
+<p><code>looks like code</code></p>
+</div>
+<div id="links" class="section level4" number="4.9.4.4">
+<h4><span class="header-section-number">4.9.4.4</span> Links</h4>
+<p>To websites:<br />
+<code>[link](www.rstudio.com)</code></p>
+<p>To local images:<br />
+<code>![caption](path/to/image.png)</code></p>
+<p>To web images:<br />
+<code>![caption](http://example.com/image.png)</code></p>
+</div>
+<div id="lists" class="section level4" number="4.9.4.5">
+<h4><span class="header-section-number">4.9.4.5</span> Lists</h4>
+<pre><code>* unordered list
+* item 2
+  + sub-item 1
+  + sub-item 2</code></pre>
+<pre><code>1. ordered list
+2. item 2
+  + sub-item 1
+  + sub-item 2</code></pre>
+</div>
+<div id="formulae" class="section level4" number="4.9.4.6">
+<h4><span class="header-section-number">4.9.4.6</span> Formulae</h4>
+<p>Use <code>$</code> to denote formulas. Inline formulas are surrounded by single <code>$</code> while new line formulas use <code>$$</code>.</p>
+<p><code>$a_1^2 + a_2^2 = a_3^2$</code> gets typeset to <span class="math inline">\(a_1^2 + a_2^2 = a_3^2\)</span>.</p>
+<p><code>$$ \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i $$</code> gets typeset as <span class="math display">\[ \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i \]</span></p>
+<p>For more math symbols, see <a href="http://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/">here</a>.</p>
+</div>
+</div>
+<div id="static-documents" class="section level3" number="4.9.5">
+<h3><span class="header-section-number">4.9.5</span> Static documents</h3>
+<p>All that we’ve gone over thus far contributes to Rmd static documents, or those that don’t change every time you render them. For example, <a href="https://github.com/EDUCE-UBC/workshops/blob/main/README.md">our workshops README</a> is in md and is simply a collection of text and <code>.png</code> images. There is no real “code” so-to-speak.</p>
+<p>It may seem silly to write static documents in markdown if you’re already familiar with programs like MS Word. However, as you will see when we get to Git, there are some distinct advantages to markdown when it comes to version control. More on this later!</p>
+<div id="at-home-exercise-rmarkdown" class="section level4" number="4.9.5.1">
+<h4><span class="header-section-number">4.9.5.1</span> At home exercise: Rmarkdown</h4>
+<ol style="list-style-type: decimal">
+<li>Convert your notes from this workshop into an <code>.Rmd</code>.
+<ul>
+<li>Try use use headings, bold/italic, links, etc.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="dynamic-documents" class="section level3" number="4.9.6">
+<h3><span class="header-section-number">4.9.6</span> Dynamic documents</h3>
+<p>The true power of Rmd for reproducible research comes with <em>dynamic</em> documents. These not only contain static content like text and images but also code chunks that run R code (and other languages) and display the outputs, be they descriptive, statistical, graphical, etc.</p>
+<p>This means you don’t need to copy-paste your analysis results into a document for reporting. No more fiddling with Excel graphs pasted into Word! No more completely remaking reports from scratch! No more collaborators asking how <em>exactly</em> you made that figure!</p>
+<p>Some people even write their entire thesis in markdown, so anything is possible!</p>
+<div id="code-chunks" class="section level4" number="4.9.6.1">
+<h4><span class="header-section-number">4.9.6.1</span> Code chunks</h4>
+<p>An R code chunk is formatted as</p>
+<pre><code>```{r}
+Your
+code
+here
+```</code></pre>
+<p>For example, we can read in the data and packages for this workshop in our Rmarkdown file with</p>
+<pre><code>```{r}
+# load packages
+## Suite of packages for data manipulation and visualization
+library(tidyverse)
+
+# load data
+dat &lt;- read.csv(&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;)
+```</code></pre>
+<p>Chunks have lots of <a href="https://yihui.name/knitr/options/">customizable options</a> that impact how their output looks in the rendered document like whether or not to show the underlying R code or warnings or messages, figure size, etc.</p>
+<p>You can also use other languages in code chunks. For example, python scripts can be inserted and run directly in an Rmarkdown by creating the corresponding chunk.</p>
+<pre><code>```{python}
+Your
+code
+here
+```</code></pre>
+<p>As of 2018, R supports chunks in Bash, python, Rcpp, SQL, and Stan.</p>
+</div>
+<div id="inline-code" class="section level4" number="4.9.6.2">
+<h4><span class="header-section-number">4.9.6.2</span> Inline code</h4>
+<p>Small bits of code can also be placed inline with</p>
+<pre><code>`r your code here`</code></pre>
+<p>For example, you many be writing an abstract and want to state</p>
+<blockquote>
+<p>“We obtained geochemical data for X samples, Y of which had corresponding microbial data.”</p>
+</blockquote>
+<p>You could fill in the numbers yourself but what if you get more data later on? What if you remove samples that upon preliminary analysis, are not high enough quality? Well, then you’d have to go back and edit your abstract by-hand.</p>
+<p>Or markdown could do it for you! With the data we used previously in this workshop, you could instead write</p>
+<blockquote>
+<p>“We obtained geochemical data for <code>nrow(dat)</code> samples, <code>nrow(filter(dat, Add_data==TRUE))</code> of which had corresponding microbial data.”</p>
+</blockquote>
+<p>which renders to</p>
+<blockquote>
+<p>“We obtained geochemical data for 32 samples, 10 of which had corresponding microbial data.”</p>
+</blockquote>
+<p>Now if you change the number of samples in the data frame with all your samples (<code>dat</code>), your abstract will fix itself with a simple re-render.</p>
+</div>
+<div id="exercise-dynamic-rmd" class="section level4" number="4.9.6.3">
+<h4><span class="header-section-number">4.9.6.3</span> Exercise: dynamic Rmd</h4>
+<ol style="list-style-type: decimal">
+<li>Create a new <code>.Rmd</code> and replicate part of our Introduction to R workshop found in the <code>dynamic_R_challenge.html</code> document provided.</li>
+</ol>
+<hr />
+<p>If you are attending a 2 x 3-hour workshop, this is the end of day 1</p>
+<hr />
+</div>
+</div>
+<div id="slides-made-reproducible" class="section level3" number="4.9.7">
+<h3><span class="header-section-number">4.9.7</span> Slides made reproducible</h3>
+<p>Slides can also be created in <code>.md/.Rmd</code> either as static documents or with dynamic code. The formatting in the body is the same <strong>except</strong></p>
+<ul>
+<li>each header <code>##</code> indicates a new slide</li>
+<li>lists can be revealed incrementally using <code>&gt; -</code> for bullets</li>
+</ul>
+<p>There are several <a href="https://rmarkdown.rstudio.com/lesson-11.html">rendering options</a> for Rmd slides with <a href="https://rmarkdown.rstudio.com/gallery.html">examples</a> of the default appearances. It is quite difficult to change the overall look of markdown slides so it is best to pick a render package that is near the look you want. You can specify your render package of choice as the <code>output</code> in the YAML header of the <code>.Rmd</code>.</p>
+<pre><code>---
+title:
+author:
+date:
+output: ioslides_presentation
+---</code></pre>
+<p>As the syntax of slides is the same as documents, we will not go into detail during this workshop but checkout the slides <code>.Rmd</code> in the workshop material to see how slides were made for this workshop!</p>
+<div id="at-home-exercise-slides" class="section level4" number="4.9.7.1">
+<h4><span class="header-section-number">4.9.7.1</span> At home exercise: Slides</h4>
+<ol style="list-style-type: decimal">
+<li>The next time you have to give lab meeting, present in a class, lead a discussion, etc., try making your slides in Rmd. Once you get some practice, it take no more time than PowerPoint!</li>
+</ol>
+</div>
+</div>
+<div id="rmd-in-your-workflow" class="section level3" number="4.9.8">
+<h3><span class="header-section-number">4.9.8</span> Rmd in your workflow</h3>
+<p>To incorporate Rmd into your reproducible workflow, you can render an <code>.Rmd</code> document in your <em>Make</em> file with <code>rmarkdown::render("input_file.Rmd")</code>.</p>
+</div>
+<div id="publish-with-rpubs.com" class="section level3" number="4.9.9">
+<h3><span class="header-section-number">4.9.9</span> Publish with Rpubs.com</h3>
+<p><a href="http://rpubs.com/">Rpubs.com</a> is a free online service from RStudio that let’s you put your Rmarkdown documents online with a push of the button. After you register online, you can simply click the “Publish” button (blue dot with 2 blue curves around it) in the upper right corner of the toolbar for your markdown document in RStudio. This sends the rendered html to the site. For some examples, see <a href="http://rpubs.com/dillmcfarlan">here</a>.</p>
+</div>
+</div>
+<div id="git" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Git</h2>
+<div id="what-is-version-control" class="section level3" number="4.10.1">
+<h3><span class="header-section-number">4.10.1</span> What is version control?</h3>
+<p>Version control is any means of recording changes to file(s) over time so that you can recall or revert back to specific versions later.</p>
+<p>One method of version control you may have employed in the past is dated or versioned file names like <code>myFile_2018.06.25.txt</code> or <code>myFile_v1.2.txt</code>. While these systems can get the job done, you end up will a long list of files that take up storage space and have little information on how they differ. It remains up to you to remember or tell someone what date or version to go back to for whatever purpose is needed.</p>
+<p>And heaven forbid you stamp a file with <code>final</code>!</p>
+<div class="figure">
+<img src="images/phdcomics-final.png" alt="" />
+<p class="caption"><a href="http://www.phdcomics.com/comics/archive.php?comicid=1531" class="uri">http://www.phdcomics.com/comics/archive.php?comicid=1531</a></p>
+</div>
+</div>
+<div id="why-git" class="section level3" number="4.10.2">
+<h3><span class="header-section-number">4.10.2</span> Why Git?</h3>
+<p>There is a better way to version control with distributed systems, and <a href="https://git-scm.com/">Git</a> is one such language/program. While Git can be used to track changes for any file type, it is most useful with text-based files like <code>.txt</code>, <code>.Rmd</code>, <code>.R</code>, etc. because these are <em>source files</em> with the appearance directions clearly noted and not hidden behind a GUI. Think of Git like the “track changes” feature of MS Word, except there is a record of the changes after you “accept” them.</p>
+<p>The advantages of distributed version control over naming methods are that:</p>
+<ul>
+<li>it is easy to see what changed when (time-stamped), why (commented), and by whom (author identified)</li>
+<li>you can jump back to any point in time since the file’s creation, not just versions you deemed important enough to save at the time</li>
+<li>you have the freedom to experiment, try something crazy even, because you can always go back to the last known good version</li>
+<li>you can work on 2+ different versions in parallel</li>
+<li>you are able manage contributions from multiple people (see later section on GitHub)</li>
+</ul>
+<p>Specifically, we are using Git, as opposed to another program, because it:</p>
+<ul>
+<li>is very fast, even for projects with hundreds of files and years of history</li>
+<li>doesn’t require access to a server</li>
+<li>is already extremely popular</li>
+</ul>
+</div>
+</div>
+<div id="git-on-your-computer" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Git on your computer</h2>
+<p>All Git functions are accessed from the command line with <code>git</code> followed by the function name like <code>git init</code>. You do not need to open a specific program other than your terminal. The commands used in this section are summarized in the following infographic. Please refer to it as we progress through the examples.</p>
+<p><img src="images/Git_basic.png" /></p>
+<div id="initialize-a-repo-git-init" class="section level3" number="4.11.1">
+<h3><span class="header-section-number">4.11.1</span> Initialize a repo (<code>git init</code>)</h3>
+<p>Git will not implement version control on your files until you tell it to do so. This is accomplished by initializing a repository with <code>init</code>.</p>
+<p>First, create a directory on your desktop named <code>TestRepo</code>. Then, open your terminal/GitBash, navigate to the <code>TestRepo</code> directory, and initialize it as a repo with</p>
+<pre><code>git init</code></pre>
+<p>You should see an output similar to the following showing that Git knows this directory is a repo.</p>
+<pre><code>Initialized empty Git repository in /Users/kim/Desktop/TestRepo/.git/</code></pre>
+<p>If you now list all the files in the <code>TestRepo</code> directory with <code>ls -a</code>, you will see a <code>.git</code> file that designates that this directory is a Git repo. Nothing about the directory itself has changed; Git just now knows to track it for version control.</p>
+</div>
+<div id="add-files-git-add" class="section level3" number="4.11.2">
+<h3><span class="header-section-number">4.11.2</span> Add files (<code>git add</code>)</h3>
+<p>Create a <code>README.md</code> using a text editor of your choice and include the following as the contents of this file.</p>
+<pre><code>This is a README for my first Git repo.</code></pre>
+<p>Now that we’ve added a file, we can query if there are any differences between our local <code>TestRepo</code> directory and the version controlled repo with</p>
+<pre><code>git status</code></pre>
+<pre><code>On branch main
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+  README.md
+  
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p>We see that <code>README.md</code> simply being in a repo does not automatically tell Git to track this file; it remains “untracked.” So, we must add the file to Git tracking. We can either add just this file specifically with</p>
+<pre><code>git add README.md</code></pre>
+<p>Or if we had more than 1 file to add at once, we could add all with</p>
+<pre><code>git add .</code></pre>
+<p>Now we see with <code>git status</code> that our README is tracked but not committed.</p>
+<pre><code>On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   README.md</code></pre>
+</div>
+<div id="git-staging-area-index" class="section level3" number="4.11.3">
+<h3><span class="header-section-number">4.11.3</span> Git staging area (index)</h3>
+<p>If the file is tracked but not committed (<em>i.e.</em> version saved), where is it? Well, Git has a staging area (also called the index) where a version of a file is stored prior to it being more permanently saved as a committed version.</p>
+<p>This is useful because sometimes you may want to:</p>
+<ul>
+<li>save a version as a back-up in the short-term but do not want to permanently save that version in the long-term</li>
+<li>complete many small changes separately but save them all together as 1 new version</li>
+<li>compare your current version with the last committed version without causing any conflicts in your repo</li>
+</ul>
+</div>
+<div id="commit-changes-git-commit" class="section level3" number="4.11.4">
+<h3><span class="header-section-number">4.11.4</span> Commit changes (<code>git commit</code>)</h3>
+<p>Once you have a version you want to save for all time, you need to <code>commit</code> it from the index to the repo. It is best practices to include a message with each commit using <code>git commit -m "Your message here"</code>. You wouldn’t believe the number of commits with a message simply of “typo!” We will use the following to commit our first version of <code>TestRepo</code> with the README.</p>
+<pre><code>git commit -m &quot;Initialize README&quot;</code></pre>
+<pre><code>[main (root-commit) 151a8dc] Initilaize README
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md</code></pre>
+<p>You receive a summary of how many files were changed and what those changes where (though exact ID numbers will be specific to your repo).</p>
+<p>Now with <code>git status</code>, we see that our local directory, index, and repo are all identical.</p>
+<pre><code>On branch main
+nothing to commit, working tree clean</code></pre>
+<div id="exercise-git-add-and-commit" class="section level4" number="4.11.4.1">
+<h4><span class="header-section-number">4.11.4.1</span> Exercise: Git add and commit</h4>
+<ol style="list-style-type: decimal">
+<li>Change a file and commit the new version.</li>
+</ol>
+<ul>
+<li>Add the following to your <code>README.md</code> file, where you fill in your name.
+<code>My name is Kim Dill-McFarland.</code></li>
+<li>Using a combination of <code>git status, add, and commit</code>, determine if your version matches your repo and commit the new version <em>with a comment</em> as needed.</li>
+<li>Note the messages Git outputs in the terminal as you complete each step. They are very informative and helpful!</li>
+</ul>
+</div>
+</div>
+<div id="comapre-versions-git-status-and-diff" class="section level3" number="4.11.5">
+<h3><span class="header-section-number">4.11.5</span> Comapre versions (<code>git status</code> and <code>diff</code>)</h3>
+<p>Since we are working with a single, small file in a small repo, it is easy to remember what versions are where. However, as you make larger files and repos, sometimes you will not know this. So, Git has functions for comparing versions.</p>
+<p><img src="images/Git_compare.png" /></p>
+<p>Your <code>git status</code> should be up-to-date after the previous exercise. Now let’s create some differing versions in our local, index, and repo.</p>
+<p>Add your birthday to <code>README.md</code> and <code>git add .</code> this change <em>but do not commit</em>. Then add your favorite color and <em>do not add or commit</em> this change. So, now we have versions the following versions.</p>
+<ul>
+<li>local: name, birthday, color</li>
+<li>index: name, birthday</li>
+<li>repo: name</li>
+</ul>
+<p>We can determine what version is where with various parameters in <code>git diff</code>. Added lines are indicated by +, deleted lines by -, and changed lines by showing both versions inline.</p>
+<ul>
+<li><code>git diff</code>: local vs. index
+<code>This is a README for my first Git repo.  My name is Kim Dill-McFarland.  My birthday is Nov 29. +My favorite color is purple.</code></li>
+<li><code>git diff --cached HEAD</code>: index vs. repo
+<code>This is a README for my first Git repo.  My name is Kim Dill-McFarland. +My birthday is Nov 29.</code></li>
+<li><code>git diff HEAD</code>: local vs. repo
+<code>This is a README for my first Git repo.  My name is Kim Dill-McFarland. +My birthday is Nov 29. +My favorite color is purple.</code></li>
+</ul>
+<p>And so if you are unsure which version you are using (local) or which one you want to revert to, <code>diff</code> can show you.</p>
+</div>
+<div id="past-commits-git-log-and-show" class="section level3" number="4.11.6">
+<h3><span class="header-section-number">4.11.6</span> Past commits (<code>git log</code> and <code>show</code>)</h3>
+<p>You’ll notice in the <code>diff</code> commands referencing the repo, it is referred to as HEAD. This is the most recent commit version in the repo and you can go back farther with <code>HEAD~##</code>.</p>
+<p>Let’s <code>add and commit</code> our current changes so that we have multiple commits to look at. Since we never committed the version with only the birthday added, this version is lost with a new <code>git add</code>.</p>
+<p>We can see all past commits in this repo with</p>
+<pre><code>git log</code></pre>
+<pre><code>commit 0eafc7f9ac7b1f9adb239e730aead874a7888854 (HEAD -&gt; main)
+Author: Kim Dill-McFarland &lt;kdillmcfarland@gmail.com&gt;
+Date:   Tue Jun 26 14:46:42 2018 -0700
+
+    Add birthday and fav color
+
+commit d4f6f1869c9846ba1809e58e3c5608af79383549
+Author: Kim Dill-McFarland &lt;kdillmcfarland@gmail.com&gt;
+Date:   Tue Jun 26 14:28:23 2018 -0700
+
+    Add name
+
+commit a2f0948cd60b3c1e17aaaf45fad966cf924e085d
+Author: Kim Dill-McFarland &lt;kdillmcfarland@gmail.com&gt;
+Date:   Tue Jun 26 14:27:02 2018 -0700
+
+    Initialize README</code></pre>
+<p>Or view a specific past version using <code>HEAD~##</code>. For example, we can view our first commit which is <code>HEAD~2</code></p>
+<pre><code>git show HEAD~2</code></pre>
+<pre><code>Author: Kim Dill-McFarland &lt;kdillmcfarland@gmail.com&gt;
+Date:   Tue Jun 26 14:27:02 2018 -0700
+
+    Initialize README
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..862c717
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++This is a README for my first Git repo.</code></pre>
+</div>
+<div id="branches-git-checkout--b" class="section level3" number="4.11.7">
+<h3><span class="header-section-number">4.11.7</span> Branches (<code>git checkout -b</code>)</h3>
+<p><img src="images/Git_branch.png" /></p>
+<p>One of the best ways to avoid the need to undo anything in Git is to use branches. These are copies of your repo that you can work on independently of the “main” without impacting the main but still version control changes as you go. You can then choose to merge the branch with the main if you want to keep those changes or abandon the branch and go back the to the main if you do not want to keep those changes.</p>
+<p>You may have noticed that many of our previous Git outputs start with <code>On branch main</code>. This is because by default, we were working on the main branch of the project (the only branch up to this point).</p>
+<p>Branches are particularly useful to:</p>
+<ul>
+<li>test new features without breaking the current working code</li>
+<li>collaborate in parallel</li>
+<li>follow a risky idea that has the potential to break your working code</li>
+<li>develop the same base code into 2+ other applications</li>
+</ul>
+<p>To start a new branch, first make sure that everything is up-to-date with <code>git status</code>. Then, <code>checkout</code> or create and move into a new branch using the branch <code>-b</code> parameter.</p>
+<pre><code>git checkout -b new_branch main</code></pre>
+<p>With <code>git status</code>, we see that we are in the new branch.</p>
+<pre><code>On branch new_branch
+nothing to commit, working tree clean</code></pre>
+<p>Now we can make changes in this branch without impacting the main branch. Go ahead and edit <code>README.md</code> and pick a new favorite color. Then <code>add and commit</code> this change in your new_branch.</p>
+<p>The two branches no longer match so we must merge them and decide which version(s) to keep. To do so, we must</p>
+<ol style="list-style-type: decimal">
+<li>Move back into the main branch <code>git checkout main</code></li>
+<li>Merge the branches <code>git merge new_branch</code> which overwrites the older main branch with our new changes in the new_branch</li>
+</ol>
+</div>
+<div id="merge-conflicts-git-merge" class="section level3" number="4.11.8">
+<h3><span class="header-section-number">4.11.8</span> Merge conflicts (<code>git merge</code>)</h3>
+<p>Merging works simply if only 1 of the branches being merged has be altered since it branched off. If both branches contain non-synonymous changes, there will be a conflict.</p>
+<p>You resolve a conflicts by merging, opening the file(s) with conflict(s), editing until you have the version you want, and saving the new, correct merged version with <code>add and commit</code>.</p>
+<div id="exercise-branches-and-conflicts" class="section level4" number="4.11.8.1">
+<h4><span class="header-section-number">4.11.8.1</span> Exercise: branches and conflicts</h4>
+<ol style="list-style-type: decimal">
+<li>Create a new_branch2 (since new_branch was already merged into main).</li>
+<li>Edit <code>README.md</code> in new_branch2 by adding your middle name. Add and commit to this branch.</li>
+<li>Edit <code>README.md</code> in main by removing your last name. Add and commit to this branch.</li>
+<li>Merge main and new_branch2.</li>
+<li>Open <code>README.md</code> and look for markers <code>&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;</code> to denote conflicts.</li>
+<li>Edit to your name of choice, making sure to remove the markers.</li>
+<li>Add and commit to main.</li>
+</ol>
+<p>Conflict solved!</p>
+</div>
+</div>
+<div id="summary-of-git" class="section level3" number="4.11.9">
+<h3><span class="header-section-number">4.11.9</span> Summary of Git</h3>
+<p>Thus far, we have covered the main Git terms and functions that you will need to enact version control on your own computer (summarized below).</p>
+<div id="terms" class="section level4" number="4.11.9.1">
+<h4><span class="header-section-number">4.11.9.1</span> Terms</h4>
+<ul>
+<li><strong>Repository</strong>: the contents (directory/folder) of a project including all history and versions for all files in that project</li>
+<li><strong>Commit</strong>: a snapshot of the state of the repository at a given point in time including the author, time, and a comment</li>
+<li><strong>Staging/Index</strong>: files marked for inclusion in the next commit as whatever version that they were <em>at the time they were staged</em>, not necessarily the most up-to-date version on your computer</li>
+<li><strong>Branch</strong>: a named sequence of commits kept separate from the original “main” sequence</li>
+<li><strong>Merge</strong>: including changes from one branch into another</li>
+<li><strong>Conflict</strong>: parallel changes to the same section(s) of a file that can’t be automatically merged</li>
+</ul>
+</div>
+<div id="commands" class="section level4" number="4.11.9.2">
+<h4><span class="header-section-number">4.11.9.2</span> Commands</h4>
+<ul>
+<li><code>status</code>: query for differences in versions in local, index, or repo</li>
+<li><code>init</code>: initialize a repo</li>
+<li><code>add</code>: add files to the index (staging) prior to committing</li>
+<li><code>commit -m</code>: save changes in the index as a time-stamped version with comment (message)</li>
+<li><code>diff (HEAD) (--cached HEAD)</code>: compare file versions in the local vs. index (local vs. repo) (index vs. repo)</li>
+<li><code>log</code>: show list of previous commits in the current repo</li>
+<li><code>show</code>: show a detail account of a previous commit</li>
+<li><code>checkout</code>: create and move between branches or the local, index, and repo
+<ul>
+<li>Not shown here but <code>checkout HEAD</code> can be used to move to a past commit and re-instate file versions from that commit</li>
+</ul></li>
+<li><code>merge</code>: combine changes from a branch into the main repo (may result in conflicts)</li>
+</ul>
+<p>To checkout more functionalities in Git, see a <a href="https://git-scm.com/docs">list of all Git commands</a>.</p>
+</div>
+</div>
+</div>
+<div id="collaborate-with-github" class="section level2" number="4.12">
+<h2><span class="header-section-number">4.12</span> Collaborate with GitHub</h2>
+<p><a href="https://github.com/">GitHub</a> is a web service for hosting Git repositories - content and version history. It has web and GUI interfaces as well as many tools for facilitating collaboration within repos.</p>
+<p><img src="images/GitHub.png" /></p>
+<p>Similar to our decision to use Git, GitHub finds much of its strength in that is is widely popular and easy to use. If you make the choice to use Git, then GitHub is the natural choice for hosting and collaboration.</p>
+<div id="configure-your-computer-git-config" class="section level3" number="4.12.1">
+<h3><span class="header-section-number">4.12.1</span> Configure your computer (<code>git config</code>)</h3>
+<p>Prior to this workshop, you should have signed-up for a free GitHub account. You now need to link your computer to your GitHub account using the email from this account and whatever name you want stamped on your commits. This need only be done once on your computer.</p>
+<pre><code>git config --global user.name &quot;Your Name&quot;
+
+git config --global user.email &quot;youremail@email.com&quot;</code></pre>
+</div>
+<div id="make-an-online-repo" class="section level3" number="4.12.2">
+<h3><span class="header-section-number">4.12.2</span> Make an online repo</h3>
+<p>Next we will make an online GitHub repo to link our local repo to. In a browser, navigate to your <a href="https://github.com/">GitHub</a> account homepage and click “New repository.”</p>
+<p><img src="images/new_repo.png" style="width:50.0%" /></p>
+<p>Name the repo <code>TestRepo</code> and create it. GitHub then gives you the URL for this repo.</p>
+<p><img src="images/repoURL.png" /></p>
+</div>
+<div id="link-local-and-online-repo-git-remote" class="section level3" number="4.12.3">
+<h3><span class="header-section-number">4.12.3</span> Link local and online repo (<code>git remote</code>)</h3>
+<p>Finally, we will link our TestRepo to the online GitHub repo using the URL provided.</p>
+<p>You link it to your local directory and repo by using <em>your specific repo URL</em> in the following command in your terminal. Make sure your terminal is still pointing at the correct directory!</p>
+<pre><code>git remote add origin https://remote_repository_URL</code></pre>
+</div>
+<div id="update-an-online-repo-git-push" class="section level3" number="4.12.4">
+<h3><span class="header-section-number">4.12.4</span> Update an online repo (<code>git push</code>)</h3>
+<p>If no errors occur, you can now upload your local repo to GitHub with <code>push</code>. The first time you push, you need to specify to GitHub that you are pushing from the main repo.</p>
+<pre><code>git push -u origin main</code></pre>
+<p>All subsequent push commands for this repo can simply be</p>
+<pre><code>git push</code></pre>
+<p>If you go back to your browser and refresh your page, you should now see <code>README.md</code> in your online repo.</p>
+<p>Once your local repo is fully linked with its online GitHub repo, you can go about version control as you normally would (change files &gt; add &gt; commit). When you have a committed version of the repo that you want to backup or share to GitHub, you <code>git push</code>.</p>
+</div>
+<div id="copy-an-online-repo-git-clone" class="section level3" number="4.12.5">
+<h3><span class="header-section-number">4.12.5</span> Copy an online repo (<code>git clone</code>)</h3>
+<p>If you are the only one working on your repo and only work on it from 1 computer, then GitHub acts as a one-way street. You push things there for storage, sharing, etc. and should only need to pull them back down if something terrible happens to your computer.</p>
+<p>However, GitHub also allows work on a repo from multiple computers and by multiple different users. You or others can copy an online GitHub repo to your computer with</p>
+<pre><code>git clone URL.of.the.repo</code></pre>
+</div>
+<div id="update-from-online-repo-git-fetch-and-pull" class="section level3" number="4.12.6">
+<h3><span class="header-section-number">4.12.6</span> Update from online repo (<code>git fetch</code> and <code>pull</code>)</h3>
+<p>Now when you have multiple copies of a repo potentially being worked on and <code>push</code>ed to GitHub from multiple computers or people, the version on GitHub may be more up-to-date than the one you have on the computer you happen to currently be working on.</p>
+<p>To update you local repo from GitHub, you must go through a staging area (index) similar to the one in-between your local directory and repo. You can place GitHub content in this index with</p>
+<pre><code>git fetch</code></pre>
+<p>And use <code>git status</code> to compare your local and GitHub versions. Then, if you decide you want to update your local version, you reverse push with</p>
+<pre><code>git pull</code></pre>
+<div id="exercise-multiple-repo-users" class="section level4" number="4.12.6.1">
+<h4><span class="header-section-number">4.12.6.1</span> exercise: multiple repo users</h4>
+<p>Now we will similate what is would be like to collaborate on the same repo with another person.</p>
+<p>In pairs:</p>
+<ol style="list-style-type: decimal">
+<li>UserA: Use <code>git clone</code> to copy the <code>TestRepo</code> from UserB.</li>
+<li>UserB: Make a change to <code>README.md</code> in your repo on your own computer and <code>push</code> that change to your GitHub.</li>
+<li>UserA: Update your copy of UserB’s repo.</li>
+<li>Switch roles!</li>
+</ol>
+</div>
+</div>
+<div id="github-gui" class="section level3" number="4.12.7">
+<h3><span class="header-section-number">4.12.7</span> GitHub GUI</h3>
+<p>After all this command line work, we now reveal to you that you can use Git in <a href="https://desktop.github.com/">GUI form</a>. While the GUI is useful for simple <code>commit, push, pull</code> activities, some functions (like hard resets, undos, etc.) are still only available via command line. We encourage you to explore both the command line and GUI forms of Git as you practice.</p>
+<p>You can explore all the repos on your computer,</p>
+<p><img src="images/GitHubGUI1.png" style="width:50.0%" /></p>
+<p>see specific changes to text based files,</p>
+<p><img src="images/GitHubGUI2.png" /></p>
+<p>and add, commit, push from the GUI.</p>
+<p><img src="images/GitHubGUI3.png" style="width:50.0%" /></p>
+</div>
+<div id="git-in-rstudio" class="section level3" number="4.12.8">
+<h3><span class="header-section-number">4.12.8</span> Git in RStudio</h3>
+<p>Working in an R project in a directory that is also a Git repo will reveal a Git tab in the upper right quadrant of RStudio.</p>
+<p>To see this, close and then move your workshop project directory into your <code>TestRepo</code>. Re-open the project (from <code>.Rproj</code>) and navigate to this Git tab.</p>
+<p>You will see that similar to the GitHub GUI you can see <code>diff</code> and <code>commit</code> changes directly from RStudio as well as see a summary (M: modify, D: delete, ?: add) of changes in the project since your last commit.</p>
+<p><img src="images/RStudio_Git.png" style="width:75.0%" /></p>
+</div>
+</div>
+<div id="additional-resources-1" class="section level2" number="4.13">
+<h2><span class="header-section-number">4.13</span> Additional resources</h2>
+<div id="reproducible-research-2" class="section level3" number="4.13.1">
+<h3><span class="header-section-number">4.13.1</span> Reproducible research</h3>
+<ul>
+<li><a href="https://software-carpentry.org/lessons/">Software Carpentry</a> including lessons on Git, Rmd, and reproducible research</li>
+<li><a href="http://www.riffomonas.org/">Riffomonas</a> including reproducible research methods in R</li>
+</ul>
+</div>
+<div id="rrstudio" class="section level3" number="4.13.2">
+<h3><span class="header-section-number">4.13.2</span> R/RStudio</h3>
+<ul>
+<li><a href="https://rstudio.github.io/packrat/walkthrough.html">packrat tutorial</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Rmarkdown cheatsheet</a></li>
+<li><a href="https://rmarkdown.rstudio.com/lesson-1.html">Rmarkdown tutorials</a></li>
+<li><a href="http://r-bio.github.io/intro-git-rstudio/">Git in RStudio</a></li>
+</ul>
+</div>
+<div id="gitgithub" class="section level3" number="4.13.3">
+<h3><span class="header-section-number">4.13.3</span> Git/GitHub</h3>
+<ul>
+<li><a href="https://gist.github.com/davfre/8313299">Git cheatsheet</a></li>
+<li><a href="https://git-scm.com/docs">List of all Git commands</a></li>
+<li><a href="https://git-scm.com/docs/gittutorial">Git tutorial</a></li>
+<li><a href="https://git-scm.com/book/en/v2">Git Pro EBook</a></li>
+<li><a href="https://help.github.com/">Git help</a></li>
+<li><a href="https://pages.github.com/">Build a web site from a repo!</a></li>
+<li>Explore <a href="https://github.com/pricing">private repositories</a> and <a href="https://help.github.com/articles/about-organizations/">organizations</a></li>
+</ul>
+</div>
+</div>
+<div id="survey-2" class="section level2" number="4.14">
+<h2><span class="header-section-number">4.14</span> Survey</h2>
+<p>Please provide us with feedback through this <a href="https://ubc.ca1.qualtrics.com/jfe/form/SV_2tOcP5OKnCNyauV">short survey</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-the-tidyverse-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistical-models-in-r-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ecoscope_datascience_workshops.pdf", "ecoscope_datascience_workshops.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

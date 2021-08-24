@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Introduction to R and RStudio | ECOSCOPE: Data Science Workshops</title>
+  <meta name="description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Introduction to R and RStudio | ECOSCOPE: Data Science Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Introduction to R and RStudio | ECOSCOPE: Data Science Workshops" />
+  
+  <meta name="twitter:description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  
+
+<meta name="author" content="Andrew Li" />
+<meta name="author" content="Stephan Koenig" />
+
+
+<meta name="date" content="2021-08-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="introduction-to-the-tidyverse-1.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ECOSCOPE: Data Science Workshops</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ECOSCOPE</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.1</b> Schedule</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workshops"><i class="fa fa-check"></i><b>1.2</b> Workshops</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#introduction-to-r-and-r-studio"><i class="fa fa-check"></i><b>1.2.1</b> Introduction to R and R Studio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#introduction-to-the-tidyverse"><i class="fa fa-check"></i><b>1.2.2</b> Introduction to the tidyverse</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#reproducible-research"><i class="fa fa-check"></i><b>1.2.3</b> Reproducible research</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#statistical-models-in-r"><i class="fa fa-check"></i><b>1.2.4</b> Statistical models in R</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#intermediate-r-programming"><i class="fa fa-check"></i><b>1.2.5</b> Intermediate R programming</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#beyond-ggplot2"><i class="fa fa-check"></i><b>1.2.6</b> Beyond ggplot2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-in-your-own-computer"><i class="fa fa-check"></i><b>2.2</b> Using R in your own computer</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-r-console"><i class="fa fa-check"></i><b>2.2.2</b> The R console</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-r-environment"><i class="fa fa-check"></i><b>2.2.3</b> The R Environment</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#scripts"><i class="fa fa-check"></i><b>2.2.4</b> Scripts</a></li>
+<li class="chapter" data-level="2.2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-and-loading-packages"><i class="fa fa-check"></i><b>2.2.5</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="2.2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#paths-and-working-directory"><i class="fa fa-check"></i><b>2.2.6</b> Paths and working directory</a></li>
+<li class="chapter" data-level="2.2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#rstudio-projects"><i class="fa fa-check"></i><b>2.2.7</b> RStudio projects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-as-a-calculator"><i class="fa fa-check"></i><b>2.3</b> R as a calculator</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#assigning-variables"><i class="fa fa-check"></i><b>2.4</b> Assigning variables</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comments"><i class="fa fa-check"></i><b>2.4.1</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#functions"><i class="fa fa-check"></i><b>2.5</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-most-helpful-function-of-all-the-help-function"><i class="fa fa-check"></i><b>2.5.1</b> The most helpful function of all: the ‘help’ function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-types"><i class="fa fa-check"></i><b>2.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>2.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#structures"><i class="fa fa-check"></i><b>2.7</b> Structures</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectors"><i class="fa fa-check"></i><b>2.7.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#apply-functions-over-vectors"><i class="fa fa-check"></i><b>2.7.2</b> Apply functions over vectors</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>2.7.3</b> Arithmetic operations on vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-frames"><i class="fa fa-check"></i><b>2.8</b> Data frames</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#example-data-frame"><i class="fa fa-check"></i><b>2.8.1</b> Example data frame</a></li>
+<li class="chapter" data-level="2.8.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#importing-the-data-frame"><i class="fa fa-check"></i><b>2.8.2</b> Importing the data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#quick-plots"><i class="fa fa-check"></i><b>2.9</b> Quick plots</a></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#accessing-and-subsetting-data"><i class="fa fa-check"></i><b>2.10</b> Accessing and subsetting data</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#acessing-vector-elements"><i class="fa fa-check"></i><b>2.10.1</b> Acessing vector elements</a></li>
+<li class="chapter" data-level="2.10.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#accessing-data-frame-elements"><i class="fa fa-check"></i><b>2.10.2</b> Accessing data frame elements</a></li>
+<li class="chapter" data-level="2.10.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#subsetting-rows-according-to-condition"><i class="fa fa-check"></i><b>2.10.3</b> Subsetting rows according to condition</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#additional-exercises"><i class="fa fa-check"></i><b>2.11</b> Additional exercises</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-1-install-packages"><i class="fa fa-check"></i><b>2.11.1</b> Exercise 1: Install packages</a></li>
+<li class="chapter" data-level="2.11.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-2-calculating-a-probability-density"><i class="fa fa-check"></i><b>2.11.2</b> Exercise 2: Calculating a probability density</a></li>
+<li class="chapter" data-level="2.11.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-3-use-the-help-function-to-learn-how-to-flip-coins"><i class="fa fa-check"></i><b>2.11.3</b> Exercise 3: Use the help function to learn how to flip coins</a></li>
+<li class="chapter" data-level="2.11.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-4-working-with-data"><i class="fa fa-check"></i><b>2.11.4</b> Exercise 4: Working with data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#survey"><i class="fa fa-check"></i><b>2.12</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html"><i class="fa fa-check"></i><b>3</b> Introduction to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#setup-intructions"><i class="fa fa-check"></i><b>3.1.1</b> Setup intructions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#background"><i class="fa fa-check"></i><b>3.1.2</b> Background</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-description"><i class="fa fa-check"></i><b>3.2</b> Data description</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#getting-started"><i class="fa fa-check"></i><b>3.3</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#making-an-rstudio-project"><i class="fa fa-check"></i><b>3.3.1</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="3.3.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#installing-and-loading-packages-1"><i class="fa fa-check"></i><b>3.3.2</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="3.3.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#downloading-the-data"><i class="fa fa-check"></i><b>3.3.3</b> Downloading the data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#loading-data-with-readr"><i class="fa fa-check"></i><b>3.3.4</b> Loading data with <code>readr</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-in-r"><i class="fa fa-check"></i><b>3.4</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#basic-data-types-in-r"><i class="fa fa-check"></i><b>3.4.1</b> Basic data types in R</a></li>
+<li class="chapter" data-level="3.4.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#basic-data-structures-in-r"><i class="fa fa-check"></i><b>3.4.2</b> Basic data structures in R</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#conditional-statements-and-logical-operators"><i class="fa fa-check"></i><b>3.4.3</b> Conditional statements and logical operators</a></li>
+<li class="chapter" data-level="3.4.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#exercises-1"><i class="fa fa-check"></i><b>3.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>3.5</b> Data wrangling with <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#select"><i class="fa fa-check"></i><b>3.5.1</b> Select</a></li>
+<li class="chapter" data-level="3.5.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#filter"><i class="fa fa-check"></i><b>3.5.2</b> Filter</a></li>
+<li class="chapter" data-level="3.5.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#rename"><i class="fa fa-check"></i><b>3.5.3</b> Rename</a></li>
+<li class="chapter" data-level="3.5.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#arrange"><i class="fa fa-check"></i><b>3.5.4</b> Arrange</a></li>
+<li class="chapter" data-level="3.5.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#mutate"><i class="fa fa-check"></i><b>3.5.5</b> Mutate</a></li>
+<li class="chapter" data-level="3.5.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#piping-with"><i class="fa fa-check"></i><b>3.5.6</b> Piping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="3.5.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#group-by-and-summarise"><i class="fa fa-check"></i><b>3.5.7</b> Group by and Summarise</a></li>
+<li class="chapter" data-level="3.5.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#wide-and-long-data---gather-and-spread"><i class="fa fa-check"></i><b>3.5.8</b> Wide and long data - gather and spread</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>3.6</b> Graphics with ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#why-ggolot"><i class="fa fa-check"></i><b>3.6.1</b> Why ggolot?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#ggplot-building-blocks"><i class="fa fa-check"></i><b>3.6.2</b> ggplot building blocks</a></li>
+<li class="chapter" data-level="3.6.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_point"><i class="fa fa-check"></i><b>3.6.3</b> geom_point</a></li>
+<li class="chapter" data-level="3.6.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_line"><i class="fa fa-check"></i><b>3.6.4</b> geom_line</a></li>
+<li class="chapter" data-level="3.6.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_histogram"><i class="fa fa-check"></i><b>3.6.5</b> geom_histogram</a></li>
+<li class="chapter" data-level="3.6.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_boxplot"><i class="fa fa-check"></i><b>3.6.6</b> geom_boxplot</a></li>
+<li class="chapter" data-level="3.6.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#facet_wrap"><i class="fa fa-check"></i><b>3.6.7</b> facet_wrap</a></li>
+<li class="chapter" data-level="3.6.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#labels"><i class="fa fa-check"></i><b>3.6.8</b> labels</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#fine-tuning-your-ggplots"><i class="fa fa-check"></i><b>3.7</b> Fine-tuning your ggplots</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#themes"><i class="fa fa-check"></i><b>3.7.1</b> Themes</a></li>
+<li class="chapter" data-level="3.7.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#panel-1"><i class="fa fa-check"></i><b>3.7.2</b> Panel 1</a></li>
+<li class="chapter" data-level="3.7.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#panel-2"><i class="fa fa-check"></i><b>3.7.3</b> Panel 2</a></li>
+<li class="chapter" data-level="3.7.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#multi-panel-figues"><i class="fa fa-check"></i><b>3.7.4</b> Multi-panel figues</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#saving-ggplots"><i class="fa fa-check"></i><b>3.8</b> Saving ggplots</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#additional-resources"><i class="fa fa-check"></i><b>3.9</b> Additional resources</a></li>
+<li class="chapter" data-level="3.10" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#survey-1"><i class="fa fa-check"></i><b>3.10</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html"><i class="fa fa-check"></i><b>4</b> Reproducible research</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#prior-to-the-workshop"><i class="fa fa-check"></i><b>4.2</b> Prior to the workshop</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#setup-instructions"><i class="fa fa-check"></i><b>4.2.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#background-1"><i class="fa fa-check"></i><b>4.2.2</b> Background</a></li>
+<li class="chapter" data-level="4.2.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#terminology"><i class="fa fa-check"></i><b>4.2.3</b> Terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-reproducibility"><i class="fa fa-check"></i><b>4.3</b> Why reproducibility?</a></li>
+<li class="chapter" data-level="4.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-projects"><i class="fa fa-check"></i><b>4.4</b> R projects</a></li>
+<li class="chapter" data-level="4.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-scripts"><i class="fa fa-check"></i><b>4.5</b> R scripts</a></li>
+<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.6</b> Modularize by task</a></li>
+<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.7</b> Use <em>Make</em></a></li>
+<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.8</b> Reproducible R environment with <code>packrat</code></a></li>
+<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.9</b> Documents made reproducible</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.9.1</b> What is a document really?</a></li>
+<li class="chapter" data-level="4.9.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.9.2</b> Rmarkdown</a></li>
+<li class="chapter" data-level="4.9.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.9.3</b> Knitting</a></li>
+<li class="chapter" data-level="4.9.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.9.4</b> Markdown body</a></li>
+<li class="chapter" data-level="4.9.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.9.5</b> Static documents</a></li>
+<li class="chapter" data-level="4.9.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.9.6</b> Dynamic documents</a></li>
+<li class="chapter" data-level="4.9.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.9.7</b> Slides made reproducible</a></li>
+<li class="chapter" data-level="4.9.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.9.8</b> Rmd in your workflow</a></li>
+<li class="chapter" data-level="4.9.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.9.9</b> Publish with Rpubs.com</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.10</b> Git</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.10.1</b> What is version control?</a></li>
+<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.10.2</b> Why Git?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.11</b> Git on your computer</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.11.1</b> Initialize a repo (<code>git init</code>)</a></li>
+<li class="chapter" data-level="4.11.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.11.2</b> Add files (<code>git add</code>)</a></li>
+<li class="chapter" data-level="4.11.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.11.3</b> Git staging area (index)</a></li>
+<li class="chapter" data-level="4.11.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.11.4</b> Commit changes (<code>git commit</code>)</a></li>
+<li class="chapter" data-level="4.11.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.11.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
+<li class="chapter" data-level="4.11.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.11.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
+<li class="chapter" data-level="4.11.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.11.7</b> Branches (<code>git checkout -b</code>)</a></li>
+<li class="chapter" data-level="4.11.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.11.8</b> Merge conflicts (<code>git merge</code>)</a></li>
+<li class="chapter" data-level="4.11.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.11.9</b> Summary of Git</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.12</b> Collaborate with GitHub</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.12.1</b> Configure your computer (<code>git config</code>)</a></li>
+<li class="chapter" data-level="4.12.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.12.2</b> Make an online repo</a></li>
+<li class="chapter" data-level="4.12.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.12.3</b> Link local and online repo (<code>git remote</code>)</a></li>
+<li class="chapter" data-level="4.12.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.12.4</b> Update an online repo (<code>git push</code>)</a></li>
+<li class="chapter" data-level="4.12.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.12.5</b> Copy an online repo (<code>git clone</code>)</a></li>
+<li class="chapter" data-level="4.12.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.12.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
+<li class="chapter" data-level="4.12.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.12.7</b> GitHub GUI</a></li>
+<li class="chapter" data-level="4.12.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.12.8</b> Git in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.13</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.13.1</b> Reproducible research</a></li>
+<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.13.2</b> R/RStudio</a></li>
+<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.13.3</b> Git/GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.14</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html"><i class="fa fa-check"></i><b>5</b> Statistical models in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#introduction-3"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#setup-instructions-1"><i class="fa fa-check"></i><b>5.1.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="5.1.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#data-description-1"><i class="fa fa-check"></i><b>5.1.2</b> Data description</a></li>
+<li class="chapter" data-level="5.1.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#making-an-rstudio-project-1"><i class="fa fa-check"></i><b>5.1.3</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="5.1.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#installing-and-loading-packages-2"><i class="fa fa-check"></i><b>5.1.4</b> Installing and loading packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#experimental-design"><i class="fa fa-check"></i><b>5.2</b> Experimental design</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#balanced-designs"><i class="fa fa-check"></i><b>5.2.1</b> Balanced designs</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#blocking-factors-and-random-effects"><i class="fa fa-check"></i><b>5.2.2</b> Blocking factors and random effects</a></li>
+<li class="chapter" data-level="5.2.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#randomization"><i class="fa fa-check"></i><b>5.2.3</b> Randomization</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>5.3</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#key-assumptions"><i class="fa fa-check"></i><b>5.3.1</b> Key assumptions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#the-gist-of-the-math"><i class="fa fa-check"></i><b>5.3.2</b> The gist of the math</a></li>
+<li class="chapter" data-level="5.3.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups"><i class="fa fa-check"></i><b>5.3.3</b> 1-way ANOVA with 2 groups</a></li>
+<li class="chapter" data-level="5.3.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#formula-notation-in-r"><i class="fa fa-check"></i><b>5.3.4</b> Formula notation in R</a></li>
+<li class="chapter" data-level="5.3.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#anova-in-r"><i class="fa fa-check"></i><b>5.3.5</b> ANOVA in R</a></li>
+<li class="chapter" data-level="5.3.6" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-1"><i class="fa fa-check"></i><b>5.3.6</b> 1-way ANOVA with &gt; 2 groups</a></li>
+<li class="chapter" data-level="5.3.7" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#reload-and-explore-the-data"><i class="fa fa-check"></i><b>5.3.7</b> Reload and explore the data</a></li>
+<li class="chapter" data-level="5.3.8" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#assess-which-groups-differ"><i class="fa fa-check"></i><b>5.3.8</b> Assess which groups differ</a></li>
+<li class="chapter" data-level="5.3.9" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-2"><i class="fa fa-check"></i><b>5.3.9</b> 2-way ANOVA with 2 groups</a></li>
+<li class="chapter" data-level="5.3.10" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-including-an-interaction-term"><i class="fa fa-check"></i><b>5.3.10</b> 2-way ANOVA with 2 groups including an interaction term</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-regression"><i class="fa fa-check"></i><b>5.4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#load-and-explore-the-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Load and explore the data</a></li>
+<li class="chapter" data-level="5.4.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-models"><i class="fa fa-check"></i><b>5.4.2</b> Linear models</a></li>
+<li class="chapter" data-level="5.4.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#key-assumptions-1"><i class="fa fa-check"></i><b>5.4.3</b> Key assumptions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#simple-linear-regression"><i class="fa fa-check"></i><b>5.4.4</b> Simple linear regression</a></li>
+<li class="chapter" data-level="5.4.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#residuals"><i class="fa fa-check"></i><b>5.4.5</b> Residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#cautions-when-using-linear-models"><i class="fa fa-check"></i><b>5.5</b> Cautions when using linear models</a></li>
+<li class="chapter" data-level="5.6" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#multiple-linear-regression"><i class="fa fa-check"></i><b>5.6</b> Multiple linear regression</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#multiple-is-the-formula-not-the-predictor"><i class="fa fa-check"></i><b>5.6.1</b> Multiple is the formula, not the predictor</a></li>
+<li class="chapter" data-level="5.6.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#transforming-predictors-log"><i class="fa fa-check"></i><b>5.6.2</b> Transforming predictors: log</a></li>
+<li class="chapter" data-level="5.6.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#transforming-predictors-polynomial"><i class="fa fa-check"></i><b>5.6.3</b> Transforming predictors: polynomial</a></li>
+<li class="chapter" data-level="5.6.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#interactions-and-analysis-of-covarianvce-ancova"><i class="fa fa-check"></i><b>5.6.4</b> Interactions and ANalysis of COVArianvce (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-mixed-effects-models"><i class="fa fa-check"></i><b>5.7</b> Linear Mixed Effects models</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#motivations-for-lme"><i class="fa fa-check"></i><b>5.7.1</b> Motivations for LME</a></li>
+<li class="chapter" data-level="5.7.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#definitions"><i class="fa fa-check"></i><b>5.7.2</b> Definitions</a></li>
+<li class="chapter" data-level="5.7.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#fitting-lme"><i class="fa fa-check"></i><b>5.7.3</b> Fitting LME</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#generalized-linear-models"><i class="fa fa-check"></i><b>5.8</b> Generalized Linear models</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#definition"><i class="fa fa-check"></i><b>5.8.1</b> Definition</a></li>
+<li class="chapter" data-level="5.8.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#fitting-glms"><i class="fa fa-check"></i><b>5.8.2</b> Fitting GLMs</a></li>
+<li class="chapter" data-level="5.8.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#logistic-regression-family-binomial"><i class="fa fa-check"></i><b>5.8.3</b> Logistic regression (<code>family = binomial</code>)</a></li>
+<li class="chapter" data-level="5.8.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#count-data-family-poisson"><i class="fa fa-check"></i><b>5.8.4</b> Count data (<code>family = poisson</code>)</a></li>
+<li class="chapter" data-level="5.8.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#negative-binomial-model-for-count-data"><i class="fa fa-check"></i><b>5.8.5</b> Negative binomial model for count data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#survey-3"><i class="fa fa-check"></i><b>5.9</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html"><i class="fa fa-check"></i><b>6</b> Intermediate R programming</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#introduction-4"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#setup-instructions-2"><i class="fa fa-check"></i><b>6.1.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#background-2"><i class="fa fa-check"></i><b>6.1.2</b> Background</a></li>
+<li class="chapter" data-level="6.1.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#data-description-2"><i class="fa fa-check"></i><b>6.1.3</b> Data description</a></li>
+<li class="chapter" data-level="6.1.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#making-an-rstudio-project-2"><i class="fa fa-check"></i><b>6.1.4</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="6.1.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#installing-and-loading-packages-3"><i class="fa fa-check"></i><b>6.1.5</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="6.1.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#downloading-data"><i class="fa fa-check"></i><b>6.1.6</b> Downloading data</a></li>
+<li class="chapter" data-level="6.1.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#load-data"><i class="fa fa-check"></i><b>6.1.7</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#objects-classes-and-attributes"><i class="fa fa-check"></i><b>6.2</b> Objects, classes, and attributes</a></li>
+<li class="chapter" data-level="6.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#s3-objects"><i class="fa fa-check"></i><b>6.3</b> S3 objects</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#vectors-1"><i class="fa fa-check"></i><b>6.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.3.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#complex-objects"><i class="fa fa-check"></i><b>6.3.2</b> Complex objects</a></li>
+<li class="chapter" data-level="6.3.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#data-objects"><i class="fa fa-check"></i><b>6.3.3</b> Data objects</a></li>
+<li class="chapter" data-level="6.3.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#the-r-list-object"><i class="fa fa-check"></i><b>6.3.4</b> The R list object</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#s4-objects"><i class="fa fa-check"></i><b>6.4</b> S4 objects</a></li>
+<li class="chapter" data-level="6.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#functions-1"><i class="fa fa-check"></i><b>6.5</b> Functions</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#basics"><i class="fa fa-check"></i><b>6.5.1</b> Basics</a></li>
+<li class="chapter" data-level="6.5.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#arguments"><i class="fa fa-check"></i><b>6.5.2</b> Arguments</a></li>
+<li class="chapter" data-level="6.5.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#triple-dot-argument"><i class="fa fa-check"></i><b>6.5.3</b> Triple-dot argument</a></li>
+<li class="chapter" data-level="6.5.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#scoping"><i class="fa fa-check"></i><b>6.5.4</b> Scoping</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#building-a-function"><i class="fa fa-check"></i><b>6.6</b> Building a function</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-1.-define-and-test-your-task"><i class="fa fa-check"></i><b>6.6.1</b> Step 1. Define and test your task</a></li>
+<li class="chapter" data-level="6.6.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-3-add-packages"><i class="fa fa-check"></i><b>6.6.2</b> Step 3: Add packages</a></li>
+<li class="chapter" data-level="6.6.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-4-start-you-r-documentation"><i class="fa fa-check"></i><b>6.6.3</b> Step 4: Start you r documentation</a></li>
+<li class="chapter" data-level="6.6.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-5-loop-through-multiple-y-variables"><i class="fa fa-check"></i><b>6.6.4</b> Step 5: Loop through multiple y-variables</a></li>
+<li class="chapter" data-level="6.6.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6-save-results-to-a-table"><i class="fa fa-check"></i><b>6.6.5</b> Step 6: Save results to a table</a></li>
+<li class="chapter" data-level="6.6.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6.1-save-all-iterations-of-the-loop"><i class="fa fa-check"></i><b>6.6.6</b> Step 6.1: Save all iterations of the loop</a></li>
+<li class="chapter" data-level="6.6.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6.2-beautify-the-output"><i class="fa fa-check"></i><b>6.6.7</b> Step 6.2 Beautify the output</a></li>
+<li class="chapter" data-level="6.6.8" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-7-complete-documentation"><i class="fa fa-check"></i><b>6.6.8</b> Step 7: Complete documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#packages"><i class="fa fa-check"></i><b>6.7</b> Packages</a></li>
+<li class="chapter" data-level="6.8" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#creating-a-package-project"><i class="fa fa-check"></i><b>6.8</b> Creating a package project</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#description"><i class="fa fa-check"></i><b>6.8.1</b> Description</a></li>
+<li class="chapter" data-level="6.8.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#r"><i class="fa fa-check"></i><b>6.8.2</b> R/</a></li>
+<li class="chapter" data-level="6.8.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#man"><i class="fa fa-check"></i><b>6.8.3</b> man/</a></li>
+<li class="chapter" data-level="6.8.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#namespace"><i class="fa fa-check"></i><b>6.8.4</b> Namespace</a></li>
+<li class="chapter" data-level="6.8.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#adding-imports-and-exports"><i class="fa fa-check"></i><b>6.8.5</b> Adding imports and exports</a></li>
+<li class="chapter" data-level="6.8.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#test-your-package"><i class="fa fa-check"></i><b>6.8.6</b> Test your package</a></li>
+<li class="chapter" data-level="6.8.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#test-your-package-again"><i class="fa fa-check"></i><b>6.8.7</b> Test your package again</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#further-resources"><i class="fa fa-check"></i><b>6.9</b> Further resources</a></li>
+<li class="chapter" data-level="6.10" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#survey-4"><i class="fa fa-check"></i><b>6.10</b> Survey</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ECOSCOPE: Data Science Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-r-and-rstudio" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Introduction to R and RStudio</h1>
+<div id="introduction" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Introduction</h2>
+<p>In this tutorial, we introduce you to R and RStudio at the beginner level. This self-guided tutorial is meant to get you started in R and acts as a prerequisite for our other tutorials.</p>
+<p>First, you will start by learning the fundamentals of the R language through interactive exercises. Then, at the end of the tutorial, you will learn more about working with R on your own computer, creating scripts and projects, and using RStudio, a friendly user interface between you and R.</p>
+<div id="what-is-r" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> What is R?</h3>
+<p>Let’s start with the basics: what is R? It is a <em>programming language</em> used across many sciences and industries. Because it was originally designed by and for statisticians, it excels at tasks like data analysis and data visualization.</p>
+<div id="what-is-a-programming-language" class="section level4" number="2.1.1.1">
+<h4><span class="header-section-number">2.1.1.1</span> what is a programming language?</h4>
+<p>It is a language that you use to give instructions to your computer. It interfaces between the user and the machine. This common language has particular rules (called syntax).</p>
+</div>
+<div id="why-is-this-important-why-not-use-excel" class="section level4" number="2.1.1.2">
+<h4><span class="header-section-number">2.1.1.2</span> Why is this important? Why not use excel?</h4>
+<p>Why use a language like R instead of point-and-click alternatives like Excel? For many reasons! Firstly, R is <em>free</em> and <em>open-source</em>. And because it is a programming language, it is vastly more <em>flexible</em> and <em>reproducible</em> (more on these later).</p>
+</div>
+</div>
+</div>
+<div id="using-r-in-your-own-computer" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Using R in your own computer</h2>
+<p>In this section, you will learn more about the RStudio environment, how to create files and scripts, load data files that are saved in your computer, and install packages.</p>
+<div id="what-is-rstudio" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> What is RStudio?</h3>
+<p>A friendly interface between you and the R console. RStudio is an integrated development and analysis environment (IDE) for R that brings a number of conveniences over using R in a terminal or other editing environments.</p>
+<p><img src="images/introR/tutorial_step_2.png" /></p>
+<p>You may be running this tutorial from within RStudio. If that is not the case, open RStudio in your computer. When you start RStudio, you will see something like the following window appear:</p>
+<p><img src="images/introR/rstudio.png" /></p>
+<p>Notice that it is divided into different “panes.” For now we will focus on the <em>console</em> (left side).</p>
+</div>
+<div id="the-r-console" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> The R console</h3>
+<p>The console is your view into the R engine. You can use it to give commands to R and immediately see the output.</p>
+<p>The <code>&gt;</code> symbol in the console is called the <em>prompt</em>. It is inviting you to type R commands, such as <code>2 * 2</code> or <code>mean(x)</code>. When you press Return, you can see the output printed by R. Try this out in your own console.</p>
+<p>Sometimes, you may accidentally press Return before finishing a complete command. This often happens because you forgot to close parentheses. For example, you may have written: <code>mean(c(1,2,3)</code>; this command is incomplete because it is missing one <code>)</code> at the end. When you give the console an incomplete command, R expects you to complete it. Therefore, the prompt (<code>&gt;</code>) is replaced by a plus sign (<code>+</code>). This is R’s way of telling you to continue writting. When this happens, you have two alternatives. Either you complete the command (e.g., write the missing <code>)</code>) and then press <kbd>Return</kbd> <em>or</em> you can press <kbd>Esc</kbd>, to cancel the command and show the prompt.</p>
+</div>
+<div id="the-r-environment" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> The R Environment</h3>
+<p>Using your own console, create a new variable, e.g., <code>my_variable &lt;- 3</code>. (Note that RStudio has a shortcut for the assignment operator: <kbd>Alt</kbd>+<kbd>-</kbd> in Windows or <kbd>Option</kbd>+<kbd>-</kbd> in a Mac.)</p>
+<p>This variable now “exists” for the remainder of the R session. Whenever you type <code>my_variable</code>, it will be like typing the value 3. The set of all variables that have been created in a particular R session is called the <em>environment</em> (also known as the <em>workspace</em>).</p>
+<p>In RStudio, you can see all currently-existing variables in the <em>Environment</em> pane (tabbed in the upper right). If you open this pane, you will find your newly-created variable. This is helpful to keep track of the currently existing variables and their current values.</p>
+<p><em>A word of caution: auto-saving of the R environment</em></p>
+<p>By default, when you save your work, RStudio also auto-saves your environment (in an <code>.RData</code> file). This means that when you close RStudio and then re-open it, all of the variables will be created for you immediately.</p>
+<p>This may seem practical, because it means that you can start right where you left off without re-importing any data or re-calculating any intermediate steps. In practice, however, this is not a good idea. For example, when you reload a saved environment, you may inadvertently use variables from an older version of your R code.</p>
+<p>It will save you many headaches if you learn to avoid thinking of the variables in your environment as “real” files that are saved somewhere in your computer (the way your R scripts and data files are). Instead, if you want to ensure that you can work across multiple sessions, and that your work remains reproducible when you revisit it a long time in the future, you should focus on keeping a good script. You should be able to re-create your environment from your script every session.</p>
+<p>It is a best practice to disable RStudio’s environment auto-saving option. Do the following:</p>
+<ul>
+<li>Click Tools &gt; Global Options.</li>
+<li>Where it says “Save workspace to .RData on exit,” select the option “Never.”</li>
+<li>Click “OK” and close the dialog.</li>
+</ul>
+<p>Now R will never save or prompt you to save your environment from RStudio.</p>
+</div>
+<div id="scripts" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Scripts</h3>
+<p>So far, we have been typing commands into the console directly. This simple process lets you “talk” with R one command at a time, and get immediate output. However, this approach is not very practical. Each time you want to execute a set of commands, you have to re-enter them manually, one by one.</p>
+<p>That is very different from the code boxes we used throughout this tutorial. In those interactive boxes, you typed multiple lines of code, and then pressed Run, which sent the <em>entire</em> set of instructions to the console, all at once. Each of those interactive boxes is a small <em>script</em>.</p>
+<p>R scripts are simply text files that contain all the code that loads your raw data, cleans it, performs the analyses, and creates and saves visualizations. You can save a script in your computer as a file, so that you can run it again in the future, if you need to, and you can edit the script at any point.</p>
+<p><img src="images/introR/tutorial_step_3.png" /></p>
+<div id="advantages-of-working-with-scripts" class="section level4" number="2.2.4.1">
+<h4><span class="header-section-number">2.2.4.1</span> Advantages of working with scripts</h4>
+<p>R scripts maintain a record of everything that is done to the raw data to reach the final result:</p>
+<ul>
+<li>It is very easy to write up and communicate your methods because you have a document listing the precise steps you used to conduct your analyses. This is one of R’s primary advantages compared to traditional tools like Excel, where it may be unclear how to reproduce the results.</li>
+<li>If you get new or different data, you can re-run your analysis in a single click by simply running the script again! (Compare to Excel where you would need to re-do all of the analysis again.)</li>
+</ul>
+</div>
+<div id="when-to-use-a-script-when-to-use-the-console" class="section level4" number="2.2.4.2">
+<h4><span class="header-section-number">2.2.4.2</span> When to use a script? When to use the console?</h4>
+<p>Generally, if you are testing an operation (e.g., what would my data look like if I applied a log-transformation to it?), you should do it in the console. But if you are committing a step to your analysis (e.g., I want to apply a log-transformation to my data and then conduct the rest of my analyses on the log-transformed data), you should add it to your R script so that it is saved for future use.</p>
+</div>
+<div id="how-to-create-a-script" class="section level4" number="2.2.4.3">
+<h4><span class="header-section-number">2.2.4.3</span> How to create a script?</h4>
+<p>To create a script, go to File &gt; New File &gt; R Script and save it in a convenient directory. If you open the directory on your computer, you will see the script is now saved there.</p>
+<p>Open the example script in RStudio and examine it. Don’t worry if you don’t understand every single line of code: you should still be able to understand the gist of what the script does (use the <code>help()</code> function if necessary).</p>
+<p>You can run the commands from the script into the console line by line. To do this, click on the first line and press <kbd>Command</kbd>+<kbd>Return</kbd> or the “Run” button in RStudio.</p>
+<p>Alternatively, you can run all of the script at once (click the “Source” button in RStudio). If you source the script, you won’t see any output in the console, but all the commands will be executed and you should see all the variables that were created in the Environment pane.</p>
+<p>You can also modify this script. For example, you can add other words to the <code>names</code> vector. Once you have done this, you can repeat all the calculations with a single click by sourcing the script: no need to redo your analysis.</p>
+</div>
+</div>
+<div id="installing-and-loading-packages" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Installing and loading packages</h3>
+<p>In the <em>Quick plots</em> section, we discussed packages. They are sets of functions that extend R’s capabilities. Packages facilitate and enhance analyses. Anyone can make a package and share it with others.</p>
+<p>However, because those functions are not part of base R, they do not come pre-installed. You need to install any package you use in your computer. In the <em>Quick plots</em> section, we used the <code>quickplot()</code> function, from the popular data visualization package ggplot2.</p>
+<p>Let’s install ggplot2 in your computer. Packages are typically installed from <a href="https://www.r-project.org/">CRAN</a> (The Comprehensive R Archive Network), which is a database containing R itself as well as many R packages. Any package can be installed from CRAN using the <code>install.packages()</code> function.</p>
+<p>When you install a package, it is saved into your computer, and once a package is installed, you won’t need to reinstall it again. Copy the following code into your own RStudio console and run it to install ggplot2.</p>
+<pre><code>install.packages(&quot;ggplot2&quot;)</code></pre>
+<p>After installing a package, and <em>every time</em> you open a new RStudio session, the packages you want to use need to be loaded into the R workspace with the <code>library()</code> function (see the code box below). This tells R to access the package’s functions and prevents RStudio from lags that would occur if it automatically loaded every downloaded package every time you opened it. It is a good idea to load all of the packages you need for a particular analysis at the top of that analysis’ script.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-r-and-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>) <span class="co"># Load ggplot2 package.</span></span></code></pre></div>
+<p><img src="images/introR/install_vs_library.jpeg" /></p>
+</div>
+<div id="paths-and-working-directory" class="section level3" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Paths and working directory</h3>
+<p>In all operating systems, files “live” inside a directory (or “folder”). This directory, in turn, is nested within its own directory, which itself is nested within a larger directory, and so on, following a hierarchical structure. The top-most directory in such a filesystem is called the <em>root</em> directory. In Windows, the root directory is usually called <code>C:\Windows</code>; in Mac OS and Linux it is simply called <code>/</code>.</p>
+<p>To tell your computer about a given file, it is often not enough to provide just the filename. Many different files with the same filename could exist in a given computer. Instead, you often have to provide the file’s <em>absolute path</em>, which describes the file’s unique location in the directory tree hierarchy. For example, in Mac OS or Linux a file’s absolute path could look like this:</p>
+<pre><code>/home/user/docs/Letter.txt</code></pre>
+<p>and in Windows, it could look like this:</p>
+<pre><code>C:\user\docs\Letter.txt</code></pre>
+<p>Whenever you open R, there is some directory in your environment associated with your current R session. This is called the <em>working directory</em>. It is not always obvious what the current working directory is. You can learn what the current working directory is by typing the following in your console:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-r-and-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() <span class="co"># Which stands for &quot;get working directory&quot;</span></span></code></pre></div>
+<p>This prints out the path of your current working directory. In RStudio, you can also open the <em>Files</em> pane (on the bottom-right) which shows all the files in the current working directory. Knowing the current working directory is important because whenever you want to load data from your computer (or save data or figures into your computer) R will look for it (or save it) in your current working directory. We will learn more about loading data later on. But first, we will learn about <em>projects</em>, a nice tool that simplifies our interactions with the working directory.</p>
+</div>
+<div id="rstudio-projects" class="section level3" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> RStudio projects</h3>
+<p>Working with absolute paths is very complicated, and can cause a lot of problems. For example, if you move the directory that contains your project, all of the absolute paths will change, and any script that relies on them will not work any more. Similarly, if you send your script to a colleague, it won’t work because the absolute paths will be different in their computer.</p>
+<p>To solve this problem, you should always work with RStudio <em>projects</em>. A project is essentially a directory (folder) in your computer that contains all of the files and outputs that you are working on.</p>
+<p>When you create a project, RStudio creates a directory containing an <code>.Rproj</code> file. This file ensures that, when you are working on the project, the R working directory is set to its project directory, no matter where in your computer that directory is located.</p>
+<p><em>Advantages:</em></p>
+<ul>
+<li>When you import data, R automatically looks for the file in the working directory (i.e., the project directory) instead of you having to specify an absolute file path on your computer like <code>/Users/username/Desktop/</code>. We will learn more about this soon.</li>
+<li>If you decide to save any plots or data files, R will also automatically save any of them in the project directory.</li>
+</ul>
+<div id="creating-an-rstudio-project" class="section level4" number="2.2.7.1">
+<h4><span class="header-section-number">2.2.7.1</span> Creating an RStudio project</h4>
+<p>RStudio has a simple interface to create and switch between projects, accessed from the button in the top-right corner of the RStudio window (labeled “Project: (None),” initially). Start by clicking the Project button in the upper right or going to the File menu. Select New Project and the following will appear.</p>
+<p><img src="images/introR/new_project.png" /></p>
+<p>You can either create a project in an existing directory or make a new directory on your computer. Create a new project on your desktop. After your project is created, navigate to its directory using your Finder/File explorer. You will see the <code>.RProj</code> file has been created.</p>
+<p>To access this project in the future, simply double-click the <code>.RProj</code> file and RStudio will open the project. Alternatively, open RStudio and choose File &gt; Open Project.</p>
+<p>Whenever you open a project, the working directory is immediately set to the project’s directory. Make sure to save all scripts and data files associated with your project in that project’s directory.</p>
+</div>
+</div>
+</div>
+<div id="r-as-a-calculator" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> R as a calculator</h2>
+<p>The window below is a small interactive environment. You can write R code in it, and then, when you click the Run button, the code is executed by the computer and you receive an <em>output</em>.</p>
+<p>We can use it to perform simple calculator-style operations, such as addition (<code>+</code>), subtraction (<code>-</code>), multiplication (<code>*</code>), division (<code>/</code>), or power (<code>^</code>).</p>
+<p>The following code computes the answer to <span class="math inline">\(1 + 1\)</span>. How can we have R compute the answer to <span class="math inline">\(3^2\)</span>?:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Just like when you use a calculator, you can use parentheses <code>( )</code> to define the order of operations. The following code calculates the answer to <span class="math inline">\(\frac{1+1}{4}\)</span>. Change it so that it computes the answer to <span class="math inline">\(\frac{(1+1)}{4}\)</span>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-r-and-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1] 1.25</code></pre>
+<p>For the most part, in R, spaces between symbols are optional. <code>1+1</code> or <code>1 + 1</code> mean the same thing, as does <code>(3*2)</code> or <code>(3 * 2)</code>.</p>
+<p>R also knows common constants, for example <span class="math inline">\(\pi\)</span> can be accessed with <code>pi</code>. Write <code>pi</code> in the box below and run the code. Examine the output. Then, write code to divide <span class="math inline">\(\pi\)</span> by zero. What happens?</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduction-to-r-and-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a>pi</span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+</div>
+<div id="assigning-variables" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Assigning variables</h2>
+<p>A variable is like a box that can contain any value inside of it. You can name your variables anything you want, provided that it doesn’t start with a number and it does not include any spaces or special characters other than <code>.</code> and <code>_</code>. For example, a variable could be called <code>x</code>, <code>my_variable</code>, or <code>height</code>.</p>
+<p>To create a variable, we need to assign a value to it, using the assignment operator <code>&lt;-</code>. For example, the code below creates a variable called <code>x</code> and assigns the value <code>5</code> to it. Think of the assignment operator as an arrow, “putting” the value 5 into a “box” labeled <code>x</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-to-r-and-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
+<p>As you can see, assigning variables does not return any output.</p>
+<p>Once a variable is created, it becomes part of your <em>working environment</em>, which means that you can use it to perform calculations. Go back to the box above and, in a new line, calculate <code>x + 3</code>, then run the code.</p>
+<p>When you perform an operation with a variable (like <code>x + 3</code> above), R will merely <em>print</em> the result, but it won’t <em>change the variable</em>. To see this, return to the box above, and, in a third line, calculate <code>x^2</code>. When you run the code, the output calculates the square of the current value of <code>x</code>. Because no new value has been assigned to <code>x</code>, its current value is still 5.</p>
+<p>If we write down a variable that does not yet exist, R doesn’t know what it means. To demonstrate this, write the name of any variable that does not exist (e.g. <code>y</code> or <code>does_not_exist</code>) and run it:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-r-and-rstudio.html#cb13-1" aria-hidden="true" tabindex="-1"></a>does_not_exist</span>
+<span id="cb13-2"><a href="introduction-to-r-and-rstudio.html#cb13-2" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;does_not_exist&#39;</span> not found</span></code></pre></div>
+<p>If you want to perform a sequence of calculations, you will need to assign intermediate results to variables. For example, say you set <code>x</code> to <code>2</code>, which you want to square and then add <code>1</code> to the result. To do this, create a new line of code in which you assign to the variable <code>x</code> the value <code>x^2</code>. On the third line, calculate <code>x + 1</code>. Before you press Run, try to guess what the output will be.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-r-and-rstudio.html#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb14-2"><a href="introduction-to-r-and-rstudio.html#cb14-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>In the example above, you start with some initial data (the value of <code>x</code>) and then perform a series of operations with those data (square it, then add one). If you ever get different data, you can easily re-do the entire calculation: replace the initial value of <code>x</code> (in line 1) by some other number and press Run. If you had a long list of operations, it would be tedious to re-do the whole analysis from scratch, but because you are using R, all it takes is one click.</p>
+<div id="comments" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Comments</h3>
+<p>It is best practice to annotate your R instructions with comments. In each line of code, any text preceded by the <code>#</code> symbol will not execute. Comments can be useful to remind yourself and to tell other readers what a specific chunk of code does. In the box below, the first line has a comment. Add similar comments explaining the second and third lines, then press Run.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-r-and-rstudio.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># create a variable called x, assign the value 2</span></span>
+<span id="cb16-2"><a href="introduction-to-r-and-rstudio.html#cb16-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb16-3"><a href="introduction-to-r-and-rstudio.html#cb16-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p>Again, try to predict the out of x before you run it!</p>
+</div>
+</div>
+<div id="functions" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Functions</h2>
+<p>Functions are one of the basic units in programming. Generally speaking, a function takes some input (one or more “arguments”) and generates some output.</p>
+<p>In R, function argument(s) always go inside parentheses <code>()</code>. Some built-in functions include the natural logarithm (<code>log()</code>), the base-10 logarithm (<code>log10()</code>), the exponential function (<code>exp()</code>), and the square root (<code>sqrt()</code>).</p>
+<p>For example, the code below creates a variable called <code>x</code> and assigns it the value of the natural logarithm of 5. In a new line of code, calculate <code>exp(x)</code>. Before you press run, think about what you think the outcome will be.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-r-and-rstudio.html#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div id="the-most-helpful-function-of-all-the-help-function" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> The most helpful function of all: the ‘help’ function</h3>
+<p>You can get information about a specific function by running the command <code>?&lt;function&gt;</code> or <code>help(&lt;function&gt;)</code> (replace <code>&lt;function&gt;</code> by the name of the function you are interested in). This command opens the help page, where you can find all information about a function’s purpose and its arguments. For beginners, it is useful to concentrate on the “Examples” and “Arguments” section to understand the typical usage of the function better.</p>
+<p>Run the code below to read the documentation for the logarithm function. Don’t worry if you don’t understand everything. When you are done, write code to return the base-3 logarithm of 8. (The answer should be about 1.89.)</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(log)</span></code></pre></div>
+<p>As you can see from the example above, some functions take multiple arguments. When that is the case, some or all of the arguments may be <em>named</em>. For example, the ‘log’ function has an argument named <code>base</code>. Writing the argument names is optional as long as you provide the arguments in the same sequence as given in the “Usage” section of the help page. For example, <code>log(3, 8)</code> is the same as <code>log(3, base = 8)</code>.</p>
+<p>Furthermore, as you can see with the logarithm example, it is often the case that some of the arguments are <em>optional</em>, i.e. the argument has a default value: <code>argument = default_value</code>. You already learned that you could just call <code>log(3)</code>, without specifying the <code>base</code> argument. Whenever this argument is not specified, it is assumed to be base <span class="math inline">\(e\)</span> by default. When reading the help page of a function, the sheer number of arguments can often be overwhelming. It is often helpful to first concentrate on the mandatory arguments (i.e. arguments without a default value) to get a grasp on the usage of a function.</p>
+</div>
+</div>
+<div id="data-types" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Data types</h2>
+<p>So far, we’ve been manipulating numbers. Any variable that holds a number is of type <em>numeric</em>. But R can also handle other types of data. We can find a variable’s data type with the function <code>class()</code>. The code below confirms that the variable <code>x</code> is numeric:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-r-and-rstudio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb20-2"><a href="introduction-to-r-and-rstudio.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>A completely different data type consists of alphanumeric strings, like words. Note how we surrounded the character string by quotation marks. If we don’t do this, R will think you are referring to a variable name.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introduction-to-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;Hello world!&quot;</span></span>
+<span id="cb22-2"><a href="introduction-to-r-and-rstudio.html#cb22-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;123&quot;</span></span>
+<span id="cb22-3"><a href="introduction-to-r-and-rstudio.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction-to-r-and-rstudio.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>A third data type is used for <em>logical</em> variables. Logical variables can only have two values: <code>TRUE</code> or <code>FALSE</code>. You can create a logical variable by assigning one of these values directly. Here we assign the value <code>TRUE</code> to the variable <code>x</code> and then confirm its data type:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduction-to-r-and-rstudio.html#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb26-2"><a href="introduction-to-r-and-rstudio.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p>But logical variables are most useful when they describe <em>logical statements</em> such as the ones in the box below. Each of these statements has a logical value: they are either <code>TRUE</code> or <code>FALSE</code>. Run the code below to find out the logical value of each statement.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introduction-to-r-and-rstudio.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;</span> <span class="dv">1</span> <span class="co"># smaller than</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="introduction-to-r-and-rstudio.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="co"># larger-or-equal to</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="introduction-to-r-and-rstudio.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="fl">7.1</span> <span class="co"># equal to. Note TWO equal symbols.</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="introduction-to-r-and-rstudio.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">!=</span> pi <span class="co"># not equal to</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We can assign the statements above to a variable. Then, use the function <code>class()</code> to check the variable’s data type.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="introduction-to-r-and-rstudio.html#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="sc">&lt;</span> <span class="dv">1</span></span>
+<span id="cb36-2"><a href="introduction-to-r-and-rstudio.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div id="exercises" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Given <code>x &lt;- pi</code>, what is the data type of <code>x</code>?</li>
+<li>Given <code>x &lt;- "2"</code>, what is the data type of <code>x</code>?</li>
+<li>Given <code>x &lt;- 1 + 2</code>, what is the data type of <code>x</code>?</li>
+<li>Given <code>x &lt;- 1 == 2</code>, what is the data type of <code>x</code>?</li>
+<li>Given <code>x &lt;- "FALSE"</code>, what is the data type of <code>x</code>?</li>
+</ol>
+</div>
+</div>
+<div id="structures" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Structures</h2>
+<p>So far, all of the objects we encountered consist of a single element: a single number, character string, or logical value. But R objects can also contain several elements. Examples of R object that contain multiple elements are <em>vectors</em> (one-dimensional) and <em>data frames</em> (two-dimensional).</p>
+<div id="vectors" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Vectors</h3>
+<p>This is a set of elements of the same type. Vectors are constructed with the function <code>c()</code>, which stands for <strong>c</strong>ombine.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="introduction-to-r-and-rstudio.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector of numbers</span></span>
+<span id="cb38-2"><a href="introduction-to-r-and-rstudio.html#cb38-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb38-3"><a href="introduction-to-r-and-rstudio.html#cb38-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 4 5 6</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="introduction-to-r-and-rstudio.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector of characters</span></span>
+<span id="cb40-2"><a href="introduction-to-r-and-rstudio.html#cb40-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;Goodbye&quot;</span>)</span>
+<span id="cb40-3"><a href="introduction-to-r-and-rstudio.html#cb40-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] &quot;Hello&quot;   &quot;Goodbye&quot;</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="introduction-to-r-and-rstudio.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector of logical</span></span>
+<span id="cb42-2"><a href="introduction-to-r-and-rstudio.html#cb42-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb42-3"><a href="introduction-to-r-and-rstudio.html#cb42-3" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+</div>
+<div id="apply-functions-over-vectors" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Apply functions over vectors</h3>
+<p>Many common descriptive statistics functions, like the mean (<code>mean()</code>), variance (<code>var()</code>), median (<code>median()</code>), standard deviation (<code>sd()</code>), maximum (<code>max()</code>), and minimum (<code>min()</code>), take numerical vectors as arguments. In the code below, a vector containing the numbers 3, 5.1, 7, and 1.23 was assigned to the variable <code>vector</code>. Then, the mean of the vector was computed via the <code>mean()</code> function.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="introduction-to-r-and-rstudio.html#cb44-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">5.1</span>, <span class="dv">7</span>, <span class="fl">1.23</span>)</span>
+<span id="cb44-2"><a href="introduction-to-r-and-rstudio.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vector)</span></code></pre></div>
+<pre><code>## [1] 4.0825</code></pre>
+</div>
+<div id="arithmetic-operations-on-vectors" class="section level3" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> Arithmetic operations on vectors</h3>
+<p>Common mathematical operators, such as <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>^</code> can also be used with vectors. The code in the box below performs an operation (in this case, a product) between two vectors of the same length. Run it and examine the result, to understand what this operation means to R. Then, re-assign the value of <code>x</code> to a scalar (a single number). Run the code again and, again, examine the result to understand what this operation means to R.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="introduction-to-r-and-rstudio.html#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb46-2"><a href="introduction-to-r-and-rstudio.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">*</span> x</span></code></pre></div>
+<pre><code>## [1]  2  6 12</code></pre>
+<p>As you can see, when you multiply two vectors with the same length, R multiplies all of the corresponding elements. The same holds for other operations, such as addition or division. This is called an element-wise operation. When you multiply a vector by a scalar, R multiplies every element of the vector by the scalar.</p>
+</div>
+</div>
+<div id="data-frames" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Data frames</h2>
+<p>Whereas a vector is a one-dimensional structure, <em>data frames</em> are two-dimensional. You can think of a data frame as a collection of vectors. Data frames are one of R’s most essential data structures. They organise data into a tabular format with rows and columns.</p>
+<p>If you have some data from an experiment or study, you will typically save it as a table in a format such as <code>.csv</code>, <code>.txt</code>, or <code>.xlsx</code>. When you load those files into R, you will create a data frame object. At the end of this tutorial (section <em>Using R in your own computer</em>) you will learn how to load a data file stored in your computer into R.</p>
+<div id="example-data-frame" class="section level3" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Example data frame</h3>
+<p>Instead of loading data from your computer, you can also use an online data set: we will use <a href="https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv">this one</a>, which is a <code>.csv</code> file hosted on our <a href="https://github.com/EDUCE-UBC/workshops_access">GitHub</a>. Click on the link and examine the format of the data. Notice that the first row consists of column names, that each column corresponds to a data variable, and that each row corresponds to one observation.</p>
+<p>These data contain information on oxygen concentrations sampled at <a href="https://en.wikipedia.org/wiki/Saanich_Inlet">Saanich Inlet, British Columbia</a> at several depths and during various seasons. It contains:</p>
+<ul>
+<li><code>Season</code> - season in which measurement was obtained; Fall or Summer</li>
+<li><code>Depth_m</code> - depth in meters (m) at which measurement as obtained</li>
+<li><code>O2_uM</code> - oxygen (O<sub>2</sub>) concentration in micromolar (µM)</li>
+<li><code>Add_data</code> - whether additional microbiological data was collected; <code>TRUE</code> or <code>FALSE</code></li>
+</ul>
+<p>For a brief introduction to the data used in our workshops, see <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663219/">Hallam SJ <em>et al</em>. 2017. Sci Data 4: 170158</a> “Monitoring microbial responses to ocean deoxygenation in a model oxygen minimum zone.” More detailed information on the environmental context and time series data can be found in <a href="https://www.nature.com/articles/sdata2017159">Torres-Beltrán M <em>et al</em>. 2017. Sci Data 4: 170159.</a> “A compendium of geochemical information from the Saanich Inlet water column.”</p>
+</div>
+<div id="importing-the-data-frame" class="section level3" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> Importing the data frame</h3>
+<p>You can import <code>.csv</code> data files into R using <code>read.csv()</code>. Since our file is hosted online, the function’s argument should be a character string containing the link to the data set.</p>
+<p>In the code box below, we will import the data file using <code>read.csv()</code> and assign it to the variable <code>dat</code>.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-r-and-rstudio.html#cb48-1" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span></span>
+<span id="cb48-2"><a href="introduction-to-r-and-rstudio.html#cb48-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(link)</span></code></pre></div>
+<p>ou can examine the first few rows of <code>dat</code> using the <code>head()</code> function. Do this in the code box above.</p>
+<ul>
+<li>The first row, containing the column names, is called <em>header</em>.</li>
+<li>Each column can be thought of as a vector corresponding to a single data variable.
+<ul>
+<li>For example, the second row is like a numeric vector, describing the data variable “Depth.”</li>
+<li>All elements of a column must be of the same data type (just like a vector)</li>
+</ul></li>
+<li>Each row corresponds to a single data observation: in this case, each row is a single study site.</li>
+</ul>
+<p>Data frames are integral to data analysis in R. We will learn how to manipulate data frames later in this tutorial.</p>
+</div>
+</div>
+<div id="quick-plots" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> Quick plots</h2>
+<p>There are many data visualization options in R. Some data visualization functions are part of R by default, much like other functions you already encountered, such as <code>log()</code> or <code>mean()</code>. Functions that are part of R by default are called <em>base R</em>.</p>
+<p>However, the most popular way to create publication-quality figures is to use a <em>package</em> called ggplot2. A package is a collection of functions that enhance R’s capabilities beyond base R. Anyone can create their own functions that solve additional problems, and share them with other users in the form of packages. People can then download those packages and use the functions therein.</p>
+<p>In this tutorial, we will only scratch the surface of data visualization in R. We will use the function <code>quickplot()</code>, which is part of ggplot2. When you work in R in your own computer, outside of this tutorial, you will need to install and load ggplot2 in order to use the <code>quickplot()</code> function.</p>
+<p>In the box below, we start by loading our data (like we did in the <em>Structures</em> section), and then we create a simple depth profile (scatterplot) of the Oxygen concentrations with colors indicating the Season that the sample was collected.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-r-and-rstudio.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the ggplot2 library</span></span>
+<span id="cb49-2"><a href="introduction-to-r-and-rstudio.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb49-3"><a href="introduction-to-r-and-rstudio.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="introduction-to-r-and-rstudio.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Link to data in csv format</span></span>
+<span id="cb49-5"><a href="introduction-to-r-and-rstudio.html#cb49-5" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span> </span>
+<span id="cb49-6"><a href="introduction-to-r-and-rstudio.html#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="introduction-to-r-and-rstudio.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read csv file</span></span>
+<span id="cb49-8"><a href="introduction-to-r-and-rstudio.html#cb49-8" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(link) </span>
+<span id="cb49-9"><a href="introduction-to-r-and-rstudio.html#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="introduction-to-r-and-rstudio.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data -- needs ggplot2</span></span>
+<span id="cb49-11"><a href="introduction-to-r-and-rstudio.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="fu">quickplot</span>(<span class="at">data =</span> dat,</span>
+<span id="cb49-12"><a href="introduction-to-r-and-rstudio.html#cb49-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> O2_uM,</span>
+<span id="cb49-13"><a href="introduction-to-r-and-rstudio.html#cb49-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> Depth_m,</span>
+<span id="cb49-14"><a href="introduction-to-r-and-rstudio.html#cb49-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> Season,</span>
+<span id="cb49-15"><a href="introduction-to-r-and-rstudio.html#cb49-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">&quot;Saanich Inlet: Seasonal oxygen depth profile&quot;</span>)</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</div>
+<div id="accessing-and-subsetting-data" class="section level2" number="2.10">
+<h2><span class="header-section-number">2.10</span> Accessing and subsetting data</h2>
+<div id="acessing-vector-elements" class="section level3" number="2.10.1">
+<h3><span class="header-section-number">2.10.1</span> Acessing vector elements</h3>
+<p>Every vector has a length, which is the number of elements in the vector. In the code box below, we created a vector called <code>x</code>. Using the function <code>length()</code> we can determine the number of elements in the vector:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="introduction-to-r-and-rstudio.html#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb50-2"><a href="introduction-to-r-and-rstudio.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Since vectors are one-dimensional and have a defined length, you can retrieve their individual values using vector indices. R uses 1-based indexing, meaning the first value in an R vector corresponds to index 1, the second value to index 2, and so on. The index of the final element of the vector is equal to the vector’s length.</p>
+<p>We can extract the value of the 2nd element of a vector using the square bracket operator <code>[]</code>, like in the code box below. Examine the output. It is a single number (or, identically, a vector of length 1).</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-r-and-rstudio.html#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb52-2"><a href="introduction-to-r-and-rstudio.html#cb52-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>You can also subset multiple elements of a vector, thus outputting a smaller vector. When you want to subset a single element of the vector, you write the index of that element between square brackets (like in the example above). Similarly, if you want to subset multiple elements, you must provide a <em>vector of indices</em> inside the square brackets.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introduction-to-r-and-rstudio.html#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb54-2"><a href="introduction-to-r-and-rstudio.html#cb54-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] <span class="co"># You can use a vector of indices to subset vector x</span></span></code></pre></div>
+<pre><code>## [1] 5 7</code></pre>
+<p>There is a convenient shortcut to create a vector containing all integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>: the <code>:</code> operator. In the code box below, we created two vectors: <code>x</code> and <code>y</code>. The logical operator <code>==</code> confirms that the two vectors are the same.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introduction-to-r-and-rstudio.html#cb56-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb56-2"><a href="introduction-to-r-and-rstudio.html#cb56-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span></span>
+<span id="cb56-3"><a href="introduction-to-r-and-rstudio.html#cb56-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE TRUE</code></pre>
+<p>Here we subset the 2nd, 3rd, and 4th elements of <code>x</code> using square brackets and the <code>:</code> operator. Note how the variable <code>x</code> itself did not change: it is still a vector of length 4.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="introduction-to-r-and-rstudio.html#cb58-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb58-2"><a href="introduction-to-r-and-rstudio.html#cb58-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 5 6 7</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-to-r-and-rstudio.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>If you want to use a subsetted vector later in your code, you need to save it into a variable using the assignment operator <code>&lt;-</code>, like this:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="introduction-to-r-and-rstudio.html#cb62-1" aria-hidden="true" tabindex="-1"></a>word_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;World&quot;</span>)</span>
+<span id="cb62-2"><a href="introduction-to-r-and-rstudio.html#cb62-2" aria-hidden="true" tabindex="-1"></a>word_vector <span class="ot">&lt;-</span> word_vector[<span class="dv">1</span>]</span>
+<span id="cb62-3"><a href="introduction-to-r-and-rstudio.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(word_vector)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Note that we <em>redefined</em> the length-2 variable <code>word_vector</code> into a length-1 vector. Had we wanted to keep the length-2 vector available for future use, we could also have assigned the subsetted vector to a new variable name, such as <code>hello_vector &lt;- word_vector[1]</code>.</p>
+</div>
+<div id="accessing-data-frame-elements" class="section level3" number="2.10.2">
+<h3><span class="header-section-number">2.10.2</span> Accessing data frame elements</h3>
+<p>Since vectors are 1D objects, their elements can be accessed using a single index. To access data frames, which are 2D objects, you need to specify two indices: the row number and the column number. The code below subsets the element located on the 4th row, 3th column. Then, using what you learned in the previous section, modify the code so that it outputs the 5th, 6th, and 7th elements of the third column.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="introduction-to-r-and-rstudio.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Link to data in csv format</span></span>
+<span id="cb64-2"><a href="introduction-to-r-and-rstudio.html#cb64-2" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span> </span>
+<span id="cb64-3"><a href="introduction-to-r-and-rstudio.html#cb64-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(link) <span class="co"># Read csv file</span></span>
+<span id="cb64-4"><a href="introduction-to-r-and-rstudio.html#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-5"><a href="introduction-to-r-and-rstudio.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 4th row, 3rd column</span></span>
+<span id="cb64-6"><a href="introduction-to-r-and-rstudio.html#cb64-6" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">4</span>, <span class="dv">3</span>] </span></code></pre></div>
+<pre><code>## [1] 91.115</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="introduction-to-r-and-rstudio.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How will we get the 5th, 6th, and 7th elements of the 3rd column?</span></span></code></pre></div>
+<p>It is often more useful to refer to data frame columns by name rather than number. The easiest way to do this is using the <code>$</code> symbol, which subsets an entire column from the data frame.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="introduction-to-r-and-rstudio.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the entire column</span></span>
+<span id="cb67-2"><a href="introduction-to-r-and-rstudio.html#cb67-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>O2_uM</span></code></pre></div>
+<pre><code>##  [1] 203.533 183.787 130.579  91.115  69.828  26.972  11.066   8.997   6.605
+## [10]   5.933   2.891   2.766  14.465  24.239  28.885  26.766 216.667 159.672
+## [19] 141.778  97.894  44.978  25.807  27.011  34.436  38.012  27.557  32.354
+## [28]  20.446   0.000   0.000   0.000   0.000</code></pre>
+<p>Note that the output (which is the entire <code>O2_uM</code> column) is simply an R vector. We can manipulate the <code>dat$O2_uM</code> object just like we would manipulate any other vector. Modify the code so that it outputs only the 5th, 6th, and 7th elements of the <code>O2_uM</code> column. Use the vector subsetting notation <code>[]</code> that you learned in the previous section. If you need help, use the Hint button.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="introduction-to-r-and-rstudio.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the 5th, 6th, and 7th elements of the `O2_uM` column</span></span>
+<span id="cb69-2"><a href="introduction-to-r-and-rstudio.html#cb69-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>O2_uM[<span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div>
+<pre><code>## [1] 69.828 26.972 11.066</code></pre>
+</div>
+<div id="subsetting-rows-according-to-condition" class="section level3" number="2.10.3">
+<h3><span class="header-section-number">2.10.3</span> Subsetting rows according to condition</h3>
+<p>Sometimes, we want to access only those observations (rows) of a data frame that obey certain conditions. We can do this with the <code>subset()</code> function, which takes two arguments: (1) the full data frame, and (2) the condition.</p>
+<p>For example, imagine that, from our data frame, we were only interested in those observations that were measured in the Fall. Then, we could subset the data like so: <code>subset(dat, Season == "Fall")</code>.</p>
+<p>In the <em>Quick plots</em> section, we plotted our data’s oxygen concentration as a function of depth. In that plot, four points had an oxygen concentration equal to zero. Complete the code below (replace the words surrounded by angular brackets <code>&lt; &gt;</code> by the appropriate code) to make a plot that includes only those observations where oxygen concentration is larger than zero:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="introduction-to-r-and-rstudio.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Link to data in csv format</span></span>
+<span id="cb71-2"><a href="introduction-to-r-and-rstudio.html#cb71-2" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span> </span>
+<span id="cb71-3"><a href="introduction-to-r-and-rstudio.html#cb71-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(link) <span class="co"># Read csv file</span></span>
+<span id="cb71-4"><a href="introduction-to-r-and-rstudio.html#cb71-4" aria-hidden="true" tabindex="-1"></a>reduced_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(dat, O2_uM <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb71-5"><a href="introduction-to-r-and-rstudio.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Needs ggplot2 package</span></span>
+<span id="cb71-6"><a href="introduction-to-r-and-rstudio.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quickplot</span>(<span class="at">data =</span> reduced_data, </span>
+<span id="cb71-7"><a href="introduction-to-r-and-rstudio.html#cb71-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> O2_uM,</span>
+<span id="cb71-8"><a href="introduction-to-r-and-rstudio.html#cb71-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> Depth_m,</span>
+<span id="cb71-9"><a href="introduction-to-r-and-rstudio.html#cb71-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> Season,</span>
+<span id="cb71-10"><a href="introduction-to-r-and-rstudio.html#cb71-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">&quot;Saanich Inlet: Seasonal oxygen depth profile&quot;</span>)</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>Subsetting is extremely useful when working with large data. You can learn more complex subsets in our <a href="https://github.com/EDUCE-UBC/workshops_access/tree/main/intro_tidyverse">Tidyverse</a> workshop using the tidyverse packages, which are a popular and widely used suite of R package for working with and visualizing data.</p>
+</div>
+</div>
+<div id="additional-exercises" class="section level2" number="2.11">
+<h2><span class="header-section-number">2.11</span> Additional exercises</h2>
+<p>To practice skills covered in this workshop and prepare for your future R endeavors, please complete the following exercises. When you are done, you can confirm your answers by downloading this script with solutions to exercises 2 through 4 and running it in your computer. Happy coding!</p>
+<div id="exercise-1-install-packages" class="section level3" number="2.11.1">
+<h3><span class="header-section-number">2.11.1</span> Exercise 1: Install packages</h3>
+<p>In your computer, install the packages used in the next workshop you plan to attend.</p>
+<ul>
+<li>The R tidyverse: tidyverse, lubridate, cowplot</li>
+<li>Intermediate R programming: tidyverse, lmerTest, devtools, roxygen2</li>
+<li>Statistical models: tidyverse, broom, plyr, lme4, car, lsmeans, MASS, faraway, gapminder, HSAUR3</li>
+<li>Reproducible Research: tidyverse, packrat</li>
+<li>None (but to practice package install anyway): tidyverse</li>
+</ul>
+<p><em>Please note that if you have <strong>R v3.3 or older</strong>, you may not be able to install tidyverse. In this case, you need to separately install each package within the tidyverse. This includes:</em> readr, tibble, dplyr, tidyr, stringr, ggplot2, purr, forcats</p>
+</div>
+<div id="exercise-2-calculating-a-probability-density" class="section level3" number="2.11.2">
+<h3><span class="header-section-number">2.11.2</span> Exercise 2: Calculating a probability density</h3>
+<p>Using R’s built-in functions you can perform some complex calculations. For example, the formula for the Probability Density Function (PDF) of the Normal distribution is:</p>
+<p><span class="math display">\[y(x) = \frac{1}{\sigma \sqrt{2 \pi}} \exp\bigg(- \frac{1}{2}\left( \frac{x - \mu}{\sigma}\right)^2\bigg),\]</span>
+where <span class="math inline">\(\mu\)</span> is the mean and <span class="math inline">\(\sigma\)</span> is the standard deviation.</p>
+<p>Let’s write a script that calculates the probability density of <span class="math inline">\(x\)</span> given some mean and standard deviation. In your own script, complete the missing code (replacing the code surrounded by angular brackets <code>&lt; &gt;</code>) to finish the calculation.</p>
+<pre><code>x &lt;- 0.8
+mu &lt;- 0 # mean
+sigma &lt;- 1 # standard deviation
+1/(sigma*sqrt(2*pi)) * exp(&lt;enter_code_here&gt;)</code></pre>
+</div>
+<div id="exercise-3-use-the-help-function-to-learn-how-to-flip-coins" class="section level3" number="2.11.3">
+<h3><span class="header-section-number">2.11.3</span> Exercise 3: Use the help function to learn how to flip coins</h3>
+<p>R can be used to generate random numbers from different distributions. For example, when you flip some coins you will get a random number of tails (“successes”), drawn from a binomial distribution. In R, you can use the function <code>rbinom()</code> to generate <strong>r</strong>andom <strong>binom</strong>ially-distributed numbers.</p>
+<p>In you own computer or in the box below, use the help function to learn about the <code>rbinom()</code> function. Then, use this function to simulate three observations, where each observation is the number of tails obtained by flipping ten fair coins.</p>
+<p>Run this command multiple times. Notice how you get a different output each time: this is because the output is a vector random numbers.</p>
+<p>Assign the output of the function to a variable and then, using one of the functions you learned in this tutorial, calculate the mean number of tails. Because each observation you flip ten fair coins, the <em>expected</em> number of tails is five. But you only perform three observations, so the mean number of tails will probably not be exactly five. Try increasing the number of observations and running the script again. What happens to the mean number of tails as you increase the number of observations?</p>
+</div>
+<div id="exercise-4-working-with-data" class="section level3" number="2.11.4">
+<h3><span class="header-section-number">2.11.4</span> Exercise 4: Working with data</h3>
+<p>Let’s return to our data set on oxygen concentrations in Saanich Inlet. If you haven’t done so yet, download the data file into your project directory.</p>
+<p>Then, load this file as a data frame and:</p>
+<ol style="list-style-type: decimal">
+<li>Using an R function, determine what data type the <code>Depth_m</code> variable is.</li>
+<li>Using indexing and the square bracket operator <code>[]</code>:
+<ul>
+<li>determine what depth value occurs in the 20th row</li>
+<li>return the observation (row) where oxygen equals 91.115. <em>Hint</em>: Use the <code>subset()</code> function.</li>
+</ul></li>
+<li>Subset the data to observations where depth is deeper than 100 m. <em>Hint</em>: Use the <code>subset()</code> function.</li>
+<li>Create a stacked scatterplot of oxygen concentrations within the two different seasons, colored by whether or not microbial data are available.</li>
+</ol>
+<div id="solution-to-exercise-2" class="section level4" number="2.11.4.1">
+<h4><span class="header-section-number">2.11.4.1</span> Solution to exercise 2</h4>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="introduction-to-r-and-rstudio.html#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb73-2"><a href="introduction-to-r-and-rstudio.html#cb73-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># mean</span></span>
+<span id="cb73-3"><a href="introduction-to-r-and-rstudio.html#cb73-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># standard deviation</span></span>
+<span id="cb73-4"><a href="introduction-to-r-and-rstudio.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="introduction-to-r-and-rstudio.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Normal distribution PDF:</span></span>
+<span id="cb73-6"><a href="introduction-to-r-and-rstudio.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(sigma<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi)) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">*</span>((x <span class="sc">-</span> mu)<span class="sc">/</span>sigma)<span class="sc">^</span><span class="dv">2</span>) </span></code></pre></div>
+<pre><code>## [1] 0.2896916</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="introduction-to-r-and-rstudio.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(x, mu, sigma) <span class="co"># Confirm using R&#39;s built-in Normal PDF function </span></span></code></pre></div>
+<pre><code>## [1] 0.2896916</code></pre>
+</div>
+<div id="solution-to-exercise-3" class="section level4" number="2.11.4.2">
+<h4><span class="header-section-number">2.11.4.2</span> Solution to exercise 3</h4>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="introduction-to-r-and-rstudio.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count nr of tails out of ten coins, three times:</span></span>
+<span id="cb77-2"><a href="introduction-to-r-and-rstudio.html#cb77-2" aria-hidden="true" tabindex="-1"></a>nr_tails <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span>
+<span id="cb77-3"><a href="introduction-to-r-and-rstudio.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nr_tails)</span></code></pre></div>
+<pre><code>## [1] 3.666667</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="introduction-to-r-and-rstudio.html#cb79-1" aria-hidden="true" tabindex="-1"></a>nr_tails <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">3000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span>
+<span id="cb79-2"><a href="introduction-to-r-and-rstudio.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nr_tails)</span></code></pre></div>
+<pre><code>## [1] 4.947667</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="introduction-to-r-and-rstudio.html#cb81-1" aria-hidden="true" tabindex="-1"></a>nr_tails <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">300000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span>
+<span id="cb81-2"><a href="introduction-to-r-and-rstudio.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nr_tails)</span></code></pre></div>
+<pre><code>## [1] 4.998407</code></pre>
+</div>
+<div id="solution-to-exercise-4" class="section level4" number="2.11.4.3">
+<h4><span class="header-section-number">2.11.4.3</span> Solution to exercise 4</h4>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="introduction-to-r-and-rstudio.html#cb83-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span></span>
+<span id="cb83-2"><a href="introduction-to-r-and-rstudio.html#cb83-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(path) <span class="co"># Read csv file</span></span>
+<span id="cb83-3"><a href="introduction-to-r-and-rstudio.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="introduction-to-r-and-rstudio.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dat<span class="sc">$</span>Depth_m) <span class="co"># What type is the Depth_m variable?</span></span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="introduction-to-r-and-rstudio.html#cb85-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Depth_m[<span class="dv">20</span>] <span class="co"># Depth of the 20th observation</span></span></code></pre></div>
+<pre><code>## [1] 60</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="introduction-to-r-and-rstudio.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(dat, O2_uM <span class="sc">==</span> <span class="fl">91.115</span>) <span class="co"># Observation for which equals 91.115</span></span></code></pre></div>
+<pre><code>##   Season Depth_m  O2_uM Add_data
+## 4   Fall      60 91.115     TRUE</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="introduction-to-r-and-rstudio.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(dat, Depth_m <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="co"># Subset such that depth is deeper than 100 m</span></span></code></pre></div>
+<pre><code>##    Season Depth_m  O2_uM Add_data
+## 10   Fall     110  5.933    FALSE
+## 11   Fall     120  2.891     TRUE
+## 12   Fall     135  2.766    FALSE
+## 13   Fall     150 14.465    FALSE
+## 14   Fall     165 24.239    FALSE
+## 15   Fall     185 28.885    FALSE
+## 16   Fall     200 26.766     TRUE
+## 26 Summer     110 27.557    FALSE
+## 27 Summer     120 32.354     TRUE
+## 28 Summer     135 20.446    FALSE
+## 29 Summer     150  0.000    FALSE
+## 30 Summer     165  0.000    FALSE
+## 31 Summer     185  0.000    FALSE
+## 32 Summer     200  0.000     TRUE</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="introduction-to-r-and-rstudio.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stacked scatterplot:</span></span>
+<span id="cb91-2"><a href="introduction-to-r-and-rstudio.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quickplot</span>(<span class="at">data =</span> dat,</span>
+<span id="cb91-3"><a href="introduction-to-r-and-rstudio.html#cb91-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> Season, </span>
+<span id="cb91-4"><a href="introduction-to-r-and-rstudio.html#cb91-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> O2_uM, </span>
+<span id="cb91-5"><a href="introduction-to-r-and-rstudio.html#cb91-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> Add_data, </span>
+<span id="cb91-6"><a href="introduction-to-r-and-rstudio.html#cb91-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">&quot;Saanich Inlet: Oxygen in Fall vs. Summer&quot;</span>)</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="survey" class="section level2" number="2.12">
+<h2><span class="header-section-number">2.12</span> Survey</h2>
+<p>Please provide us with feedback through this <a href="https://ubc.ca1.qualtrics.com/jfe/form/SV_2tOcP5OKnCNyauV">short survey</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-the-tidyverse-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ecoscope_datascience_workshops.pdf", "ecoscope_datascience_workshops.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

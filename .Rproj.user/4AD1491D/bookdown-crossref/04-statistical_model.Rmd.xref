@@ -1,0 +1,55 @@
+h1:statistical-models-in-r Statistical models in R
+h2:introduction Introduction
+h3:setup-instructions Setup instructions
+h3:data-description Data description
+h3:making-an-rstudio-project Making an RStudio project
+h3:installing-and-loading-packages Installing and loading packages
+h2:experimental-design Experimental design
+h3:balanced-designs Balanced designs
+h3:blocking-factors-and-random-effects Blocking factors and random effects
+h3:randomization Randomization
+h2:analysis-of-variance-anova Analysis of Variance (ANOVA)
+h3:key-assumptions Key assumptions
+h3:the-gist-of-the-math The gist of the math
+h3:way-anova-with-2-groups 1-way ANOVA with 2 groups
+h4:load-and-explore-the-data Load and explore the data
+h3:formula-notation-in-r Formula notation in R
+h3:anova-in-r ANOVA in R
+h4:exercise-1-way-anova Exercise: 1-way ANOVA
+h3:way-anova-with-2-groups-1 1-way ANOVA with > 2 groups
+h3:reload-and-explore-the-data Reload and explore the data
+h3:assess-which-groups-differ Assess which groups differ
+h3:way-anova-with-2-groups-2 2-way ANOVA with 2 groups
+h3:way-anova-with-2-groups-including-an-interaction-term 2-way ANOVA with 2 groups including an interaction term
+h4:exercise-anova Exercise: ANOVA
+h2:linear-regression Linear regression
+h3:load-and-explore-the-data-1 Load and explore the data
+h3:linear-models Linear models
+h3:key-assumptions-1 Key assumptions
+h3:simple-linear-regression Simple linear regression
+h3:residuals Residuals
+h4:exercise-linear-models Exercise: Linear models
+h2:cautions-when-using-linear-models Cautions when using linear models
+h2:multiple-linear-regression Multiple linear regression
+h3:multiple-is-the-formula-not-the-predictor Multiple is the formula, not the predictor
+h4:exercise-transforming-predictors Exercise: Transforming predictors
+h3:transforming-predictors-log Transforming predictors: log
+h3:transforming-predictors-polynomial Transforming predictors: polynomial
+h4:exercise-multiple-linear-regression Exercise: Multiple linear regression
+h3:interactions-and-analysis-of-covarianvce-ancova Interactions and ANalysis of COVArianvce (ANCOVA)
+h2:linear-mixed-effects-models Linear Mixed Effects models
+h3:motivations-for-lme Motivations for LME
+h3:definitions Definitions
+h3:fitting-lme Fitting LME
+h4:exercise-lme Exercise: LME
+h2:generalized-linear-models Generalized Linear models
+h3:definition Definition
+h3:fitting-glms Fitting GLMs
+h3:logistic-regression-family-binomial Logistic regression ()
+h4:exercise-logistic-glm Exercise: Logistic GLM
+h3:count-data-family-poisson Count data ()
+h4:exercise-poisson-glm Exercise: Poisson GLM
+h3:negative-binomial-model-for-count-data Negative binomial model for count data
+h4:exercise-quasi-poisson-vs.-negative-binomial-glm Exercise: Quasi-Poisson vs. negative binomial GLM
+h2:survey Survey
+

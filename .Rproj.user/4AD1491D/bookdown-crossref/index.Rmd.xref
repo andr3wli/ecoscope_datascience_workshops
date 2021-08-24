@@ -1,2 +1,10 @@
-h1:prerequisites Prerequisites
+h1:ecoscope ECOSCOPE
+h2:schedule Schedule
+h2:workshops Workshops
+h3:introduction-to-r-and-r-studio Introduction to R and R Studio
+h3:introduction-to-the-tidyverse Introduction to the tidyverse
+h3:reproducible-research Reproducible research
+h3:statistical-models-in-r Statistical models in R
+h3:intermediate-r-programming Intermediate R programming
+h3:beyond-ggplot2 Beyond ggplot2
 

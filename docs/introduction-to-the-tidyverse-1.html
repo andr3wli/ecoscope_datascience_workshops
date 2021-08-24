@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Introduction to the tidyverse | ECOSCOPE: Data Science Workshops</title>
+  <meta name="description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Introduction to the tidyverse | ECOSCOPE: Data Science Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Introduction to the tidyverse | ECOSCOPE: Data Science Workshops" />
+  
+  <meta name="twitter:description" content="UBC ECOSCOPE workshop materials in the form of a bookdown book." />
+  
+
+<meta name="author" content="Andrew Li" />
+<meta name="author" content="Stephan Koenig" />
+
+
+<meta name="date" content="2021-08-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-r-and-rstudio.html"/>
+<link rel="next" href="reproducible-research-1.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ECOSCOPE: Data Science Workshops</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ECOSCOPE</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.1</b> Schedule</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workshops"><i class="fa fa-check"></i><b>1.2</b> Workshops</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#introduction-to-r-and-r-studio"><i class="fa fa-check"></i><b>1.2.1</b> Introduction to R and R Studio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#introduction-to-the-tidyverse"><i class="fa fa-check"></i><b>1.2.2</b> Introduction to the tidyverse</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#reproducible-research"><i class="fa fa-check"></i><b>1.2.3</b> Reproducible research</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#statistical-models-in-r"><i class="fa fa-check"></i><b>1.2.4</b> Statistical models in R</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#intermediate-r-programming"><i class="fa fa-check"></i><b>1.2.5</b> Intermediate R programming</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#beyond-ggplot2"><i class="fa fa-check"></i><b>1.2.6</b> Beyond ggplot2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-in-your-own-computer"><i class="fa fa-check"></i><b>2.2</b> Using R in your own computer</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-r-console"><i class="fa fa-check"></i><b>2.2.2</b> The R console</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-r-environment"><i class="fa fa-check"></i><b>2.2.3</b> The R Environment</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#scripts"><i class="fa fa-check"></i><b>2.2.4</b> Scripts</a></li>
+<li class="chapter" data-level="2.2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-and-loading-packages"><i class="fa fa-check"></i><b>2.2.5</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="2.2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#paths-and-working-directory"><i class="fa fa-check"></i><b>2.2.6</b> Paths and working directory</a></li>
+<li class="chapter" data-level="2.2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#rstudio-projects"><i class="fa fa-check"></i><b>2.2.7</b> RStudio projects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-as-a-calculator"><i class="fa fa-check"></i><b>2.3</b> R as a calculator</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#assigning-variables"><i class="fa fa-check"></i><b>2.4</b> Assigning variables</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comments"><i class="fa fa-check"></i><b>2.4.1</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#functions"><i class="fa fa-check"></i><b>2.5</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-most-helpful-function-of-all-the-help-function"><i class="fa fa-check"></i><b>2.5.1</b> The most helpful function of all: the ‘help’ function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-types"><i class="fa fa-check"></i><b>2.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>2.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#structures"><i class="fa fa-check"></i><b>2.7</b> Structures</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectors"><i class="fa fa-check"></i><b>2.7.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#apply-functions-over-vectors"><i class="fa fa-check"></i><b>2.7.2</b> Apply functions over vectors</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>2.7.3</b> Arithmetic operations on vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-frames"><i class="fa fa-check"></i><b>2.8</b> Data frames</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#example-data-frame"><i class="fa fa-check"></i><b>2.8.1</b> Example data frame</a></li>
+<li class="chapter" data-level="2.8.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#importing-the-data-frame"><i class="fa fa-check"></i><b>2.8.2</b> Importing the data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#quick-plots"><i class="fa fa-check"></i><b>2.9</b> Quick plots</a></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#accessing-and-subsetting-data"><i class="fa fa-check"></i><b>2.10</b> Accessing and subsetting data</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#acessing-vector-elements"><i class="fa fa-check"></i><b>2.10.1</b> Acessing vector elements</a></li>
+<li class="chapter" data-level="2.10.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#accessing-data-frame-elements"><i class="fa fa-check"></i><b>2.10.2</b> Accessing data frame elements</a></li>
+<li class="chapter" data-level="2.10.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#subsetting-rows-according-to-condition"><i class="fa fa-check"></i><b>2.10.3</b> Subsetting rows according to condition</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#additional-exercises"><i class="fa fa-check"></i><b>2.11</b> Additional exercises</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-1-install-packages"><i class="fa fa-check"></i><b>2.11.1</b> Exercise 1: Install packages</a></li>
+<li class="chapter" data-level="2.11.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-2-calculating-a-probability-density"><i class="fa fa-check"></i><b>2.11.2</b> Exercise 2: Calculating a probability density</a></li>
+<li class="chapter" data-level="2.11.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-3-use-the-help-function-to-learn-how-to-flip-coins"><i class="fa fa-check"></i><b>2.11.3</b> Exercise 3: Use the help function to learn how to flip coins</a></li>
+<li class="chapter" data-level="2.11.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-4-working-with-data"><i class="fa fa-check"></i><b>2.11.4</b> Exercise 4: Working with data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#survey"><i class="fa fa-check"></i><b>2.12</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html"><i class="fa fa-check"></i><b>3</b> Introduction to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#setup-intructions"><i class="fa fa-check"></i><b>3.1.1</b> Setup intructions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#background"><i class="fa fa-check"></i><b>3.1.2</b> Background</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-description"><i class="fa fa-check"></i><b>3.2</b> Data description</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#getting-started"><i class="fa fa-check"></i><b>3.3</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#making-an-rstudio-project"><i class="fa fa-check"></i><b>3.3.1</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="3.3.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#installing-and-loading-packages-1"><i class="fa fa-check"></i><b>3.3.2</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="3.3.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#downloading-the-data"><i class="fa fa-check"></i><b>3.3.3</b> Downloading the data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#loading-data-with-readr"><i class="fa fa-check"></i><b>3.3.4</b> Loading data with <code>readr</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-in-r"><i class="fa fa-check"></i><b>3.4</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#basic-data-types-in-r"><i class="fa fa-check"></i><b>3.4.1</b> Basic data types in R</a></li>
+<li class="chapter" data-level="3.4.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#basic-data-structures-in-r"><i class="fa fa-check"></i><b>3.4.2</b> Basic data structures in R</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#conditional-statements-and-logical-operators"><i class="fa fa-check"></i><b>3.4.3</b> Conditional statements and logical operators</a></li>
+<li class="chapter" data-level="3.4.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#exercises-1"><i class="fa fa-check"></i><b>3.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>3.5</b> Data wrangling with <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#select"><i class="fa fa-check"></i><b>3.5.1</b> Select</a></li>
+<li class="chapter" data-level="3.5.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#filter"><i class="fa fa-check"></i><b>3.5.2</b> Filter</a></li>
+<li class="chapter" data-level="3.5.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#rename"><i class="fa fa-check"></i><b>3.5.3</b> Rename</a></li>
+<li class="chapter" data-level="3.5.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#arrange"><i class="fa fa-check"></i><b>3.5.4</b> Arrange</a></li>
+<li class="chapter" data-level="3.5.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#mutate"><i class="fa fa-check"></i><b>3.5.5</b> Mutate</a></li>
+<li class="chapter" data-level="3.5.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#piping-with"><i class="fa fa-check"></i><b>3.5.6</b> Piping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="3.5.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#group-by-and-summarise"><i class="fa fa-check"></i><b>3.5.7</b> Group by and Summarise</a></li>
+<li class="chapter" data-level="3.5.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#wide-and-long-data---gather-and-spread"><i class="fa fa-check"></i><b>3.5.8</b> Wide and long data - gather and spread</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>3.6</b> Graphics with ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#why-ggolot"><i class="fa fa-check"></i><b>3.6.1</b> Why ggolot?</a></li>
+<li class="chapter" data-level="3.6.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#ggplot-building-blocks"><i class="fa fa-check"></i><b>3.6.2</b> ggplot building blocks</a></li>
+<li class="chapter" data-level="3.6.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_point"><i class="fa fa-check"></i><b>3.6.3</b> geom_point</a></li>
+<li class="chapter" data-level="3.6.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_line"><i class="fa fa-check"></i><b>3.6.4</b> geom_line</a></li>
+<li class="chapter" data-level="3.6.5" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_histogram"><i class="fa fa-check"></i><b>3.6.5</b> geom_histogram</a></li>
+<li class="chapter" data-level="3.6.6" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#geom_boxplot"><i class="fa fa-check"></i><b>3.6.6</b> geom_boxplot</a></li>
+<li class="chapter" data-level="3.6.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#facet_wrap"><i class="fa fa-check"></i><b>3.6.7</b> facet_wrap</a></li>
+<li class="chapter" data-level="3.6.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#labels"><i class="fa fa-check"></i><b>3.6.8</b> labels</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#fine-tuning-your-ggplots"><i class="fa fa-check"></i><b>3.7</b> Fine-tuning your ggplots</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#themes"><i class="fa fa-check"></i><b>3.7.1</b> Themes</a></li>
+<li class="chapter" data-level="3.7.2" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#panel-1"><i class="fa fa-check"></i><b>3.7.2</b> Panel 1</a></li>
+<li class="chapter" data-level="3.7.3" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#panel-2"><i class="fa fa-check"></i><b>3.7.3</b> Panel 2</a></li>
+<li class="chapter" data-level="3.7.4" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#multi-panel-figues"><i class="fa fa-check"></i><b>3.7.4</b> Multi-panel figues</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#saving-ggplots"><i class="fa fa-check"></i><b>3.8</b> Saving ggplots</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#additional-resources"><i class="fa fa-check"></i><b>3.9</b> Additional resources</a></li>
+<li class="chapter" data-level="3.10" data-path="introduction-to-the-tidyverse-1.html"><a href="introduction-to-the-tidyverse-1.html#survey-1"><i class="fa fa-check"></i><b>3.10</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html"><i class="fa fa-check"></i><b>4</b> Reproducible research</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#prior-to-the-workshop"><i class="fa fa-check"></i><b>4.2</b> Prior to the workshop</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#setup-instructions"><i class="fa fa-check"></i><b>4.2.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#background-1"><i class="fa fa-check"></i><b>4.2.2</b> Background</a></li>
+<li class="chapter" data-level="4.2.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#terminology"><i class="fa fa-check"></i><b>4.2.3</b> Terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-reproducibility"><i class="fa fa-check"></i><b>4.3</b> Why reproducibility?</a></li>
+<li class="chapter" data-level="4.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-projects"><i class="fa fa-check"></i><b>4.4</b> R projects</a></li>
+<li class="chapter" data-level="4.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-scripts"><i class="fa fa-check"></i><b>4.5</b> R scripts</a></li>
+<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.6</b> Modularize by task</a></li>
+<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.7</b> Use <em>Make</em></a></li>
+<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.8</b> Reproducible R environment with <code>packrat</code></a></li>
+<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.9</b> Documents made reproducible</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.9.1</b> What is a document really?</a></li>
+<li class="chapter" data-level="4.9.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.9.2</b> Rmarkdown</a></li>
+<li class="chapter" data-level="4.9.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.9.3</b> Knitting</a></li>
+<li class="chapter" data-level="4.9.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.9.4</b> Markdown body</a></li>
+<li class="chapter" data-level="4.9.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.9.5</b> Static documents</a></li>
+<li class="chapter" data-level="4.9.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.9.6</b> Dynamic documents</a></li>
+<li class="chapter" data-level="4.9.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.9.7</b> Slides made reproducible</a></li>
+<li class="chapter" data-level="4.9.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.9.8</b> Rmd in your workflow</a></li>
+<li class="chapter" data-level="4.9.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.9.9</b> Publish with Rpubs.com</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.10</b> Git</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.10.1</b> What is version control?</a></li>
+<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.10.2</b> Why Git?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.11</b> Git on your computer</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.11.1</b> Initialize a repo (<code>git init</code>)</a></li>
+<li class="chapter" data-level="4.11.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.11.2</b> Add files (<code>git add</code>)</a></li>
+<li class="chapter" data-level="4.11.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.11.3</b> Git staging area (index)</a></li>
+<li class="chapter" data-level="4.11.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.11.4</b> Commit changes (<code>git commit</code>)</a></li>
+<li class="chapter" data-level="4.11.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.11.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
+<li class="chapter" data-level="4.11.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.11.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
+<li class="chapter" data-level="4.11.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.11.7</b> Branches (<code>git checkout -b</code>)</a></li>
+<li class="chapter" data-level="4.11.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.11.8</b> Merge conflicts (<code>git merge</code>)</a></li>
+<li class="chapter" data-level="4.11.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.11.9</b> Summary of Git</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.12</b> Collaborate with GitHub</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.12.1</b> Configure your computer (<code>git config</code>)</a></li>
+<li class="chapter" data-level="4.12.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.12.2</b> Make an online repo</a></li>
+<li class="chapter" data-level="4.12.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.12.3</b> Link local and online repo (<code>git remote</code>)</a></li>
+<li class="chapter" data-level="4.12.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.12.4</b> Update an online repo (<code>git push</code>)</a></li>
+<li class="chapter" data-level="4.12.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.12.5</b> Copy an online repo (<code>git clone</code>)</a></li>
+<li class="chapter" data-level="4.12.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.12.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
+<li class="chapter" data-level="4.12.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.12.7</b> GitHub GUI</a></li>
+<li class="chapter" data-level="4.12.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.12.8</b> Git in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.13</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.13.1</b> Reproducible research</a></li>
+<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.13.2</b> R/RStudio</a></li>
+<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.13.3</b> Git/GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.14</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html"><i class="fa fa-check"></i><b>5</b> Statistical models in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#introduction-3"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#setup-instructions-1"><i class="fa fa-check"></i><b>5.1.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="5.1.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#data-description-1"><i class="fa fa-check"></i><b>5.1.2</b> Data description</a></li>
+<li class="chapter" data-level="5.1.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#making-an-rstudio-project-1"><i class="fa fa-check"></i><b>5.1.3</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="5.1.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#installing-and-loading-packages-2"><i class="fa fa-check"></i><b>5.1.4</b> Installing and loading packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#experimental-design"><i class="fa fa-check"></i><b>5.2</b> Experimental design</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#balanced-designs"><i class="fa fa-check"></i><b>5.2.1</b> Balanced designs</a></li>
+<li class="chapter" data-level="5.2.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#blocking-factors-and-random-effects"><i class="fa fa-check"></i><b>5.2.2</b> Blocking factors and random effects</a></li>
+<li class="chapter" data-level="5.2.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#randomization"><i class="fa fa-check"></i><b>5.2.3</b> Randomization</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>5.3</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#key-assumptions"><i class="fa fa-check"></i><b>5.3.1</b> Key assumptions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#the-gist-of-the-math"><i class="fa fa-check"></i><b>5.3.2</b> The gist of the math</a></li>
+<li class="chapter" data-level="5.3.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups"><i class="fa fa-check"></i><b>5.3.3</b> 1-way ANOVA with 2 groups</a></li>
+<li class="chapter" data-level="5.3.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#formula-notation-in-r"><i class="fa fa-check"></i><b>5.3.4</b> Formula notation in R</a></li>
+<li class="chapter" data-level="5.3.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#anova-in-r"><i class="fa fa-check"></i><b>5.3.5</b> ANOVA in R</a></li>
+<li class="chapter" data-level="5.3.6" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-1"><i class="fa fa-check"></i><b>5.3.6</b> 1-way ANOVA with &gt; 2 groups</a></li>
+<li class="chapter" data-level="5.3.7" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#reload-and-explore-the-data"><i class="fa fa-check"></i><b>5.3.7</b> Reload and explore the data</a></li>
+<li class="chapter" data-level="5.3.8" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#assess-which-groups-differ"><i class="fa fa-check"></i><b>5.3.8</b> Assess which groups differ</a></li>
+<li class="chapter" data-level="5.3.9" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-2"><i class="fa fa-check"></i><b>5.3.9</b> 2-way ANOVA with 2 groups</a></li>
+<li class="chapter" data-level="5.3.10" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#way-anova-with-2-groups-including-an-interaction-term"><i class="fa fa-check"></i><b>5.3.10</b> 2-way ANOVA with 2 groups including an interaction term</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-regression"><i class="fa fa-check"></i><b>5.4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#load-and-explore-the-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Load and explore the data</a></li>
+<li class="chapter" data-level="5.4.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-models"><i class="fa fa-check"></i><b>5.4.2</b> Linear models</a></li>
+<li class="chapter" data-level="5.4.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#key-assumptions-1"><i class="fa fa-check"></i><b>5.4.3</b> Key assumptions</a></li>
+<li class="chapter" data-level="5.4.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#simple-linear-regression"><i class="fa fa-check"></i><b>5.4.4</b> Simple linear regression</a></li>
+<li class="chapter" data-level="5.4.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#residuals"><i class="fa fa-check"></i><b>5.4.5</b> Residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#cautions-when-using-linear-models"><i class="fa fa-check"></i><b>5.5</b> Cautions when using linear models</a></li>
+<li class="chapter" data-level="5.6" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#multiple-linear-regression"><i class="fa fa-check"></i><b>5.6</b> Multiple linear regression</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#multiple-is-the-formula-not-the-predictor"><i class="fa fa-check"></i><b>5.6.1</b> Multiple is the formula, not the predictor</a></li>
+<li class="chapter" data-level="5.6.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#transforming-predictors-log"><i class="fa fa-check"></i><b>5.6.2</b> Transforming predictors: log</a></li>
+<li class="chapter" data-level="5.6.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#transforming-predictors-polynomial"><i class="fa fa-check"></i><b>5.6.3</b> Transforming predictors: polynomial</a></li>
+<li class="chapter" data-level="5.6.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#interactions-and-analysis-of-covarianvce-ancova"><i class="fa fa-check"></i><b>5.6.4</b> Interactions and ANalysis of COVArianvce (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#linear-mixed-effects-models"><i class="fa fa-check"></i><b>5.7</b> Linear Mixed Effects models</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#motivations-for-lme"><i class="fa fa-check"></i><b>5.7.1</b> Motivations for LME</a></li>
+<li class="chapter" data-level="5.7.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#definitions"><i class="fa fa-check"></i><b>5.7.2</b> Definitions</a></li>
+<li class="chapter" data-level="5.7.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#fitting-lme"><i class="fa fa-check"></i><b>5.7.3</b> Fitting LME</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#generalized-linear-models"><i class="fa fa-check"></i><b>5.8</b> Generalized Linear models</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#definition"><i class="fa fa-check"></i><b>5.8.1</b> Definition</a></li>
+<li class="chapter" data-level="5.8.2" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#fitting-glms"><i class="fa fa-check"></i><b>5.8.2</b> Fitting GLMs</a></li>
+<li class="chapter" data-level="5.8.3" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#logistic-regression-family-binomial"><i class="fa fa-check"></i><b>5.8.3</b> Logistic regression (<code>family = binomial</code>)</a></li>
+<li class="chapter" data-level="5.8.4" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#count-data-family-poisson"><i class="fa fa-check"></i><b>5.8.4</b> Count data (<code>family = poisson</code>)</a></li>
+<li class="chapter" data-level="5.8.5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#negative-binomial-model-for-count-data"><i class="fa fa-check"></i><b>5.8.5</b> Negative binomial model for count data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html#survey-3"><i class="fa fa-check"></i><b>5.9</b> Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html"><i class="fa fa-check"></i><b>6</b> Intermediate R programming</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#introduction-4"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#setup-instructions-2"><i class="fa fa-check"></i><b>6.1.1</b> Setup instructions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#background-2"><i class="fa fa-check"></i><b>6.1.2</b> Background</a></li>
+<li class="chapter" data-level="6.1.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#data-description-2"><i class="fa fa-check"></i><b>6.1.3</b> Data description</a></li>
+<li class="chapter" data-level="6.1.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#making-an-rstudio-project-2"><i class="fa fa-check"></i><b>6.1.4</b> Making an RStudio project</a></li>
+<li class="chapter" data-level="6.1.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#installing-and-loading-packages-3"><i class="fa fa-check"></i><b>6.1.5</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="6.1.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#downloading-data"><i class="fa fa-check"></i><b>6.1.6</b> Downloading data</a></li>
+<li class="chapter" data-level="6.1.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#load-data"><i class="fa fa-check"></i><b>6.1.7</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#objects-classes-and-attributes"><i class="fa fa-check"></i><b>6.2</b> Objects, classes, and attributes</a></li>
+<li class="chapter" data-level="6.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#s3-objects"><i class="fa fa-check"></i><b>6.3</b> S3 objects</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#vectors-1"><i class="fa fa-check"></i><b>6.3.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.3.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#complex-objects"><i class="fa fa-check"></i><b>6.3.2</b> Complex objects</a></li>
+<li class="chapter" data-level="6.3.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#data-objects"><i class="fa fa-check"></i><b>6.3.3</b> Data objects</a></li>
+<li class="chapter" data-level="6.3.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#the-r-list-object"><i class="fa fa-check"></i><b>6.3.4</b> The R list object</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#s4-objects"><i class="fa fa-check"></i><b>6.4</b> S4 objects</a></li>
+<li class="chapter" data-level="6.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#functions-1"><i class="fa fa-check"></i><b>6.5</b> Functions</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#basics"><i class="fa fa-check"></i><b>6.5.1</b> Basics</a></li>
+<li class="chapter" data-level="6.5.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#arguments"><i class="fa fa-check"></i><b>6.5.2</b> Arguments</a></li>
+<li class="chapter" data-level="6.5.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#triple-dot-argument"><i class="fa fa-check"></i><b>6.5.3</b> Triple-dot argument</a></li>
+<li class="chapter" data-level="6.5.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#scoping"><i class="fa fa-check"></i><b>6.5.4</b> Scoping</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#building-a-function"><i class="fa fa-check"></i><b>6.6</b> Building a function</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-1.-define-and-test-your-task"><i class="fa fa-check"></i><b>6.6.1</b> Step 1. Define and test your task</a></li>
+<li class="chapter" data-level="6.6.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-3-add-packages"><i class="fa fa-check"></i><b>6.6.2</b> Step 3: Add packages</a></li>
+<li class="chapter" data-level="6.6.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-4-start-you-r-documentation"><i class="fa fa-check"></i><b>6.6.3</b> Step 4: Start you r documentation</a></li>
+<li class="chapter" data-level="6.6.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-5-loop-through-multiple-y-variables"><i class="fa fa-check"></i><b>6.6.4</b> Step 5: Loop through multiple y-variables</a></li>
+<li class="chapter" data-level="6.6.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6-save-results-to-a-table"><i class="fa fa-check"></i><b>6.6.5</b> Step 6: Save results to a table</a></li>
+<li class="chapter" data-level="6.6.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6.1-save-all-iterations-of-the-loop"><i class="fa fa-check"></i><b>6.6.6</b> Step 6.1: Save all iterations of the loop</a></li>
+<li class="chapter" data-level="6.6.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-6.2-beautify-the-output"><i class="fa fa-check"></i><b>6.6.7</b> Step 6.2 Beautify the output</a></li>
+<li class="chapter" data-level="6.6.8" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#step-7-complete-documentation"><i class="fa fa-check"></i><b>6.6.8</b> Step 7: Complete documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#packages"><i class="fa fa-check"></i><b>6.7</b> Packages</a></li>
+<li class="chapter" data-level="6.8" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#creating-a-package-project"><i class="fa fa-check"></i><b>6.8</b> Creating a package project</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#description"><i class="fa fa-check"></i><b>6.8.1</b> Description</a></li>
+<li class="chapter" data-level="6.8.2" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#r"><i class="fa fa-check"></i><b>6.8.2</b> R/</a></li>
+<li class="chapter" data-level="6.8.3" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#man"><i class="fa fa-check"></i><b>6.8.3</b> man/</a></li>
+<li class="chapter" data-level="6.8.4" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#namespace"><i class="fa fa-check"></i><b>6.8.4</b> Namespace</a></li>
+<li class="chapter" data-level="6.8.5" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#adding-imports-and-exports"><i class="fa fa-check"></i><b>6.8.5</b> Adding imports and exports</a></li>
+<li class="chapter" data-level="6.8.6" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#test-your-package"><i class="fa fa-check"></i><b>6.8.6</b> Test your package</a></li>
+<li class="chapter" data-level="6.8.7" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#test-your-package-again"><i class="fa fa-check"></i><b>6.8.7</b> Test your package again</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#further-resources"><i class="fa fa-check"></i><b>6.9</b> Further resources</a></li>
+<li class="chapter" data-level="6.10" data-path="intermediate-r-programming-1.html"><a href="intermediate-r-programming-1.html#survey-4"><i class="fa fa-check"></i><b>6.10</b> Survey</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ECOSCOPE: Data Science Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-the-tidyverse-1" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Introduction to the tidyverse</h1>
+<div id="introduction-1" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>In this workshop series, we will learn to manipulate and visualize real world data using packages in the <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
+<p>You will learn how to:</p>
+<ul>
+<li>create an R project and import data from a file into R,</li>
+<li>create subsets of rows or columns from data frames using dplyr,</li>
+<li>select pieces of an object by indexing using element names or position,</li>
+<li>change your data frames between wide and narrow formats,</li>
+<li>create various types of graphics,</li>
+<li>modify the various features of a graphic, and</li>
+<li>save your graphic in various formats</li>
+</ul>
+<p>This comprehensive introduction to the tidyverse workshop series is ideal for beginners but assumes some prior experience with R (such as that in our <a href="https://github.com/EDUCE-UBC/workshops_R/tree/main/intro_R_2hr">Introduction to R workshop</a>).</p>
+<div id="setup-intructions" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Setup intructions</h3>
+<p>Please come to the workshop with your laptop setup with the required
+software and data files as described in our <a href="setup/tidyverse_setup.html">setup instructions</a>.</p>
+</div>
+<div id="background" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Background</h3>
+<p>Please read <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663219/">Hallam SJ <em>et al</em>. 2017. Sci Data 4: 170158</a> “Monitoring microbial responses to ocean deoxygenation in a model oxygen minimum zone” to learn more about the data used in this workshop. You can also check out this <a href="https://youtu.be/XYQSm2Me86I">short video</a> showing how the sampling was done!</p>
+</div>
+</div>
+<div id="data-description" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Data description</h2>
+<p>The data in this workshop were collected as part of an on-going oceanographic time series program in Saanich Inlet, a seasonally anoxic fjord on the East coast of Vancouver Island, British Columbia (Figure 1).</p>
+<p><br>
+<br>
+<img src="images/Saanich.png" style="width:4in" />
+/</p>
+<p><strong>Figure 1.</strong> Map of Saanich Inlet indicating conventional sample collection stations (S1-S9). Data used in this workshop is sourced from S3.
+<br>
+<br></p>
+<p>Saanich Inlet is a steep sided fjord characterized by a shallow glacial sill located at the mouth of the inlet that restricts circulation in basin waters below 100 m (Figure 2).</p>
+<p><br>
+<br>
+<img src="images/Inlet_structure.png" />
+/</p>
+<p><strong>Figure 2.</strong> Structure of Saanich Inlet. The glacial sill restricts water circulation into and out of the lower depth of the inlet basin.
+<br>
+<br></p>
+<p>During spring and summer months, elevated primary production (like photosynthesis) in surface waters combined with restricted circulation results in progressive water column stratification and complete oxygen starvation (anoxia) in deep basin waters. In late summer, pulses of oxygenated nutrient-rich ocean waters upwelling from the Haro Straight cascade over the sill, displacing oxygen starved bottom waters upward. The intensity of these renewal events varies from year to year with implications for microbial ecology and biogeochemical cycles (Figure 3).</p>
+<p><br>
+<br>
+<img src="images/oxygen_timeseries.png" />
+/</p>
+<p><strong>Figure 3.</strong> Contour plot of water column oxygen concentrations over multiple years in the time series. Warmer colors indicate high oxygen concentrations while cooler colors are low. Note the recurring pattern of oxygen decline below 100 m depth intervals followed by seasonal renewal events in late Summer into early Fall carrying more oxygenated waters into the Inlet.
+<br>
+<br></p>
+<p>The seasonal cycle of stratification and deep water renewal enables spatial and temporal profiling across a wide range of water column energy states and nutrients, thus making Saanich Inlet a model ecosystem for studying microbial community responses to ocean deoxygenation. Ocean deoxygenation is a widespread phenomenon currently increasing due to climate change.</p>
+<p>The data we will use in this workshop include various geochemical measurements at many depths in Saanich Inlet. Samples were taken approximately monthly from 2006 to 2014, though there is much missing data to contend with.</p>
+<p>For a brief introduction to the data used in this workshop series, see <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663219/">Hallam SJ <em>et al</em>. 2017. Sci Data 4: 170158</a> “Monitoring microbial responses to ocean deoxygenation in a model oxygen minimum zone.” More detailed information on the environmental context and time series data can be found in <a href="https://www.nature.com/articles/sdata2017159">Torres-Beltrán M <em>et al</em>. 2017. Sci Data 4: 170159.</a> “A compendium of geochemical information from the Saanich Inlet water column.”</p>
+</div>
+<div id="getting-started" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Getting Started</h2>
+<div id="making-an-rstudio-project" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Making an RStudio project</h3>
+<p>Projects allow you to divide your work into self-contained contexts.</p>
+<p>Let’s create a project to work in.</p>
+<p>In the top-right corner of your RStudio window, click the “Project: (None)” button to show the projects dropdown menu. Select “New Project…” &gt; “New Directory” &gt; “New Project.” Under directory name, input “intro_tidyverse” and choose a parent directory to contain this project on your computer.</p>
+</div>
+<div id="installing-and-loading-packages-1" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Installing and loading packages</h3>
+<p>At the beginning of every R script, you should have a dedicated space for loading R packages. R packages allow any R user to code reproducible functions and share them with the R community. Packages exist for anything ranging from microbial ecology to complex graphics to multivariate modeling and beyond.</p>
+<p>In this workshop, we will use several packages within the <a href="https://www.tidyverse.org/">tidyverse</a>, in particular <code>dplyr</code>, <code>tidyr</code>, and <code>ggplot2</code>. Since these packages are used together so frequently, they can be downloaded and loaded into R all together as the “tidyverse.” We will also use the packages <code>lubridate</code> and <code>cowplot</code>.</p>
+<p>Here, we load the necessary packages which <em>must already be installed</em> (see <a href="setup/tidyverse_setup.html">setup instructions</a> for details).</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="introduction-to-the-tidyverse-1.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Easily Install and Load the &#39;Tidyverse&#39;</span></span>
+<span id="cb92-2"><a href="introduction-to-the-tidyverse-1.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) <span class="co"># Make Dealing with Dates a Little Easier</span></span>
+<span id="cb92-3"><a href="introduction-to-the-tidyverse-1.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot) <span class="co"># Streamlined Plot Theme and Plot Annotations for &#39;ggplot2&#39;</span></span>
+<span id="cb92-4"><a href="introduction-to-the-tidyverse-1.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># The Composer of Plots</span></span></code></pre></div>
+</div>
+<div id="downloading-the-data" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Downloading the data</h3>
+<p>The following command downloads the data from our <a href="https://github.com/EDUCE-UBC/workshops_access">GitHub</a> and since you’re working in a Project, saves it in the Project directory under the <code>data</code> directory on your computer.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="introduction-to-the-tidyverse-1.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb93-2"><a href="introduction-to-the-tidyverse-1.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_tidyverse_ws.csv&quot;</span>),</span>
+<span id="cb93-3"><a href="introduction-to-the-tidyverse-1.html#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;data/Saanich_Data.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="loading-data-with-readr" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Loading data with <code>readr</code></h3>
+<p>The most common formats for medium to medium-large data sets are <em>comma-</em> or <em>tab-separated values</em> (.csv and .tsv/.txt, respectively). In this format, the data is stored in plain text, with one observation per line, and variables within each observation separated by a comma or tab.</p>
+<p>The readr functions <code>read_csv</code> and <code>read_tsv</code> help read in data at quick speeds compared to base R’s <code>read.csv</code> and <code>read.tsv</code> functions. Furthermore, readr’s data loading functions automatically parse your data into the correct data type (numeric, character, etc).</p>
+<p>Let’s start by reading in the data we will use for this workshop. Here, we
+specify that the data file is named “Saanich_Data.csv.” Furthermore, we specify
+that the first row of the data contain variable names,
+and that empty, NA, NAN, or ND values should be treated by R as missing data
+(coded in R as NA).</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="introduction-to-the-tidyverse-1.html#cb94-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file=</span><span class="st">&quot;data/Saanich_Data.csv&quot;</span>,</span>
+<span id="cb94-2"><a href="introduction-to-the-tidyverse-1.html#cb94-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col_names=</span><span class="cn">TRUE</span>,</span>
+<span id="cb94-3"><a href="introduction-to-the-tidyverse-1.html#cb94-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na=</span><span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>, <span class="st">&quot;NAN&quot;</span>, <span class="st">&quot;ND&quot;</span>))</span></code></pre></div>
+<p>This is a relatively large data set with 1605 observations and 29 variables.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="introduction-to-the-tidyverse-1.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(raw_data)</span></code></pre></div>
+<pre><code>## [1] 1605   29</code></pre>
+<p>Let’s get an understanding of the data by looking at the first three rows.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="introduction-to-the-tidyverse-1.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(raw_data, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 29
+##   Longitude Latitude Cruise Date       Depth WS_O2   PO4    SI WS_NO3 Mean_NH4
+##       &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+## 1     -124.     48.6      1 2006-02-18 0.01     NA  2.42    NA   26.7       NA
+## 2     -124.     48.6      1 2006-02-18 0.025    NA  2.11    NA   23.2       NA
+## 3     -124.     48.6      1 2006-02-18 0.04     NA  2.14    NA   19.5       NA
+## # … with 19 more variables: Std_NH4 &lt;dbl&gt;, Mean_NO2 &lt;dbl&gt;, Std_NO2 &lt;dbl&gt;,
+## #   WS_H2S &lt;dbl&gt;, Std_H2S &lt;dbl&gt;, Cells.ml &lt;dbl&gt;, Mean_N2 &lt;dbl&gt;, Std_n2 &lt;dbl&gt;,
+## #   Mean_O2 &lt;dbl&gt;, Std_o2 &lt;dbl&gt;, Mean_co2 &lt;dbl&gt;, Std_co2 &lt;dbl&gt;, Mean_N2O &lt;dbl&gt;,
+## #   Std_N2O &lt;dbl&gt;, Mean_CH4 &lt;dbl&gt;, Std_CH4 &lt;dbl&gt;, Temperature &lt;dbl&gt;,
+## #   Salinity &lt;dbl&gt;, Density &lt;dbl&gt;</code></pre>
+<p>We see that we have each observation as a row and each measurement (variable) as a column. This data is in what is called wide (or fat) format.</p>
+</div>
+</div>
+<div id="data-in-r" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Data in R</h2>
+<div id="basic-data-types-in-r" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Basic data types in R</h3>
+<p>Here are some of the most common data types in R. We will use and learn more about these data as we work with them throughout this workshop.</p>
+<ul>
+<li>numeric (1, 1.41, 3.142)</li>
+<li>character (“dplyr,” “1.41,” “TRUE”)</li>
+<li>logical (TRUE, FALSE)</li>
+</ul>
+</div>
+<div id="basic-data-structures-in-r" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Basic data structures in R</h3>
+<p>The above data types are packaged together in data structures. You can see what structures you have loaded into your current RStudio session in the “Environment” panel in the upper right quadrant of RStudio. Generally, you will be working with data frames (<em>i.e.</em> tables).</p>
+<ul>
+<li>atomic vector</li>
+<li>zero to many elements of the same data type (and may include NA)</li>
+<li>factor</li>
+<li>vectors with a limited number of unique values</li>
+<li>for example, a vector (“A,” “B,” “B,” “A”) with levels: “A” and “B”</li>
+<li>used to code categorical variables</li>
+<li>data frame</li>
+<li>the most important data structure in R: represents an m by n table of data</li>
+<li>columns are variables, rows are observations</li>
+</ul>
+<p>Identifying what type and structure of data you are working with is important because certain functions can only be applied to certain types/structures.</p>
+</div>
+<div id="conditional-statements-and-logical-operators" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Conditional statements and logical operators</h3>
+<p>Conditional statements and logical operators are important when
+working with data. We will practice using different conditional statements and
+logical operators on the oxygen data.</p>
+<p>In base R, a column vector can be extracted from a data frame using the <code>$</code>
+operator.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="introduction-to-the-tidyverse-1.html#cb99-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="ot">&lt;-</span> raw_data<span class="sc">$</span>WS_O2</span></code></pre></div>
+<p><br>
+We can further subset these data by pulling out specific measurements. In this case, we are using the 710th, 713th, 715th, etc. values from the vector of all oxygen values (1605 in total).</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="introduction-to-the-tidyverse-1.html#cb100-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="ot">&lt;-</span> oxygen[<span class="fu">c</span>(<span class="dv">710</span>, <span class="dv">713</span>, <span class="dv">715</span>, <span class="dv">716</span>, <span class="dv">709</span>, <span class="dv">717</span>, <span class="dv">718</span>, <span class="dv">719</span>)]</span>
+<span id="cb100-2"><a href="introduction-to-the-tidyverse-1.html#cb100-2" aria-hidden="true" tabindex="-1"></a>oxygen</span></code></pre></div>
+<pre><code>## [1] 295.488 204.259 144.362  96.356      NA  40.745  23.731   8.426</code></pre>
+<p><br></p>
+<p>Conditional statements:</p>
+<p><code>a == b</code> returns true when a matches b</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="introduction-to-the-tidyverse-1.html#cb102-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="sc">==</span> <span class="fl">204.259</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE    NA FALSE FALSE FALSE</code></pre>
+<p><br>
+<code>a != b</code> returns true if a does not match b</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="introduction-to-the-tidyverse-1.html#cb104-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="sc">!=</span> <span class="fl">204.259</span></span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE    NA  TRUE  TRUE  TRUE</code></pre>
+<p><br>
+<code>a &gt; b</code> returns true if a is greater than b</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="introduction-to-the-tidyverse-1.html#cb106-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="sc">&gt;</span> <span class="fl">204.259</span></span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE    NA FALSE FALSE FALSE</code></pre>
+<p><br>
+<code>a &lt;= b</code> returns true if a is less than or equal to b</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="introduction-to-the-tidyverse-1.html#cb108-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="sc">&lt;=</span> <span class="fl">204.259</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE  TRUE    NA  TRUE  TRUE  TRUE</code></pre>
+<p><br>
+<code>a %in% b</code> returns true if the value of a is in b</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introduction-to-the-tidyverse-1.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fl">204.259</span> <span class="sc">%in%</span> oxygen</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p><br>
+<code>is.na()</code> returns true in indices where the values of the input are
+NA (Not Available)</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="introduction-to-the-tidyverse-1.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(oxygen)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE</code></pre>
+<p><br>
+It is important to remember that these statements give answer of TRUE/FALSE. They <em>do not</em> subset the data to all the TRUE observations.
+Logical operators:</p>
+<p>logical NOT <code>!</code>. Find the indices where the data is NOT NA.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="introduction-to-the-tidyverse-1.html#cb114-1" aria-hidden="true" tabindex="-1"></a>oxygen</span></code></pre></div>
+<pre><code>## [1] 295.488 204.259 144.362  96.356      NA  40.745  23.731   8.426</code></pre>
+<p><br></p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="introduction-to-the-tidyverse-1.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(oxygen)</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
+<p><br>
+logical AND <code>&amp;</code>. Find the indices where the value is &lt;= 120 AND &gt;= 20</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="introduction-to-the-tidyverse-1.html#cb118-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="sc">&lt;=</span> <span class="dv">120</span> <span class="sc">&amp;</span> oxygen <span class="sc">&gt;=</span> <span class="dv">20</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE    NA  TRUE  TRUE FALSE</code></pre>
+<p><br>
+logical OR <code>|</code>. Find the indices where the value is &lt;= 50 OR &gt;= 150</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="introduction-to-the-tidyverse-1.html#cb120-1" aria-hidden="true" tabindex="-1"></a>oxygen <span class="sc">&lt;=</span> <span class="dv">50</span> <span class="sc">|</span> oxygen <span class="sc">&gt;=</span> <span class="dv">150</span></span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE    NA  TRUE  TRUE  TRUE</code></pre>
+</div>
+<div id="exercises-1" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Exercises</h3>
+<p>Using the <strong>first 16 depth observations</strong> in the depth data in the R Script:</p>
+<ol style="list-style-type: decimal">
+<li>Find the indices where depth is greater or equal to 0.055</li>
+<li>Check if the value 0.111 is in the depth data</li>
+<li>Find where depth is less than 0.060 OR depth is greater than 0.140</li>
+</ol>
+<p>Check that your answers to these questions are:</p>
+<ol style="list-style-type: decimal">
+<li>3 FALSE, followed by 13 TRUE</li>
+<li>FALSE
+3.4 TRUE, followed by 7 FALSE, followedby 5 TRUE</li>
+</ol>
+</div>
+</div>
+<div id="data-wrangling-with-dplyr" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Data wrangling with <code>dplyr</code></h2>
+<p>Typical data wrangling tasks:</p>
+<ul>
+<li><code>select</code> a subset of variables (columns)</li>
+<li><code>filter</code> out a subset of observations (rows)</li>
+<li><code>rename</code> variables</li>
+<li><code>arrange</code> the observations by sorting a variable in ascending or descending order</li>
+<li><code>mutate</code> all values of a variable (apply a transformation)</li>
+<li><code>group_by</code> a variable and <code>summarise</code> data by the grouped variable</li>
+<li><code>*_join</code> two data frames into a single data frame</li>
+</ul>
+<p>While base R can accomplish all of these tasks, base R code is rather slow
+and can quickly become extremely convoluted.</p>
+<p>Currently, the most popular alternative for data wrangling is the package
+<em>dplyr</em>. It is so good at what it does, and integrates so well with other
+popular tools like <em>ggplot2</em>, that it has rapidly become the de-facto standard
+and it is what we will focus on today.</p>
+<p>Compared to base R, dplyr code runs much faster. It is also much more readable
+because all operations are based on using dplyr functions or <em>verbs</em> (select,
+filter, mutate…) rather than base R’s more difficult to read indexing system (brackets, parentheses…).</p>
+<p>Each verb works similarly:</p>
+<ul>
+<li>input data frame in the first argument</li>
+<li>other arguments can refer to variables as if they were local objects</li>
+<li>output is another data frame</li>
+</ul>
+<p>Before working with our data, we first want to make a copy of the raw data so
+that we may revert to it quickly if we make any mistakes. This is best practices for data science in general.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="introduction-to-the-tidyverse-1.html#cb122-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> raw_data</span></code></pre></div>
+<div id="select" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Select</h3>
+<p>You can use the <code>select</code> function to focus on a subset of variables (columns). Let’s
+select the variables that we will need for this workshop. Here, we will use our copied raw data (dat) and select the variables:</p>
+<ul>
+<li>cruise #</li>
+<li>date</li>
+<li>depth in kilometers</li>
+<li>temperature in Celsius</li>
+<li>salinity in Practical Salinity Units (PSU)</li>
+<li>density in Sigma-Theta</li>
+<li>oxygen (O2) in uM</li>
+<li>nitrate (NO3) in uM</li>
+<li>hydrogen sulfide (H2S) in uM</li>
+</ul>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="introduction-to-the-tidyverse-1.html#cb123-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">select</span>(dat, </span>
+<span id="cb123-2"><a href="introduction-to-the-tidyverse-1.html#cb123-2" aria-hidden="true" tabindex="-1"></a>              Cruise, Date, Depth, </span>
+<span id="cb123-3"><a href="introduction-to-the-tidyverse-1.html#cb123-3" aria-hidden="true" tabindex="-1"></a>              Temperature, Salinity, Density, </span>
+<span id="cb123-4"><a href="introduction-to-the-tidyverse-1.html#cb123-4" aria-hidden="true" tabindex="-1"></a>              WS_O2, WS_NO3, WS_H2S)</span></code></pre></div>
+<p>There are several helper functions that can be used with <code>select</code> to
+describe which variables to keep:</p>
+<ul>
+<li>starts_with(x): variable names that start with x</li>
+<li>ends_with(x): variable names that end with x</li>
+<li>contains(x): variable names containing x</li>
+</ul>
+<p>We can use the <code>starts_with</code> helper function to quickly select all of
+the chemicals that we will be using in this workshop.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="introduction-to-the-tidyverse-1.html#cb124-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">select</span>(raw_data, </span>
+<span id="cb124-2"><a href="introduction-to-the-tidyverse-1.html#cb124-2" aria-hidden="true" tabindex="-1"></a>              Cruise, Date, Depth, </span>
+<span id="cb124-3"><a href="introduction-to-the-tidyverse-1.html#cb124-3" aria-hidden="true" tabindex="-1"></a>              Temperature, Salinity, Density, </span>
+<span id="cb124-4"><a href="introduction-to-the-tidyverse-1.html#cb124-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">starts_with</span>(<span class="st">&quot;WS_&quot;</span>))</span></code></pre></div>
+<p>The full list of helper functions can be found by running <code>?select_helpers</code> in
+the console.</p>
+</div>
+<div id="filter" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Filter</h3>
+<p>You can use <code>filter</code> to select specific rows based on a logical condition of a
+variable. This is where our practice with R logic comes in handy. Below we
+filter the data such that we only retain data collected after February 2008
+because a different instrument was used prior to this date. <em>Notice</em> that we save this filtered data as “dat” because we want to save it in our R environment and use it throughout this workshop.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="introduction-to-the-tidyverse-1.html#cb125-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">filter</span>(dat, Date <span class="sc">&gt;=</span> <span class="st">&quot;2008-02-01&quot;</span>)</span></code></pre></div>
+<p>As we saw earlier, conditional statements and logical expressions in R are extremely powerful and allow us to filter the data in almost any way imaginable. For example, we can filter the data to consist of observations taken in June (using <code>months</code> in the lubridate package), at depths of either 0.1 or 0.2, and where nitrate data is not missing.</p>
+<p>Importantly, lubridate operates under the assumption that you are using English. To check what language R is using, run <code>Sys.getlocale("LC_TIME")</code>. If your computer is running in another language, replace “June” with the equivalent in your language or set R to English with <code>Sys.setlocale("LC_TIME", "en_CA.UTF-8")</code>.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="introduction-to-the-tidyverse-1.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(dat, <span class="fu">months</span>(Date) <span class="sc">==</span> <span class="st">&quot;June&quot;</span> <span class="sc">&amp;</span> Depth <span class="sc">%in%</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(WS_NO3))</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 9
+##    Cruise Date       Depth Temperature Salinity Density WS_O2 WS_NO3 WS_H2S
+##     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1     22 2008-06-11   0.1        8.43     30.9    24.0  98.1   26.6   0   
+##  2     22 2008-06-11   0.2        9.43     31.3    24.2   0      0     5.50
+##  3     34 2009-06-16   0.1        8.20     30.9    24.0  53.0   25.2   0   
+##  4     34 2009-06-16   0.2        9.24     31.3    24.2   0      0     3.00
+##  5     46 2010-06-16   0.1        9.03     30.6    23.7  67.0   26.0   0   
+##  6     46 2010-06-16   0.2        9.26     31.3    24.2   0      0    20.5 
+##  7     58 2011-06-15   0.1        8.57     30.7    23.8  78.0   25.8   0   
+##  8     58 2011-06-15   0.2        9.36     31.3    24.2   0      0    14.7 
+##  9     70 2012-06-14   0.1        8.40     30.7    23.9  43.1   26.2   0   
+## 10     70 2012-06-14   0.2        9.14     31.3    24.2   0      0    13.3 
+## 11     84 2013-06-13   0.1        8.59     30.9    23.9  37.8   23.9   0   
+## 12     84 2013-06-13   0.2        9.01     31.3    24.2   0      0     1.96</code></pre>
+<p><em>Notice</em> that we are not saving this filtered data as “dat” because we do not want to over-write the data in our environment. We are just using filter to look at the results.</p>
+<p>This also brings up another best practice in data science. Dates are usually recorded as 1 string like year-month-day. This means we must use an additional package and function to subset by any of these values. In actuality, the best practice is to give year, month, and day in separate columns so that you could filter as <code>filter(dat, month==6)</code>. But this is not the most common format so we are showing the lubridate workaround here.</p>
+<div id="exercise-select-and-filter" class="section level4" number="3.5.2.1">
+<h4><span class="header-section-number">3.5.2.1</span> Exercise: select and filter</h4>
+<p>Because we will be manipulating the data further, first copy the data “dat” to practice data “pdat” so that what you do in the exercises does not impact the rest of the workshop.</p>
+<p>Using your pdat data:</p>
+<ol style="list-style-type: decimal">
+<li>select the Cruise, Date, Depth, and NO3 variables</li>
+<li>filter the data to retain data on Cruise 72 where Depth is &gt;= to 0.1</li>
+</ol>
+<p>Your resulting pdat object should be a 8x4 data frame.</p>
+</div>
+</div>
+<div id="rename" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Rename</h3>
+<p>You can use the <code>rename</code> function to assign new names to your variables. This
+can be very useful when your variable names are very long and tedious to type.
+Here, we remove the “CTD_” and “Mean_” prefixes from our geochemical variables.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="introduction-to-the-tidyverse-1.html#cb128-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">rename</span>(dat, <span class="at">O2=</span>WS_O2, <span class="at">NO3=</span>WS_NO3, <span class="at">H2S=</span>WS_H2S)</span></code></pre></div>
+<p>This is a good point to touch on best practices for units in data. It is best to either names the units in the variable name, such as O2_uM for oxygen in micromolar, or to create a separate column for units, such as O2 = 3.4 and O2_units = uM. You should <em>never</em> place the units in the same variable as the measurement because then you cannot plot the variable as a number!</p>
+<p>Here, we have no designations though we’ve noted units in the list in the section on the Select verb. For simplicity’s sake in this workshop, we will simply use the variable names. However, in a full data analysis, you should use variable names such as “O2_uM” and “temperature_C” for clarity. You could rename all these variables accordingly using rename as shown above.</p>
+</div>
+<div id="arrange" class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Arrange</h3>
+<p>Use <code>arrange(x)</code> to sort all the rows by the value of the variable x in
+ascending order. <code>arrange(desc(x))</code> can be used to sort in descending order.
+For example, we can arrange the data in the order of ascending NO3 values.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="introduction-to-the-tidyverse-1.html#cb129-1" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 9
+##    Cruise Date       Depth Temperature Salinity Density    O2   NO3   H2S
+##     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1     18 2008-02-13 0.01         7.49     29.6    23.1 225.   18.9     0
+##  2     18 2008-02-13 0.02         7.34     29.7    23.2 221.   24.0     0
+##  3     18 2008-02-13 0.04         7.74     29.9    23.3 202.   29.2     0
+##  4     18 2008-02-13 0.06         7.74     30.1    23.5 198.   24.0     0
+##  5     18 2008-02-13 0.075        7.56     30.2    23.6 194.   23.8     0
+##  6     18 2008-02-13 0.085        8.04     30.4    23.7 150.   23.0     0
+##  7     18 2008-02-13 0.09         8.43     30.6    23.7 122.   21.9     0
+##  8     18 2008-02-13 0.097        8.47     30.6    23.8 108.   20.3     0
+##  9     18 2008-02-13 0.1          8.54     30.7    23.8  99.8  19.4     0
+## 10     18 2008-02-13 0.11         9.12     31.0    24.0  39.6  19.4     0</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="introduction-to-the-tidyverse-1.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ], NO3)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 9
+##    Cruise Date       Depth Temperature Salinity Density    O2   NO3   H2S
+##     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1     18 2008-02-13 0.01         7.49     29.6    23.1 225.   18.9     0
+##  2     18 2008-02-13 0.11         9.12     31.0    24.0  39.6  19.4     0
+##  3     18 2008-02-13 0.1          8.54     30.7    23.8  99.8  19.4     0
+##  4     18 2008-02-13 0.097        8.47     30.6    23.8 108.   20.3     0
+##  5     18 2008-02-13 0.09         8.43     30.6    23.7 122.   21.9     0
+##  6     18 2008-02-13 0.085        8.04     30.4    23.7 150.   23.0     0
+##  7     18 2008-02-13 0.075        7.56     30.2    23.6 194.   23.8     0
+##  8     18 2008-02-13 0.02         7.34     29.7    23.2 221.   24.0     0
+##  9     18 2008-02-13 0.06         7.74     30.1    23.5 198.   24.0     0
+## 10     18 2008-02-13 0.04         7.74     29.9    23.3 202.   29.2     0</code></pre>
+</div>
+<div id="mutate" class="section level3" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> Mutate</h3>
+<p>Use <code>mutate(y=x)</code> to apply a transformation to some variable x and assign it
+to the variable name y. Here we multiply Depth by 1000 to convert its units
+from kilometers to meters.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="introduction-to-the-tidyverse-1.html#cb133-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">mutate</span>(dat, <span class="at">Depth=</span>Depth<span class="sc">*</span><span class="dv">1000</span>)</span></code></pre></div>
+<div id="exercise-rename-and-mutate" class="section level4" number="3.5.5.1">
+<h4><span class="header-section-number">3.5.5.1</span> Exercise: rename and mutate</h4>
+<p>Using the practice data (pdat):</p>
+<ol style="list-style-type: decimal">
+<li>Select the Date, Depth and O2 variables from pdat using select</li>
+<li>Rename the O2 variable to Oxygen using rename</li>
+<li>Keep August observations where Oxygen is non-missing using filter, months, and !is.na</li>
+<li>Transform Oxygen from micromoles/L to micrograms/L using mutate (multiply Oxygen by 32)</li>
+<li>Run the provided ggplot() code to create a scatterplot of Oxygen vs Depth</li>
+</ol>
+<p>You should obtain the following plot:</p>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<hr />
+<p>If you are attending a 3 x 2-hour workshop, this is the end of day 1</p>
+<hr />
+</div>
+</div>
+<div id="piping-with" class="section level3" number="3.5.6">
+<h3><span class="header-section-number">3.5.6</span> Piping with <code>%&gt;%</code></h3>
+<p>Recall the basic dplyr verb syntax:</p>
+<ul>
+<li>input data frame in the first argument</li>
+<li>other arguments can refer to variables as if they were local objects</li>
+<li>output is another data frame</li>
+</ul>
+<p>Our geochemical data cleaning code continuously overwrites the “dat” object
+every time we call a dplyr verb. Instead, we can chain commands together using
+the <code>%&gt;%</code> operator.</p>
+<p><code>f(x) %&gt;% g(y)</code> is the same as <code>g(f(x),y)</code></p>
+<p><code>select(dat, Cruise)</code> is the same as <code>dat %&gt;% select(Cruise)</code></p>
+<p>Piping works nicely to condense code and to improve readability. Dplyr syntax is very easy to read. Starting with the raw_data, we select the Cruise, Date, …, WS_H2S variables, filter out the data prior to February 2008, rename chemical variables, and then multiply Depth by 1000.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="introduction-to-the-tidyverse-1.html#cb135-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
+<span id="cb135-2"><a href="introduction-to-the-tidyverse-1.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  raw_data <span class="sc">%&gt;%</span></span>
+<span id="cb135-3"><a href="introduction-to-the-tidyverse-1.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Cruise, Date, Depth, </span>
+<span id="cb135-4"><a href="introduction-to-the-tidyverse-1.html#cb135-4" aria-hidden="true" tabindex="-1"></a>         Temperature, Salinity, Density, </span>
+<span id="cb135-5"><a href="introduction-to-the-tidyverse-1.html#cb135-5" aria-hidden="true" tabindex="-1"></a>         WS_O2, WS_NO3, WS_H2S) <span class="sc">%&gt;%</span></span>
+<span id="cb135-6"><a href="introduction-to-the-tidyverse-1.html#cb135-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;=</span> <span class="st">&quot;2008-02-01&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb135-7"><a href="introduction-to-the-tidyverse-1.html#cb135-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">O2=</span>WS_O2, <span class="at">NO3=</span>WS_NO3, <span class="at">H2S=</span>WS_H2S) <span class="sc">%&gt;%</span></span>
+<span id="cb135-8"><a href="introduction-to-the-tidyverse-1.html#cb135-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Depth=</span>Depth<span class="sc">*</span><span class="dv">1000</span>)</span></code></pre></div>
+<div id="exercise-pipes" class="section level4" number="3.5.6.1">
+<h4><span class="header-section-number">3.5.6.1</span> Exercise: pipes</h4>
+<ol style="list-style-type: decimal">
+<li>Rewrite your ocde from the previous exercise using pipes</li>
+<li>Pipe your data into the ggplot function</li>
+</ol>
+</div>
+</div>
+<div id="group-by-and-summarise" class="section level3" number="3.5.7">
+<h3><span class="header-section-number">3.5.7</span> Group by and Summarise</h3>
+<p><code>summarise</code> (or <code>summarize</code>) is handy when we want to calculate summaries for
+groups of observations. This is done by first applying the <code>group_by</code> verb
+and then feeding it into <code>summarise</code>. For example, we can calculate the mean,
+standard deviation, and sample size of oxygen concentrations by depth as follows.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="introduction-to-the-tidyverse-1.html#cb136-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb136-2"><a href="introduction-to-the-tidyverse-1.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Depth) <span class="sc">%&gt;%</span></span>
+<span id="cb136-3"><a href="introduction-to-the-tidyverse-1.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_O2=</span><span class="fu">mean</span>(O2, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb136-4"><a href="introduction-to-the-tidyverse-1.html#cb136-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_O2=</span><span class="fu">sd</span>(O2, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb136-5"><a href="introduction-to-the-tidyverse-1.html#cb136-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">n=</span><span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 24 x 4
+##    Depth Mean_O2 SD_O2     n
+##  * &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+##  1    10   211.   55.8    83
+##  2    20   187.   50.3    83
+##  3    40   159.   38.3    83
+##  4    60   138.   45.2    83
+##  5    75   105.   54.8    82
+##  6    80    32.3  NA       1
+##  7    85    81.9  48.8    82
+##  8    90    68.2  42.1    82
+##  9    97    49.1  34.7    82
+## 10   100    43.6  33.1    83
+## # … with 14 more rows</code></pre>
+<div id="exercise-group-by-and-summarise" class="section level4" number="3.5.7.1">
+<h4><span class="header-section-number">3.5.7.1</span> Exercise: group by and summarise</h4>
+<ol style="list-style-type: decimal">
+<li>Using the <code>dat</code> data set, calculate the median, interquartuile range and the sample size of Temperature by depth.</li>
+</ol>
+<hr />
+<p>If you are attending a 2 x 3-hour workshop, this is the end of day 1</p>
+<hr />
+</div>
+</div>
+<div id="wide-and-long-data---gather-and-spread" class="section level3" number="3.5.8">
+<h3><span class="header-section-number">3.5.8</span> Wide and long data - gather and spread</h3>
+<p>Wide and long describe two different formats for a data frame. Wide data
+is where each variable is given its own column. Narrow data is where one column
+contains all of the variable names, and another column contains all of the
+values of these variables.</p>
+<p>For example, this wide data</p>
+<pre><code>##   sample_ID year_2015 year_2016 year_2017
+## 1         1     0.288     1.140     1.051
+## 2         2     0.788     0.246     0.957
+## 3         3     0.409     0.728     1.457
+## 4         4     0.883     1.092     0.953</code></pre>
+<p>contains the same information as this long data.</p>
+<pre><code>##    sample_ID      Year Value
+## 1          1 year_2015 0.288
+## 2          2 year_2015 0.788
+## 3          3 year_2015 0.409
+## 4          4 year_2015 0.883
+## 5          1 year_2016 1.140
+## 6          2 year_2016 0.246
+## 7          3 year_2016 0.728
+## 8          4 year_2016 1.092
+## 9          1 year_2017 1.051
+## 10         2 year_2017 0.957
+## 11         3 year_2017 1.457
+## 12         4 year_2017 0.953</code></pre>
+<p>Our data is in the wide format. Observe that Temperature, Salinity, Density,
+O2, NO3, and H2S are given their own columns.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="introduction-to-the-tidyverse-1.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 9
+##   Cruise Date       Depth Temperature Salinity Density    O2   NO3   H2S
+##    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     18 2008-02-13    10        7.49     29.6    23.1  225.  18.9     0
+## 2     18 2008-02-13    20        7.34     29.7    23.2  221.  24.0     0
+## 3     18 2008-02-13    40        7.74     29.9    23.3  202.  29.2     0
+## 4     18 2008-02-13    60        7.74     30.1    23.5  198.  24.0     0
+## 5     18 2008-02-13    75        7.56     30.2    23.6  194.  23.8     0
+## 6     18 2008-02-13    85        8.04     30.4    23.7  150.  23.0     0</code></pre>
+<p>Some R functions work better with wide data and others work better with long
+data. <code>gather</code> and <code>spread</code> are two functions that enable easy conversion
+between the formats. The first will <code>gather</code> your wide data into one column
+containing all of the variable names (the “Key” column) and another column
+containing all of the values (the “Value” column). The second function will
+<code>spread</code> your long data into the wide data format.</p>
+<p>Here we gather our data from wide to long format, specifying that we do not want
+to gather Cruise, Date, and Depth. The factor_key argument specifies that
+we want to maintain the ordering of the columns, so <code>gather</code> will automatically
+mutate the Key column into a factor with levels in our desired ordering.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="introduction-to-the-tidyverse-1.html#cb142-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">gather</span>(dat, <span class="at">key=</span><span class="st">&quot;Key&quot;</span>, <span class="at">value=</span><span class="st">&quot;Value&quot;</span>, <span class="sc">-</span>Cruise, <span class="sc">-</span>Date, <span class="sc">-</span>Depth,</span>
+<span id="cb142-2"><a href="introduction-to-the-tidyverse-1.html#cb142-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">factor_key=</span><span class="cn">TRUE</span>)  <span class="co"># store the variable names as an ordered factor</span></span>
+<span id="cb142-3"><a href="introduction-to-the-tidyverse-1.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   Cruise Date       Depth Key         Value
+##    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;
+## 1     18 2008-02-13    10 Temperature  7.49
+## 2     18 2008-02-13    20 Temperature  7.34
+## 3     18 2008-02-13    40 Temperature  7.74
+## 4     18 2008-02-13    60 Temperature  7.74
+## 5     18 2008-02-13    75 Temperature  7.56
+## 6     18 2008-02-13    85 Temperature  8.04</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="introduction-to-the-tidyverse-1.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat<span class="sc">$</span>Key)</span></code></pre></div>
+<pre><code>## [1] Temperature Temperature Temperature Temperature Temperature Temperature
+## Levels: Temperature Salinity Density O2 NO3 H2S</code></pre>
+<p>We can undo this by spreading our data from long to wide format.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="introduction-to-the-tidyverse-1.html#cb146-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">spread</span>(dat, <span class="at">key=</span><span class="st">&quot;Key&quot;</span>, <span class="at">value=</span><span class="st">&quot;Value&quot;</span>)</span>
+<span id="cb146-2"><a href="introduction-to-the-tidyverse-1.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 9
+##   Cruise Date       Depth Temperature Salinity Density    O2   NO3   H2S
+##    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     18 2008-02-13    10        7.49     29.6    23.1  225.  18.9     0
+## 2     18 2008-02-13    20        7.34     29.7    23.2  221.  24.0     0
+## 3     18 2008-02-13    40        7.74     29.9    23.3  202.  29.2     0
+## 4     18 2008-02-13    60        7.74     30.1    23.5  198.  24.0     0
+## 5     18 2008-02-13    75        7.56     30.2    23.6  194.  23.8     0
+## 6     18 2008-02-13    85        8.04     30.4    23.7  150.  23.0     0</code></pre>
+</div>
+</div>
+<div id="graphics-with-ggplot2" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Graphics with ggplot2</h2>
+<p><em>ggplot2</em> is an add-on package to R. It is an alternative to base
+graphics that has become very popular, to the point where it is
+recommended/preferred unless you have old code that already uses a
+different graphing package.</p>
+<p><em>ggplot2</em> documentation is available at
+<a href="http://docs.ggplot2.org/current/">docs.ggplot2.org</a></p>
+<div id="why-ggolot" class="section level3" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Why ggolot?</h3>
+<ul>
+<li>Wilkinson, <em>Grammar of Graphics</em> (1999)</li>
+<li>Ggplot2 is an implementation of GoG for R</li>
+<li>Benefits:</li>
+<li>handsome default settings</li>
+<li>snap-together building block approach</li>
+<li>automatic legends, colours, facets</li>
+<li>statistical overlays: regressions lines and smoothers (with confidence intervals)</li>
+<li>Drawbacks:</li>
+<li>it can be hard to get it to look <em>exactly</em> the way you want</li>
+<li>requires having the input data in a certain format</li>
+</ul>
+</div>
+<div id="ggplot-building-blocks" class="section level3" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> ggplot building blocks</h3>
+<ul>
+<li>data: 2D table (<code>data.frame</code>) of <em>variables</em></li>
+<li><em>aesthetics</em>: map variables to visual attributes (e.g., position)</li>
+<li><em>geoms</em>: graphical representation of data (points, lines, etc.)</li>
+<li><em>stats</em>: statistical transformations to get from data to points in
+the plot(binning, summarizing, smoothing)</li>
+<li><em>scales</em>: control <em>how</em> to map a variable to an aesthetic</li>
+<li><em>facets</em>: juxtapose mini-plots of data subsets, split by variable(s)</li>
+<li><em>guides</em>: axes, legend, etc. reflect the variables and their values</li>
+</ul>
+<p>Idea: independently specify and combine the blocks to create the plot
+you want.</p>
+<p>There are at least three things we have to specify to create a plot:</p>
+<ol style="list-style-type: decimal">
+<li>data</li>
+<li>aesthetic mappings from data variables to visual properties</li>
+<li>a layer describing how to draw those properties</li>
+</ol>
+</div>
+<div id="geom_point" class="section level3" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> geom_point</h3>
+<p>The point geom is used to create scatterplots. Let’s examine the relationship between Oxygen (O2) and Nitrate (NO3).</p>
+<p>The first argument of ggplot is the data, hence we pipe our data into the ggplot function. The second argument is the aesthetics, which is used by all subsequent geoms. We then add a geom_point to the ggplot object, specifying that we want size 1 points. Here, geom_point takes the aesthetics of the ggplot object and
+understands that we want to plot oxygen on the x-axis and nitrate on the y-axis.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="introduction-to-the-tidyverse-1.html#cb148-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb148-2"><a href="introduction-to-the-tidyverse-1.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>O2, <span class="at">y=</span>NO3)) <span class="sc">+</span></span>
+<span id="cb148-3"><a href="introduction-to-the-tidyverse-1.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 212 rows containing missing values (geom_point).</code></pre>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p>Note that above R code has a warning. Warnings do not always indicate that there is an error in your code. For example, this warning tells us that there is missing data in our data frame, which we already know.</p>
+<p>We are specifically interested in this relationship because oxygen is the most energetically favourable terminal electron acceptor for microbial metabolism in this system. However, oxygen is depleted in deeper waters as a result of the seasonal stratification. So what are microbes using to survive? As oxygen is depleted, microbes must use alternative terminal electron acceptors. In Saanich Inlet, nitrate is the next best option so we want to see if nitrate is available to microbes when oxygen is depleted. <strong>Do you see any patterns in the above plot? Is nitrate available when oxygen is at low concentrations?</strong></p>
+<p>We are also interested in hydrogen sulfide (H2S) because sulfate (SO4) is the third best terminal electron acceptor in this system. If sulfate is being used, it will be reduced to hydrogen sulfide and we will see a build up of H2S when both oxygen and nitrate are depleted. <strong>Is this the case?</strong> Complete the next exercise to find out!</p>
+<div id="exercise-geom_point" class="section level4" number="3.6.3.1">
+<h4><span class="header-section-number">3.6.3.1</span> Exercise: geom_point</h4>
+<p>Using the <code>dat</code> data set:</p>
+<ol style="list-style-type: decimal">
+<li>Investigate the relationship between O2 and H2S</li>
+<li>Investigate the relationship between NO3 and H2S</li>
+</ol>
+<hr />
+<p>If you are attending a 3 x 2-hour workshop, this is the wnd of day 2</p>
+<hr />
+<p>Perhaps we can get a better understanding of what is happening at Saanich
+Inlet if we colour the points by the corresponding Hydrogen Sulfide
+concentration. Ggplot plots the observations in the order that they appear
+in the data frame. Since most of the H2S values are zero, we want to plot the
+non-zero data last. To do this, we use arrange to sort the rows by ascending
+H2S values. To the ggplot, we add an additional colour aesthetic. This indicates
+to colour our points by the corresponding value of Hydrogen Sulfide.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="introduction-to-the-tidyverse-1.html#cb150-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="introduction-to-the-tidyverse-1.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(H2S)) <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href="introduction-to-the-tidyverse-1.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(H2S) <span class="sc">%&gt;%</span>  </span>
+<span id="cb150-4"><a href="introduction-to-the-tidyverse-1.html#cb150-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb150-5"><a href="introduction-to-the-tidyverse-1.html#cb150-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>O2, <span class="at">y=</span>NO3, <span class="at">colour=</span>H2S)) <span class="sc">+</span></span>
+<span id="cb150-6"><a href="introduction-to-the-tidyverse-1.html#cb150-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">2.5</span>) </span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><strong>What do you notice about the relationship between oxygen, nitrate, and hydrogen sulfide? What might this tell you about what the microbes are doing in this system?</strong></p>
+<p>We can also group points by a categorical variable. Let’s select the Cruise, Depth, O2, and H2S variables. Then, let’s filter to retain information on Cruise 72, and gather the data into the long format. We chose this cruise because it has accompanying microbial data that is used in ECOSCOPE’s upcoming summer workshops on amplicon sequencing and metagenomic analysis!</p>
+<p>Next, we create a depth-profile scatterplot comparing
+concentrations (x-axis) versus depth (y-axis) by chemical (shape).
+We also specify to reverse the y-axis with <code>scale_y_reverse</code> in order to obtain
+a depth profile where the top of the water column is at the top of the plot.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="introduction-to-the-tidyverse-1.html#cb151-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb151-2"><a href="introduction-to-the-tidyverse-1.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Cruise, Depth, O2, H2S) <span class="sc">%&gt;%</span></span>
+<span id="cb151-3"><a href="introduction-to-the-tidyverse-1.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Cruise<span class="sc">==</span><span class="dv">72</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb151-4"><a href="introduction-to-the-tidyverse-1.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Chemical&quot;</span>, <span class="at">value=</span><span class="st">&quot;Concentration&quot;</span>, <span class="sc">-</span>Cruise, <span class="sc">-</span>Depth) <span class="sc">%&gt;%</span></span>
+<span id="cb151-5"><a href="introduction-to-the-tidyverse-1.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb151-6"><a href="introduction-to-the-tidyverse-1.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Concentration, <span class="at">y=</span>Depth, <span class="at">shape=</span>Chemical)) <span class="sc">+</span></span>
+<span id="cb151-7"><a href="introduction-to-the-tidyverse-1.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb151-8"><a href="introduction-to-the-tidyverse-1.html#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">0</span>))</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p>This plot shows the same trend as we saw in our previous oxygen vs. hydrogen sulfide plot. However, now we can see that not only does H2S only accumulate when O2 is depleted, but this only occurs at depths greater the 150 meters.</p>
+</div>
+<div id="exercise-color-and-aesthetics" class="section level4" number="3.6.3.2">
+<h4><span class="header-section-number">3.6.3.2</span> Exercise: color and aesthetics</h4>
+<ol style="list-style-type: decimal">
+<li>It may be difficult to differentiate between the different shapes in the previous plot so modify the previous code to add colors to the shapes as well.</li>
+</ol>
+</div>
+</div>
+<div id="geom_line" class="section level3" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> geom_line</h3>
+<p>The line geom connects observations in the order that they appear in the data.
+It is especially useful when plotting time series. Here we combine the point
+and line geoms to plot a time series of Oxygen at a depth of 200 meters.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="introduction-to-the-tidyverse-1.html#cb152-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb152-2"><a href="introduction-to-the-tidyverse-1.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date, Depth, O2) <span class="sc">%&gt;%</span></span>
+<span id="cb152-3"><a href="introduction-to-the-tidyverse-1.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Depth <span class="sc">==</span> <span class="dv">200</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(O2)) <span class="sc">%&gt;%</span></span>
+<span id="cb152-4"><a href="introduction-to-the-tidyverse-1.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Chemical&quot;</span>, <span class="at">value=</span><span class="st">&quot;O2 Concentration&quot;</span>, <span class="sc">-</span>Date, <span class="sc">-</span>Depth) <span class="sc">%&gt;%</span></span>
+<span id="cb152-5"><a href="introduction-to-the-tidyverse-1.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb152-6"><a href="introduction-to-the-tidyverse-1.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span><span class="st">`</span><span class="at">O2 Concentration</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb152-7"><a href="introduction-to-the-tidyverse-1.html#cb152-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb152-8"><a href="introduction-to-the-tidyverse-1.html#cb152-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p>We can further layer geoms with to compare oxygen and hydrogen sulfide at 200 m over time. Here, we also keep the H2S data and mutate it to be negative such that is plots below the oxygen data.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="introduction-to-the-tidyverse-1.html#cb153-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb153-2"><a href="introduction-to-the-tidyverse-1.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date, Depth, O2, H2S) <span class="sc">%&gt;%</span></span>
+<span id="cb153-3"><a href="introduction-to-the-tidyverse-1.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Depth <span class="sc">==</span> <span class="dv">200</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(O2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(H2S)) <span class="sc">%&gt;%</span></span>
+<span id="cb153-4"><a href="introduction-to-the-tidyverse-1.html#cb153-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">H2S=</span><span class="sc">-</span>H2S) <span class="sc">%&gt;%</span></span>
+<span id="cb153-5"><a href="introduction-to-the-tidyverse-1.html#cb153-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Chemical&quot;</span>, <span class="at">value=</span><span class="st">&quot;Concentration&quot;</span>, <span class="sc">-</span>Date, <span class="sc">-</span>Depth) <span class="sc">%&gt;%</span></span>
+<span id="cb153-6"><a href="introduction-to-the-tidyverse-1.html#cb153-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb153-7"><a href="introduction-to-the-tidyverse-1.html#cb153-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>Concentration, <span class="at">colour=</span>Chemical)) <span class="sc">+</span></span>
+<span id="cb153-8"><a href="introduction-to-the-tidyverse-1.html#cb153-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb153-9"><a href="introduction-to-the-tidyverse-1.html#cb153-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>As in our depth profiles, we also see a relationship between oxygen and hydrogen sulfide at a single depth over time. Again, hydrogen sulfide only accumulated when oxygen is absent. In this case, this is because hydrogen sulfide (H2S) reacts with oxygen (O2) to form water (H2O) and sulfur dioxide (SO2). So both compounds cannot co-exist at one depth as they will quickly react and deplete each other until only 1 remains (the one with the highest original concentration).</p>
+</div>
+<div id="geom_histogram" class="section level3" number="3.6.5">
+<h3><span class="header-section-number">3.6.5</span> geom_histogram</h3>
+<p>The histogram geom is useful for visualizing the distribution of a continuous
+variable. It accomplishes this by dividing the x-axis into bins and
+counting the number of observations in each bin. By default, geom_histogram
+divides the x-axis evenly into 30 bins. Let’s examine the distribution of
+Oxygen at depths less than 100.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="introduction-to-the-tidyverse-1.html#cb154-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb154-2"><a href="introduction-to-the-tidyverse-1.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Depth <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb154-3"><a href="introduction-to-the-tidyverse-1.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb154-4"><a href="introduction-to-the-tidyverse-1.html#cb154-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>O2)) <span class="sc">+</span></span>
+<span id="cb154-5"><a href="introduction-to-the-tidyverse-1.html#cb154-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>We see that in general, oxygen is below ~250 uM in the first 100 m of the water column.</p>
+<p>And the distribution of oxygen at depths greater than or equal to 100.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="introduction-to-the-tidyverse-1.html#cb156-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb156-2"><a href="introduction-to-the-tidyverse-1.html#cb156-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Depth <span class="sc">&gt;=</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb156-3"><a href="introduction-to-the-tidyverse-1.html#cb156-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb156-4"><a href="introduction-to-the-tidyverse-1.html#cb156-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>O2)) <span class="sc">+</span></span>
+<span id="cb156-5"><a href="introduction-to-the-tidyverse-1.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p>Now we is that oxygen is much lower below 100 m, with most values being &lt; 25 uM. This makes sense as we know that oxygen is depleted as we go deeper in Saanich Inlet.</p>
+<p>We expect a different pattern for nitrate since it is less favourable in microbial metabolism. Complete the following exercise to find out how nitrate is distributed across the entire depth profile. <strong>What patterns do you see?</strong></p>
+<div id="exercise-geom_histogram" class="section level4" number="3.6.5.1">
+<h4><span class="header-section-number">3.6.5.1</span> Exercise: geom_histogram</h4>
+<ol style="list-style-type: decimal">
+<li>Investigate the distribution of nitrate across all depths</li>
+<li>Test out different values for the bins argument (“bins=”)</li>
+</ol>
+</div>
+</div>
+<div id="geom_boxplot" class="section level3" number="3.6.6">
+<h3><span class="header-section-number">3.6.6</span> geom_boxplot</h3>
+<p>Boxplots let us visualize how a continuous variable varies with the levels of a
+categorical variable. Let’s examine the distribution of concentrations of different chemicals in July at depths greater than or equal to 150 .</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="introduction-to-the-tidyverse-1.html#cb158-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb158-2"><a href="introduction-to-the-tidyverse-1.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Temperature, <span class="sc">-</span>Salinity, <span class="sc">-</span>Density) <span class="sc">%&gt;%</span></span>
+<span id="cb158-3"><a href="introduction-to-the-tidyverse-1.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">months</span>(Date) <span class="sc">==</span> <span class="st">&quot;July&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb158-4"><a href="introduction-to-the-tidyverse-1.html#cb158-4" aria-hidden="true" tabindex="-1"></a>           Depth <span class="sc">&gt;=</span> <span class="dv">150</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb158-5"><a href="introduction-to-the-tidyverse-1.html#cb158-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Chemical&quot;</span>, <span class="at">value=</span><span class="st">&quot;Concentration&quot;</span>, <span class="sc">-</span>Cruise, <span class="sc">-</span>Date, <span class="sc">-</span>Depth, <span class="at">factor_key=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb158-6"><a href="introduction-to-the-tidyverse-1.html#cb158-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb158-7"><a href="introduction-to-the-tidyverse-1.html#cb158-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Chemical, <span class="at">y=</span>Concentration)) <span class="sc">+</span></span>
+<span id="cb158-8"><a href="introduction-to-the-tidyverse-1.html#cb158-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p>In Saanich Inlet, July is right before the renewal season so, we expect the water to be the most stratified at this time of the year, thus resulting in low oxygen, low nitrate, and high hydrogen sulfide at lower depths. Remember, this occurs because the water hasn’t mixed in many months and microbes have used up the more favourable oxygen and nitrate in the water. We see that, indeed, this is the case in the above plot. <strong>What might you expect in the middle of the mixing period, like November?</strong></p>
+</div>
+<div id="facet_wrap" class="section level3" number="3.6.7">
+<h3><span class="header-section-number">3.6.7</span> facet_wrap</h3>
+<p>Rather than putting a lot of information in a single graphic, we can split the
+graphic into panels by certain features. This is called faceting.</p>
+<p>We can make depth profiles for all six variables Temperature, Salinity, Density, Oxygen, Nitrate, and Hydrogen Sulfide. Here we gather the data into the long format and pipe it into the ggplot function. As with the previous scatterplots, we set the aesthetics in the ggplot function, specifying that we want the variable values on the x-axis, and the depth on the y-axis. We plot these data with geom_point, and create a depth-profile by reversing the y-axis. Lastly we call facet_wrap to separate the single depth-profile into six depth profiles – one for each variable.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="introduction-to-the-tidyverse-1.html#cb159-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb159-2"><a href="introduction-to-the-tidyverse-1.html#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Key&quot;</span>, <span class="at">value=</span><span class="st">&quot;Value&quot;</span>, <span class="sc">-</span>Cruise, <span class="sc">-</span>Date, <span class="sc">-</span>Depth, <span class="at">factor_key=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb159-3"><a href="introduction-to-the-tidyverse-1.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb159-4"><a href="introduction-to-the-tidyverse-1.html#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Value, <span class="at">y=</span>Depth)) <span class="sc">+</span></span>
+<span id="cb159-5"><a href="introduction-to-the-tidyverse-1.html#cb159-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb159-6"><a href="introduction-to-the-tidyverse-1.html#cb159-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb159-7"><a href="introduction-to-the-tidyverse-1.html#cb159-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Key, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">dir=</span><span class="st">&quot;v&quot;</span>, <span class="at">scales=</span><span class="st">&quot;free_x&quot;</span>)</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-76-1.png" width="408" /></p>
+<p>Now we can really get a picture of what is happening in Saanich Inlet! <strong>Do the patterns match what we’ve seen in previous plots? Are there any patterns that surprised you?</strong></p>
+</div>
+<div id="labels" class="section level3" number="3.6.8">
+<h3><span class="header-section-number">3.6.8</span> labels</h3>
+<p>We can change the labels of the previous plot with the <code>labs</code> function, specifying exactly what we want as the title, x-, and y-axis labels. You will have seen the title option in a couple of plots prior to this in the workshop.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="introduction-to-the-tidyverse-1.html#cb160-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb160-2"><a href="introduction-to-the-tidyverse-1.html#cb160-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Key&quot;</span>, <span class="at">value=</span><span class="st">&quot;Value&quot;</span>, <span class="sc">-</span>Cruise, <span class="sc">-</span>Date, <span class="sc">-</span>Depth, <span class="at">factor_key=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb160-3"><a href="introduction-to-the-tidyverse-1.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-4"><a href="introduction-to-the-tidyverse-1.html#cb160-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Value, <span class="at">y=</span>Depth)) <span class="sc">+</span></span>
+<span id="cb160-5"><a href="introduction-to-the-tidyverse-1.html#cb160-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb160-6"><a href="introduction-to-the-tidyverse-1.html#cb160-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb160-7"><a href="introduction-to-the-tidyverse-1.html#cb160-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Key, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">dir=</span><span class="st">&quot;v&quot;</span>, <span class="at">scales=</span><span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span></span>
+<span id="cb160-8"><a href="introduction-to-the-tidyverse-1.html#cb160-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Saanich Inlet Depth Profiles (2008-2014)&quot;</span>,</span>
+<span id="cb160-9"><a href="introduction-to-the-tidyverse-1.html#cb160-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb160-10"><a href="introduction-to-the-tidyverse-1.html#cb160-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Depth (m)&quot;</span>)</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-77-1.png" width="408" /></p>
+<p>We saw in previous analyses that oxygen and nitrate might have a relationship. But we’ve also seen that depth and many compounds are related. So how might we tease apart this plot from earlier?</p>
+<pre><code>## Warning: Removed 212 rows containing missing values (geom_point).</code></pre>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p>In the following exercise, investigate if depth contributes to the relationship between oxygen and nitrate. We will look at only a couple of depths to simplify the plot. <strong>Do oxygen and nitrate correlate? Is this correlation depth dependent?</strong></p>
+<div id="exercise-facets" class="section level4" number="3.6.8.1">
+<h4><span class="header-section-number">3.6.8.1</span> Exercise: facets</h4>
+<ol style="list-style-type: decimal">
+<li>filter to data at depths of 10, 60, 100, or 200</li>
+<li>Plot oxygen vs nitrate faceted by depth withouot providing arguments for dir or scales</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="fine-tuning-your-ggplots" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Fine-tuning your ggplots</h2>
+<p>ggplot is quite flexible. However, fine-tuning plots usually requires much more
+code. Let’s work to create a beautiful multi-panel figure showing the key compounds across depth as well as the overall relationship between oxygen, nitrate, and hydrogen sulfide. We will create two plots (p1 and p2) and then incorporate these into 1 figure.</p>
+<div id="themes" class="section level3" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Themes</h3>
+<p>By default, ggplot uses a gray colour scheme. We can create a clean black and
+white theme and save it to a ggplot object. There are also many <a href="http://ggplot2.tidyverse.org/reference/ggtheme.html">pre-made themes</a>.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="introduction-to-the-tidyverse-1.html#cb162-1" aria-hidden="true" tabindex="-1"></a>my_theme <span class="ot">&lt;-</span> </span>
+<span id="cb162-2"><a href="introduction-to-the-tidyverse-1.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb162-3"><a href="introduction-to-the-tidyverse-1.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb162-4"><a href="introduction-to-the-tidyverse-1.html#cb162-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span></code></pre></div>
+</div>
+<div id="panel-1" class="section level3" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Panel 1</h3>
+<p>Let’s add the theme to the faceted plot and remove the x-axis label with <code>labs</code>
+and save the ggplot as an object “p1.”</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="introduction-to-the-tidyverse-1.html#cb163-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> </span>
+<span id="cb163-2"><a href="introduction-to-the-tidyverse-1.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  dat <span class="sc">%&gt;%</span> </span>
+<span id="cb163-3"><a href="introduction-to-the-tidyverse-1.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;Key&quot;</span>, <span class="at">value=</span><span class="st">&quot;Value&quot;</span>, <span class="sc">-</span>Cruise, <span class="sc">-</span>Date, <span class="sc">-</span>Depth, <span class="at">factor_key=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb163-4"><a href="introduction-to-the-tidyverse-1.html#cb163-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb163-5"><a href="introduction-to-the-tidyverse-1.html#cb163-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Value, <span class="at">y=</span>Depth)) <span class="sc">+</span></span>
+<span id="cb163-6"><a href="introduction-to-the-tidyverse-1.html#cb163-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb163-7"><a href="introduction-to-the-tidyverse-1.html#cb163-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb163-8"><a href="introduction-to-the-tidyverse-1.html#cb163-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Key, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">dir=</span><span class="st">&quot;v&quot;</span>, <span class="at">scales=</span><span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb163-9"><a href="introduction-to-the-tidyverse-1.html#cb163-9" aria-hidden="true" tabindex="-1"></a>  my_theme <span class="sc">+</span></span>
+<span id="cb163-10"><a href="introduction-to-the-tidyverse-1.html#cb163-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb163-11"><a href="introduction-to-the-tidyverse-1.html#cb163-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Depth (m)&quot;</span>)</span>
+<span id="cb163-12"><a href="introduction-to-the-tidyverse-1.html#cb163-12" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-80-1.png" width="408" /></p>
+</div>
+<div id="panel-2" class="section level3" number="3.7.3">
+<h3><span class="header-section-number">3.7.3</span> Panel 2</h3>
+<p>Similarly, let’s add our theme to the scatterplot of Oxygen versus Nitrate
+versus Hydrogen Sulfide and save the ggplot as an object “p2.”</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="introduction-to-the-tidyverse-1.html#cb164-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> </span>
+<span id="cb164-2"><a href="introduction-to-the-tidyverse-1.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  dat <span class="sc">%&gt;%</span></span>
+<span id="cb164-3"><a href="introduction-to-the-tidyverse-1.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(H2S)) <span class="sc">%&gt;%</span></span>
+<span id="cb164-4"><a href="introduction-to-the-tidyverse-1.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(H2S) <span class="sc">%&gt;%</span> </span>
+<span id="cb164-5"><a href="introduction-to-the-tidyverse-1.html#cb164-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb164-6"><a href="introduction-to-the-tidyverse-1.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>O2, <span class="at">y=</span>NO3, <span class="at">colour=</span>H2S)) <span class="sc">+</span></span>
+<span id="cb164-7"><a href="introduction-to-the-tidyverse-1.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb164-8"><a href="introduction-to-the-tidyverse-1.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  my_theme <span class="sc">+</span></span>
+<span id="cb164-9"><a href="introduction-to-the-tidyverse-1.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;O2 in uM&quot;</span>,</span>
+<span id="cb164-10"><a href="introduction-to-the-tidyverse-1.html#cb164-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;NO3 in uM&quot;</span>) <span class="sc">+</span></span>
+<span id="cb164-11"><a href="introduction-to-the-tidyverse-1.html#cb164-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_continuous</span>(<span class="at">name=</span><span class="st">&quot;H2S in uM&quot;</span>)</span>
+<span id="cb164-12"><a href="introduction-to-the-tidyverse-1.html#cb164-12" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+</div>
+<div id="multi-panel-figues" class="section level3" number="3.7.4">
+<h3><span class="header-section-number">3.7.4</span> Multi-panel figues</h3>
+<p>The gridExtra package is used for creating multi-panel figures. Let’s use the
+package’s primary function <code>grid.arrange</code> to arrange our plots p1 and p2 into
+a multi-panel figure. We can use the layout_matrix argument to specify exactly
+how to arrange our plots.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="introduction-to-the-tidyverse-1.html#cb165-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1, p2, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">rel_widths=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>))</span></code></pre></div>
+<pre><code>## Warning: Removed 826 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 203 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="introduction-to-the-tidyverse-1.html#cb168-1" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-82-1.png" width="864" /></p>
+<p>And sometimes after all this, it’s still not perfect. So, don’t feel bad if you need to finalize plots for publication in another editor like Illustrator. Sometimes it’s a necessary evil.</p>
+<div id="patchwork" class="section level4" number="3.7.4.1">
+<h4><span class="header-section-number">3.7.4.1</span> Patchwork</h4>
+<p>Alternatively, we can use the patchwork package (developed in 2019). Patchwork makes it ridiculously simple to combine separate ggplots into the same graphic. It solves the same problem that <code>gridExtra::grid.arrange()</code> and <code>cowplot::plot_grid</code> but much simpler and intuitive.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="introduction-to-the-tidyverse-1.html#cb169-1" aria-hidden="true" tabindex="-1"></a>patchwork_plot <span class="ot">&lt;-</span> p1 <span class="sc">+</span> p2 </span>
+<span id="cb169-2"><a href="introduction-to-the-tidyverse-1.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="introduction-to-the-tidyverse-1.html#cb169-3" aria-hidden="true" tabindex="-1"></a>patchwork_plot <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">&#39;A&#39;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 826 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 203 rows containing missing values (geom_point).</code></pre>
+<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="saving-ggplots" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Saving ggplots</h2>
+<p>Using <code>ggsave</code> you can save your ggplots to many different file types just by
+changing the extension in the file name. Let’s save our ggplot to the projects
+folder as a pdf.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="introduction-to-the-tidyverse-1.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;saanich.pdf&quot;</span>, p, <span class="at">width=</span><span class="dv">10</span>, <span class="at">height=</span><span class="dv">6</span>)</span></code></pre></div>
+</div>
+<div id="additional-resources" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Additional resources</h2>
+<p>In this workshop, we have gone over just some of the functions and graphics within the tidyverse. Below are some resources for further learning and practice!</p>
+<ul>
+<li><p><a href="https://www.rstudio.com/resources/cheatsheets/">R cheatsheets</a> also available in RStudio under Help &gt; Cheatsheets</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">Introduction to dplyr</a></p></li>
+<li><p><a href="https://rpubs.com/justmarkham/dplyr-tutorial">dplyr tutorial</a></p></li>
+<li><p><a href="https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/">dplyr video tutorial</a></p></li>
+<li><p><a href="https://rpubs.com/bradleyboehmke/data_wrangling">More functions in dplyr and tidyr</a></p></li>
+<li><p><a href="http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">ggplot tutorial 1</a></p></li>
+<li><p><a href="https://rpubs.com/g_jw/ggplot2_tutorial">ggplot tutorial 2</a></p></li>
+<li><p><a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html#the_1_faq">ggplot tutorial 3</a></p></li>
+<li><p><a href="https://andrewcli.shinyapps.io/shinyRGT/">ggplot maker (shinyRGT)</a></p></li>
+</ul>
+</div>
+<div id="survey-1" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> Survey</h2>
+<p>Please provide us with feedback through this <a href="https://ubc.ca1.qualtrics.com/jfe/form/SV_2tOcP5OKnCNyauV">short survey</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-r-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reproducible-research-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ecoscope_datascience_workshops.pdf", "ecoscope_datascience_workshops.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
