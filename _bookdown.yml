@@ -1,0 +1,5 @@
+book_filename: "ecoscope_datascience_workshops"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
