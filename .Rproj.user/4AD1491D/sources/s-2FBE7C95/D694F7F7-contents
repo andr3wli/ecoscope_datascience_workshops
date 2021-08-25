@@ -582,51 +582,9 @@ Then, load this file as a data frame and:
 3. Subset the data to observations where depth is deeper than 100 m. *Hint*: Use the `subset()` function.
 4. Create a stacked scatterplot of oxygen concentrations within the two different seasons, colored by whether or not microbial data are available.
 
-#### Solution to exercise 2
+#### Solutions
 
-```{r}
-x <- 0.8
-mu <- 0 # mean
-sigma <- 1 # standard deviation
-
-# Normal distribution PDF:
-1/(sigma*sqrt(2*pi)) * exp(-1/2*((x - mu)/sigma)^2) 
-
-dnorm(x, mu, sigma) # Confirm using R's built-in Normal PDF function 
-```
-
-#### Solution to exercise 3
-
-```{r}
-# Count nr of tails out of ten coins, three times:
-nr_tails <- rbinom(n = 3, size = 10, prob = 0.5) 
-mean(nr_tails)
-
-nr_tails <- rbinom(n = 3000, size = 10, prob = 0.5) 
-mean(nr_tails)
-
-nr_tails <- rbinom(n = 300000, size = 10, prob = 0.5) 
-mean(nr_tails)
-```
-
-#### Solution to exercise 4
-
-```{r}
-path <- "https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv"
-dat <- read.csv(path) # Read csv file
-
-class(dat$Depth_m) # What type is the Depth_m variable?
-dat$Depth_m[20] # Depth of the 20th observation
-subset(dat, O2_uM == 91.115) # Observation for which equals 91.115
-subset(dat, Depth_m > 100) # Subset such that depth is deeper than 100 m
-
-# Stacked scatterplot:
-quickplot(data = dat,
-          x = Season, 
-          y = O2_uM, 
-          colour = Add_data, 
-          main = "Saanich Inlet: Oxygen in Fall vs. Summer")
-```
+Please check the [supplementary material](https://github.com/andr3wli/ecoscope_datascience_workshops/tree/main/supplementary_material) folder for the answer key. Try to figure it out before checking the answer key!
 
 ## Survey
 

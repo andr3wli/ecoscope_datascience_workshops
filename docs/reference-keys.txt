@@ -292,3 +292,4 @@ subheading-2a
 subheading-2b
 suite-of-packages-for-data-manipulation-and-visualization-1
 visualization-of-metagenomic-and-metatranscriptomic-data-in-r
+solutions
