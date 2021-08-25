@@ -25,7 +25,7 @@
 <meta name="author" content="Stephan Koenig" />
 
 
-<meta name="date" content="2021-08-23" />
+<meta name="date" content="2021-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,7 +145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#reproducible-research"><i class="fa fa-check"></i><b>1.2.3</b> Reproducible research</a></li>
 <li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#statistical-models-in-r"><i class="fa fa-check"></i><b>1.2.4</b> Statistical models in R</a></li>
 <li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#intermediate-r-programming"><i class="fa fa-check"></i><b>1.2.5</b> Intermediate R programming</a></li>
-<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#beyond-ggplot2"><i class="fa fa-check"></i><b>1.2.6</b> Beyond ggplot2</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#visualization-of-metagenomic-and-metatranscriptomic-data-in-r"><i class="fa fa-check"></i><b>1.2.6</b> Visualization of Metagenomic and Metatranscriptomic Data in R</a></li>
+<li class="chapter" data-level="1.2.7" data-path="index.html"><a href="index.html#beyond-ggplot2"><i class="fa fa-check"></i><b>1.2.7</b> Beyond ggplot2</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a>
@@ -271,56 +272,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-reproducibility"><i class="fa fa-check"></i><b>4.3</b> Why reproducibility?</a></li>
 <li class="chapter" data-level="4.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-projects"><i class="fa fa-check"></i><b>4.4</b> R projects</a></li>
 <li class="chapter" data-level="4.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#r-scripts"><i class="fa fa-check"></i><b>4.5</b> R scripts</a></li>
-<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.6</b> Modularize by task</a></li>
-<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.7</b> Use <em>Make</em></a></li>
-<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.8</b> Reproducible R environment with <code>packrat</code></a></li>
-<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.9</b> Documents made reproducible</a>
+<li class="chapter" data-level="4.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#suite-of-packages-for-data-manipulation-and-visualization"><i class="fa fa-check"></i><b>4.6</b> Suite of packages for data manipulation and visualization</a></li>
+<li class="chapter" data-level="4.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#modularize-by-task"><i class="fa fa-check"></i><b>4.7</b> Modularize by task</a></li>
+<li class="chapter" data-level="4.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#use-make"><i class="fa fa-check"></i><b>4.8</b> Use <em>Make</em></a></li>
+<li class="chapter" data-level="4.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-r-environment-with-packrat"><i class="fa fa-check"></i><b>4.9</b> Reproducible R environment with <code>packrat</code></a></li>
+<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#documents-made-reproducible"><i class="fa fa-check"></i><b>4.10</b> Documents made reproducible</a>
 <ul>
-<li class="chapter" data-level="4.9.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.9.1</b> What is a document really?</a></li>
-<li class="chapter" data-level="4.9.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.9.2</b> Rmarkdown</a></li>
-<li class="chapter" data-level="4.9.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.9.3</b> Knitting</a></li>
-<li class="chapter" data-level="4.9.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.9.4</b> Markdown body</a></li>
-<li class="chapter" data-level="4.9.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.9.5</b> Static documents</a></li>
-<li class="chapter" data-level="4.9.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.9.6</b> Dynamic documents</a></li>
-<li class="chapter" data-level="4.9.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.9.7</b> Slides made reproducible</a></li>
-<li class="chapter" data-level="4.9.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.9.8</b> Rmd in your workflow</a></li>
-<li class="chapter" data-level="4.9.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.9.9</b> Publish with Rpubs.com</a></li>
+<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-a-document-really"><i class="fa fa-check"></i><b>4.10.1</b> What is a document really?</a></li>
+<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmarkdown"><i class="fa fa-check"></i><b>4.10.2</b> Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="4.10" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.10</b> Git</a>
+<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#subheading-1a"><i class="fa fa-check"></i><b>4.11</b> Subheading 1A</a></li>
+<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#subheading-2a"><i class="fa fa-check"></i><b>4.12</b> Subheading 2A</a></li>
+<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#subheading-2b"><i class="fa fa-check"></i><b>4.13</b> Subheading 2B</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.10.1</b> What is version control?</a></li>
-<li class="chapter" data-level="4.10.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.10.2</b> Why Git?</a></li>
+<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#knitting"><i class="fa fa-check"></i><b>4.13.1</b> Knitting</a></li>
+<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#markdown-body"><i class="fa fa-check"></i><b>4.13.2</b> Markdown body</a></li>
+<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#static-documents"><i class="fa fa-check"></i><b>4.13.3</b> Static documents</a></li>
+<li class="chapter" data-level="4.13.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#dynamic-documents"><i class="fa fa-check"></i><b>4.13.4</b> Dynamic documents</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.11</b> Git on your computer</a>
+<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#suite-of-packages-for-data-manipulation-and-visualization-1"><i class="fa fa-check"></i><b>4.14</b> Suite of packages for data manipulation and visualization</a>
 <ul>
-<li class="chapter" data-level="4.11.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.11.1</b> Initialize a repo (<code>git init</code>)</a></li>
-<li class="chapter" data-level="4.11.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.11.2</b> Add files (<code>git add</code>)</a></li>
-<li class="chapter" data-level="4.11.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.11.3</b> Git staging area (index)</a></li>
-<li class="chapter" data-level="4.11.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.11.4</b> Commit changes (<code>git commit</code>)</a></li>
-<li class="chapter" data-level="4.11.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.11.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
-<li class="chapter" data-level="4.11.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.11.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
-<li class="chapter" data-level="4.11.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.11.7</b> Branches (<code>git checkout -b</code>)</a></li>
-<li class="chapter" data-level="4.11.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.11.8</b> Merge conflicts (<code>git merge</code>)</a></li>
-<li class="chapter" data-level="4.11.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.11.9</b> Summary of Git</a></li>
+<li class="chapter" data-level="4.14.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#slides-made-reproducible"><i class="fa fa-check"></i><b>4.14.1</b> Slides made reproducible</a></li>
+<li class="chapter" data-level="4.14.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rmd-in-your-workflow"><i class="fa fa-check"></i><b>4.14.2</b> Rmd in your workflow</a></li>
+<li class="chapter" data-level="4.14.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#publish-with-rpubs.com"><i class="fa fa-check"></i><b>4.14.3</b> Publish with Rpubs.com</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.12</b> Collaborate with GitHub</a>
+<li class="chapter" data-level="4.15" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git"><i class="fa fa-check"></i><b>4.15</b> Git</a>
 <ul>
-<li class="chapter" data-level="4.12.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.12.1</b> Configure your computer (<code>git config</code>)</a></li>
-<li class="chapter" data-level="4.12.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.12.2</b> Make an online repo</a></li>
-<li class="chapter" data-level="4.12.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.12.3</b> Link local and online repo (<code>git remote</code>)</a></li>
-<li class="chapter" data-level="4.12.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.12.4</b> Update an online repo (<code>git push</code>)</a></li>
-<li class="chapter" data-level="4.12.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.12.5</b> Copy an online repo (<code>git clone</code>)</a></li>
-<li class="chapter" data-level="4.12.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.12.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
-<li class="chapter" data-level="4.12.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.12.7</b> GitHub GUI</a></li>
-<li class="chapter" data-level="4.12.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.12.8</b> Git in RStudio</a></li>
+<li class="chapter" data-level="4.15.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#what-is-version-control"><i class="fa fa-check"></i><b>4.15.1</b> What is version control?</a></li>
+<li class="chapter" data-level="4.15.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#why-git"><i class="fa fa-check"></i><b>4.15.2</b> Why Git?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.13" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.13</b> Additional resources</a>
+<li class="chapter" data-level="4.16" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-on-your-computer"><i class="fa fa-check"></i><b>4.16</b> Git on your computer</a>
 <ul>
-<li class="chapter" data-level="4.13.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.13.1</b> Reproducible research</a></li>
-<li class="chapter" data-level="4.13.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.13.2</b> R/RStudio</a></li>
-<li class="chapter" data-level="4.13.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.13.3</b> Git/GitHub</a></li>
+<li class="chapter" data-level="4.16.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#initialize-a-repo-git-init"><i class="fa fa-check"></i><b>4.16.1</b> Initialize a repo (<code>git init</code>)</a></li>
+<li class="chapter" data-level="4.16.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#add-files-git-add"><i class="fa fa-check"></i><b>4.16.2</b> Add files (<code>git add</code>)</a></li>
+<li class="chapter" data-level="4.16.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-staging-area-index"><i class="fa fa-check"></i><b>4.16.3</b> Git staging area (index)</a></li>
+<li class="chapter" data-level="4.16.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#commit-changes-git-commit"><i class="fa fa-check"></i><b>4.16.4</b> Commit changes (<code>git commit</code>)</a></li>
+<li class="chapter" data-level="4.16.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#comapre-versions-git-status-and-diff"><i class="fa fa-check"></i><b>4.16.5</b> Comapre versions (<code>git status</code> and <code>diff</code>)</a></li>
+<li class="chapter" data-level="4.16.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#past-commits-git-log-and-show"><i class="fa fa-check"></i><b>4.16.6</b> Past commits (<code>git log</code> and <code>show</code>)</a></li>
+<li class="chapter" data-level="4.16.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#branches-git-checkout--b"><i class="fa fa-check"></i><b>4.16.7</b> Branches (<code>git checkout -b</code>)</a></li>
+<li class="chapter" data-level="4.16.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#merge-conflicts-git-merge"><i class="fa fa-check"></i><b>4.16.8</b> Merge conflicts (<code>git merge</code>)</a></li>
+<li class="chapter" data-level="4.16.9" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#summary-of-git"><i class="fa fa-check"></i><b>4.16.9</b> Summary of Git</a></li>
 </ul></li>
-<li class="chapter" data-level="4.14" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.14</b> Survey</a></li>
+<li class="chapter" data-level="4.17" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#collaborate-with-github"><i class="fa fa-check"></i><b>4.17</b> Collaborate with GitHub</a>
+<ul>
+<li class="chapter" data-level="4.17.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#configure-your-computer-git-config"><i class="fa fa-check"></i><b>4.17.1</b> Configure your computer (<code>git config</code>)</a></li>
+<li class="chapter" data-level="4.17.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#make-an-online-repo"><i class="fa fa-check"></i><b>4.17.2</b> Make an online repo</a></li>
+<li class="chapter" data-level="4.17.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#link-local-and-online-repo-git-remote"><i class="fa fa-check"></i><b>4.17.3</b> Link local and online repo (<code>git remote</code>)</a></li>
+<li class="chapter" data-level="4.17.4" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-an-online-repo-git-push"><i class="fa fa-check"></i><b>4.17.4</b> Update an online repo (<code>git push</code>)</a></li>
+<li class="chapter" data-level="4.17.5" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#copy-an-online-repo-git-clone"><i class="fa fa-check"></i><b>4.17.5</b> Copy an online repo (<code>git clone</code>)</a></li>
+<li class="chapter" data-level="4.17.6" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#update-from-online-repo-git-fetch-and-pull"><i class="fa fa-check"></i><b>4.17.6</b> Update from online repo (<code>git fetch</code> and <code>pull</code>)</a></li>
+<li class="chapter" data-level="4.17.7" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#github-gui"><i class="fa fa-check"></i><b>4.17.7</b> GitHub GUI</a></li>
+<li class="chapter" data-level="4.17.8" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#git-in-rstudio"><i class="fa fa-check"></i><b>4.17.8</b> Git in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.18" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#additional-resources-1"><i class="fa fa-check"></i><b>4.18</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="4.18.1" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#reproducible-research-2"><i class="fa fa-check"></i><b>4.18.1</b> Reproducible research</a></li>
+<li class="chapter" data-level="4.18.2" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#rrstudio"><i class="fa fa-check"></i><b>4.18.2</b> R/RStudio</a></li>
+<li class="chapter" data-level="4.18.3" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#gitgithub"><i class="fa fa-check"></i><b>4.18.3</b> Git/GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.19" data-path="reproducible-research-1.html"><a href="reproducible-research-1.html#survey-2"><i class="fa fa-check"></i><b>4.19</b> Survey</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="statistical-models-in-r-1.html"><a href="statistical-models-in-r-1.html"><i class="fa fa-check"></i><b>5</b> Statistical models in R</a>
 <ul>
@@ -891,67 +901,6 @@ sigma &lt;- 1 # standard deviation
 <li>Subset the data to observations where depth is deeper than 100 m. <em>Hint</em>: Use the <code>subset()</code> function.</li>
 <li>Create a stacked scatterplot of oxygen concentrations within the two different seasons, colored by whether or not microbial data are available.</li>
 </ol>
-<div id="solution-to-exercise-2" class="section level4" number="2.11.4.1">
-<h4><span class="header-section-number">2.11.4.1</span> Solution to exercise 2</h4>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="introduction-to-r-and-rstudio.html#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
-<span id="cb73-2"><a href="introduction-to-r-and-rstudio.html#cb73-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># mean</span></span>
-<span id="cb73-3"><a href="introduction-to-r-and-rstudio.html#cb73-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># standard deviation</span></span>
-<span id="cb73-4"><a href="introduction-to-r-and-rstudio.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-5"><a href="introduction-to-r-and-rstudio.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Normal distribution PDF:</span></span>
-<span id="cb73-6"><a href="introduction-to-r-and-rstudio.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(sigma<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi)) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">*</span>((x <span class="sc">-</span> mu)<span class="sc">/</span>sigma)<span class="sc">^</span><span class="dv">2</span>) </span></code></pre></div>
-<pre><code>## [1] 0.2896916</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="introduction-to-r-and-rstudio.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(x, mu, sigma) <span class="co"># Confirm using R&#39;s built-in Normal PDF function </span></span></code></pre></div>
-<pre><code>## [1] 0.2896916</code></pre>
-</div>
-<div id="solution-to-exercise-3" class="section level4" number="2.11.4.2">
-<h4><span class="header-section-number">2.11.4.2</span> Solution to exercise 3</h4>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="introduction-to-r-and-rstudio.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count nr of tails out of ten coins, three times:</span></span>
-<span id="cb77-2"><a href="introduction-to-r-and-rstudio.html#cb77-2" aria-hidden="true" tabindex="-1"></a>nr_tails <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span>
-<span id="cb77-3"><a href="introduction-to-r-and-rstudio.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nr_tails)</span></code></pre></div>
-<pre><code>## [1] 3.666667</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="introduction-to-r-and-rstudio.html#cb79-1" aria-hidden="true" tabindex="-1"></a>nr_tails <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">3000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span>
-<span id="cb79-2"><a href="introduction-to-r-and-rstudio.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nr_tails)</span></code></pre></div>
-<pre><code>## [1] 4.947667</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="introduction-to-r-and-rstudio.html#cb81-1" aria-hidden="true" tabindex="-1"></a>nr_tails <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">300000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span>
-<span id="cb81-2"><a href="introduction-to-r-and-rstudio.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nr_tails)</span></code></pre></div>
-<pre><code>## [1] 4.998407</code></pre>
-</div>
-<div id="solution-to-exercise-4" class="section level4" number="2.11.4.3">
-<h4><span class="header-section-number">2.11.4.3</span> Solution to exercise 4</h4>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="introduction-to-r-and-rstudio.html#cb83-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/EDUCE-UBC/educer/main/data-raw/data_intro_ws.csv&quot;</span></span>
-<span id="cb83-2"><a href="introduction-to-r-and-rstudio.html#cb83-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(path) <span class="co"># Read csv file</span></span>
-<span id="cb83-3"><a href="introduction-to-r-and-rstudio.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-4"><a href="introduction-to-r-and-rstudio.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dat<span class="sc">$</span>Depth_m) <span class="co"># What type is the Depth_m variable?</span></span></code></pre></div>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="introduction-to-r-and-rstudio.html#cb85-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Depth_m[<span class="dv">20</span>] <span class="co"># Depth of the 20th observation</span></span></code></pre></div>
-<pre><code>## [1] 60</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="introduction-to-r-and-rstudio.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(dat, O2_uM <span class="sc">==</span> <span class="fl">91.115</span>) <span class="co"># Observation for which equals 91.115</span></span></code></pre></div>
-<pre><code>##   Season Depth_m  O2_uM Add_data
-## 4   Fall      60 91.115     TRUE</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="introduction-to-r-and-rstudio.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(dat, Depth_m <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="co"># Subset such that depth is deeper than 100 m</span></span></code></pre></div>
-<pre><code>##    Season Depth_m  O2_uM Add_data
-## 10   Fall     110  5.933    FALSE
-## 11   Fall     120  2.891     TRUE
-## 12   Fall     135  2.766    FALSE
-## 13   Fall     150 14.465    FALSE
-## 14   Fall     165 24.239    FALSE
-## 15   Fall     185 28.885    FALSE
-## 16   Fall     200 26.766     TRUE
-## 26 Summer     110 27.557    FALSE
-## 27 Summer     120 32.354     TRUE
-## 28 Summer     135 20.446    FALSE
-## 29 Summer     150  0.000    FALSE
-## 30 Summer     165  0.000    FALSE
-## 31 Summer     185  0.000    FALSE
-## 32 Summer     200  0.000     TRUE</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="introduction-to-r-and-rstudio.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stacked scatterplot:</span></span>
-<span id="cb91-2"><a href="introduction-to-r-and-rstudio.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quickplot</span>(<span class="at">data =</span> dat,</span>
-<span id="cb91-3"><a href="introduction-to-r-and-rstudio.html#cb91-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> Season, </span>
-<span id="cb91-4"><a href="introduction-to-r-and-rstudio.html#cb91-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> O2_uM, </span>
-<span id="cb91-5"><a href="introduction-to-r-and-rstudio.html#cb91-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> Add_data, </span>
-<span id="cb91-6"><a href="introduction-to-r-and-rstudio.html#cb91-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">&quot;Saanich Inlet: Oxygen in Fall vs. Summer&quot;</span>)</span></code></pre></div>
-<p><img src="ecoscope_datascience_workshops_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-</div>
 </div>
 </div>
 <div id="survey" class="section level2" number="2.12">
