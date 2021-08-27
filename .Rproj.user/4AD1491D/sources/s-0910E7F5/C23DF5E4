@@ -1,26 +1,26 @@
 {
-    "id": "73EBE8BE",
-    "path": "/Volumes/Samsung_T5/ecoscope_datascience_workshops/supplementary_material/intro_r.R",
-    "project_path": "supplementary_material/intro_r.R",
+    "id": "C23DF5E4",
+    "path": "/Volumes/Samsung_T5/ecoscope_datascience_workshops/supplementary_material/stat_models.R",
+    "project_path": "supplementary_material/stat_models.R",
     "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1629844648197.0,
+    "created": 1629855045172.0,
     "source_on_save": false,
     "relative_order": 5,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "76,0",
-        "scrollLine": "48"
+        "cursorPosition": "0,61",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1629846194,
+    "lastKnownWriteTime": 1629854808,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1629846194064,
+    "last_content_update": 1629854808,
     "read_only": false,
     "read_only_alternatives": []
 }

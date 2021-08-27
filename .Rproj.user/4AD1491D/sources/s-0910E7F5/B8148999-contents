@@ -1,8 +1,14 @@
 --- 
 title: "ECOSCOPE: Data Science Workshops"
 author: 
+  - Kim Dill-McFarland
   - Andrew Li
   - Stephan Koenig
+  - Gil B. Henriques
+  - Florent Mazel
+  - Yue Liu
+  - Kris Hong
+  - Steven Hallam
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -27,12 +33,12 @@ The book is structured so that each chapter is a different workshop.
 
 | Date                        | Time   | Workshop                | Register                   |
 |-----------------------------|--------|-------------------------|----------------------------|
-| Sept 21 (Tues)              | 2-4 PM | Intro to R              | [Click here to register]() |
-| Sept 28 & 30 (Tues & Thurs) | 1-4 PM | Intro to the tidyverse  | [Click here to register]() |
-| Oct 19 (Tues)               | 2-4 PM | Intro to R              | [Click here to register]() |
-| Oct 26 & 28 (Tues & Thurs)  | 1-4 PM | Reproducible research   | [Click here to register]() |
-| Nov 16 (Tues)               | 2-4 PM | Intro to R              | [Click here to register]() |
-| Nov 23 & 25 (Tues & Thurs)  | 1-4 PM | Statistical models in R | [Click here to register]() |
+| Sept 21 (Tues)              | 2-4 PM | Intro to R              | [Click here to register](https://www.eventbrite.ca/e/introduction-to-r-workshop-tickets-168674593249?aff=ebdsoporgprofile) |
+| Sept 28 & 30 (Tues & Thurs) | 1-4 PM | Intro to the tidyverse  | [Click here to register](https://www.eventbrite.ca/e/the-r-tidyverse-workshop-september-2021-tickets-168676711585?aff=ebdsoporgprofile) |
+| Oct 19 (Tues)               | 2-4 PM | Intro to R              | [Click here to register](https://www.eventbrite.ca/e/introduction-to-r-workshop-tickets-168674593249?aff=ebdsoporgprofile) |
+| Oct 26 & 28 (Tues & Thurs)  | 1-4 PM | Statistical models in R | [Click here to register](https://www.eventbrite.ca/e/statistical-models-in-r-workshop-october-2021-tickets-168676354517?aff=ebdsoporgprofile) |
+| Nov 16 (Tues)               | 2-4 PM | Intro to R              | [Click here to register](https://www.eventbrite.ca/e/introduction-to-r-workshop-tickets-168674593249?aff=ebdsoporgprofile) |
+| Nov 23 & 25 (Tues & Thurs)  | 1-4 PM | Intermediate R programming | [Click here to register](https://www.eventbrite.ca/e/intermediate-r-programming-workshop-nov-2021-tickets-168678338451?aff=ebdsoporgprofile) |
 <br>
 **2021 Term 2 (Jan - Apr)**
 <br>
